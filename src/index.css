@@ -3,10 +3,88 @@
 @import "tailwindcss";
 
 * {
-  font-family: "Geist", sans-serif;
   font-weight: 400;
+  font-family: "Geist", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: "Geist", sans-serif;
 }
 
 @theme {
   --color-primary: #003366;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeInDown {
+  animation: fadeInDown 0.18s ease both;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeUp {
+  animation: fadeUp 0.7s ease both;
+}
+.animate-fadeUp-delay-1 {
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+.animate-fadeUp-delay-2 {
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+.video-overlay {
+  background: linear-gradient(
+    105deg,
+    rgba(0, 30, 64, 0.88) 0%,
+    rgba(0, 30, 64, 0.45) 55%,
+    rgba(0, 30, 64, 0.1) 100%
+  );
+}
+.bento-card-hover {
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.35s;
+}
+.bento-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px rgba(0, 30, 64, 0.13);
+}
+.news-img {
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.news-card:hover .news-img {
+  transform: scale(1.08);
+}
+input:focus {
+  outline: none;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #001e40;
+  border-radius: 3px;
 }
