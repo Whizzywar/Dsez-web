@@ -1,3 +1,14 @@
+/**
+ * Icon — inline SVG icon primitive.
+ *
+ * Usage:
+ *   <Icon name="arrowRight" className="w-5 h-5 text-white" />
+ *
+ * Available names:
+ *   menu | close | chevronDown | arrowRight | trendingUp | download | send
+ *   analytics | factory | globe | cloud | bolt | office | map | phone | mail
+ *   externalLink | share | home | info | briefcase | questionMark | contact
+ */
 const Icon = ({ name, className = "w-6 h-6" }) => {
   const icons = {
     menu: (
@@ -342,5 +353,8 @@ const Icon = ({ name, className = "w-6 h-6" }) => {
       </svg>
     ),
   };
-  return icons[name] || null;
+
+  return icons[name] ?? null;
 };
+
+export default Icon;
