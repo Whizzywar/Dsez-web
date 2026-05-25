@@ -77,18 +77,24 @@ const Navbar = () => {
 
   // ── Auto-close drawer when the route changes ─────────────────────────────
   useEffect(() => {
-    setDrawerOpen(false);
-  }, [location.pathname]);
+    // Avoid synchronous setState inside effect to prevent cascading renders.
+    if (!drawerOpen) return;
+    const id = setTimeout(() => setDrawerOpen(false), 0);
+    return () => clearTimeout(id);
+  }, [location.pathname, drawerOpen]);
 
   // ── Pre-open the right accordion when drawer opens on a deep route ────────
   useEffect(() => {
     if (!drawerOpen) return;
-    setMobileAboutOpen(
-      aboutItems.some((i) => location.pathname.startsWith(i.href)),
-    );
-    setMobileInvestOpen(
-      investmentItems.some((i) => location.pathname.startsWith(i.href)),
-    );
+    const id = setTimeout(() => {
+      setMobileAboutOpen(
+        aboutItems.some((i) => location.pathname.startsWith(i.href)),
+      );
+      setMobileInvestOpen(
+        investmentItems.some((i) => location.pathname.startsWith(i.href)),
+      );
+    }, 0);
+    return () => clearTimeout(id);
   }, [drawerOpen, location.pathname]);
 
   // ── Accordion section header class helper ─────────────────────────────────
@@ -118,7 +124,7 @@ const Navbar = () => {
           <div className="flex items-center gap-3">
             {/* Hamburger — mobile only */}
             <button
-              className="p-2 text-[#003366] lg:hidden rounded-lg hover:bg-gray-100 transition-colors"
+              className="p-2 text-primary lg:hidden rounded-lg hover:bg-gray-100 transition-colors"
               onClick={() => setDrawerOpen(true)}
               aria-label="Open navigation menu"
             >
@@ -128,7 +134,7 @@ const Navbar = () => {
             {/* Logo → home via <Link> (no active highlight needed) */}
             <Link
               to="/"
-              className="font-display text-2xl font-black text-[#003366] tracking-tight hover:opacity-90 transition-opacity"
+              className="font-display text-2xl font-black text-primary tracking-tight hover:opacity-90 transition-opacity"
               aria-label="DSEZ — back to home"
             >
               DS<span className="text-[#FF5722]">EZ</span>
@@ -185,7 +191,7 @@ const Navbar = () => {
       {/* ═══════════════════════════════════════════════════ MOBILE OVERLAY ══ */}
       {drawerOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-[55] backdrop-blur-sm"
+          className="fixed inset-0 bg-black/60 z-55 backdrop-blur-sm"
           onClick={() => setDrawerOpen(false)}
           aria-hidden="true"
         />
@@ -194,7 +200,7 @@ const Navbar = () => {
       {/* ════════════════════════════════════════════════════ MOBILE DRAWER ══ */}
       <aside
         className={`
-          fixed left-0 top-0 h-full z-[60] bg-white shadow-2xl w-80
+          fixed left-0 top-0 h-full z-60 bg-white shadow-2xl w-80
           transition-transform duration-300 ease-in-out overflow-y-auto
           ${drawerOpen ? "translate-x-0" : "-translate-x-full"}
         `}
@@ -206,7 +212,7 @@ const Navbar = () => {
           {/* Logo in drawer — <Link> closes drawer via useEffect on location change */}
           <Link
             to="/"
-            className="font-display text-xl font-black text-[#003366] hover:opacity-90 transition-opacity"
+            className="font-display text-xl font-black text-primary hover:opacity-90 transition-opacity"
             onClick={() => setDrawerOpen(false)}
           >
             DS<span className="text-[#FF5722]">EZ</span> Global
@@ -229,7 +235,7 @@ const Navbar = () => {
                 <Icon name="home" className="w-5 h-5" />
                 <span>Home</span>
                 {isActive && (
-                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white/80 flex-shrink-0" />
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white/80 shrink-0" />
                 )}
               </>
             )}
@@ -243,7 +249,7 @@ const Navbar = () => {
               aria-controls="about-submenu"
               className={accordionHeaderCls(aboutItems)}
             >
-              <Icon name="info" className="w-5 h-5 flex-shrink-0" />
+              <Icon name="info" className="w-5 h-5 shrink-0" />
               <span className="flex-1">About Us</span>
               <span
                 className={`transition-transform duration-200 ${mobileAboutOpen ? "rotate-180" : ""}`}
@@ -272,7 +278,7 @@ const Navbar = () => {
                       <>
                         <span
                           className={`
-                          w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0
+                          w-6 h-6 rounded-md flex items-center justify-center shrink-0
                           ${isActive ? "bg-orange-100 text-[#FF5722]" : "text-current"}
                         `}
                         >
@@ -295,7 +301,7 @@ const Navbar = () => {
               aria-controls="invest-submenu"
               className={accordionHeaderCls(investmentItems)}
             >
-              <Icon name="briefcase" className="w-5 h-5 flex-shrink-0" />
+              <Icon name="briefcase" className="w-5 h-5 shrink-0" />
               <span className="flex-1">Investment Opportunities</span>
               <span
                 className={`transition-transform duration-200 ${mobileInvestOpen ? "rotate-180" : ""}`}
@@ -308,7 +314,7 @@ const Navbar = () => {
               id="invest-submenu"
               className={`
                 overflow-hidden transition-all duration-300 ease-in-out
-                ${mobileInvestOpen ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0"}
+                ${mobileInvestOpen ? "max-h-128 opacity-100" : "max-h-0 opacity-0"}
               `}
             >
               <div className="ml-4 pl-4 border-l-2 border-gray-100 space-y-1 mt-1 pb-2">
@@ -323,7 +329,7 @@ const Navbar = () => {
                       <>
                         <span
                           className={`
-                          w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0
+                          w-6 h-6 rounded-md flex items-center justify-center shrink-0
                           ${isActive ? "bg-orange-100 text-[#FF5722]" : "text-current"}
                         `}
                         >
@@ -346,7 +352,7 @@ const Navbar = () => {
                   <Icon name={icon} className="w-5 h-5" />
                   <span className="flex-1">{label}</span>
                   {isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/80 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/80 shrink-0" />
                   )}
                 </>
               )}
