@@ -25,7 +25,7 @@ import Icon from "../Icon";
  *   items      {Array}    — [{ label, icon, sub, href }]
  *   isScrolled {boolean}  — passed from Navbar (reserved for theming)
  */
-const DropdownMenu = ({ label, items, isScrolled }) => {
+const DropdownMenu = ({ label, items }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   const location = useLocation();

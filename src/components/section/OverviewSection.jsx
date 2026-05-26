@@ -21,7 +21,7 @@ const OverviewSection = () => (
           </div>
 
           <p className="text-lg text-[#4A4A4A] leading-relaxed">
-            The Digital Special Economic Zone (DSEZ) serves as a catalyst for
+            The Digital Special Economic Zone serves as a catalyst for
             sustainable industrialization across the continent. By integrating
             high-speed digital infrastructure with traditional logistics, we
             provide a seamless environment for global corporations and local
