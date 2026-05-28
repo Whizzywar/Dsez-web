@@ -4,7 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
 // ── Pages ────────────────────────────────────────────────────────────────────
-import HomePage from "./pages/HomePage";
+import Homepage from "./pages/DsezHomepage";
 import PlaceholderPage from "./pages/PlaceholderPage";
 
 /**
@@ -40,7 +40,7 @@ const App = () => (
       <main className="flex-1 pt-20">
         <Routes>
           {/* ── Home ── */}
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Homepage />} />
 
           {/* ── About ── */}
           <Route

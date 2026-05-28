@@ -1,5 +1,5 @@
 import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
+
 import HeroSection from "../components/sections/HeroSection";
 import StatsTicker from "../components/sections/StatsTicker";
 import OverviewSection from "../components/sections/OverviewSection";
@@ -24,8 +24,6 @@ const HomePage = () => (
       <NewsSection />
       <CTASection />
     </main>
-
-    <Footer />
   </div>
 );
 
