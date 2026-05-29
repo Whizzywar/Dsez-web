@@ -16,14 +16,12 @@ const HomePage = () => (
   <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
     <Navbar />
 
-    <main className="pt-20">
-      <HeroSection />
-      <StatsTicker />
-      <OverviewSection />
-      <BentoGrid />
-      <NewsSection />
-      <CTASection />
-    </main>
+    <HeroSection />
+    <StatsTicker />
+    <OverviewSection />
+    <BentoGrid />
+    <NewsSection />
+    <CTASection />
   </div>
 );
 

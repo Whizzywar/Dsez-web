@@ -13,7 +13,7 @@ const HeroSection = () => {
   const videoRef = useRef(null);
 
   return (
-    <section className="relative h-[720px] flex items-center overflow-hidden">
+    <section className="relative h-screen flex items-center overflow-hidden">
       {/* ── Video Background ── */}
       <video
         ref={videoRef}
@@ -43,31 +43,22 @@ const HeroSection = () => {
       {/* ── Content ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full">
         <div className="max-w-3xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs font-semibold px-4 py-2 rounded-full mb-6 animate-fadeUp">
-            <span className="w-2 h-2 rounded-full bg-[#66dd8b] animate-pulse" />
-            Africa's Digital Industrial Frontier
-          </div>
-
           {/* Headline */}
-          <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-6 animate-fadeUp-delay-1">
-            Africa's Emerging
+          <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-5 animate-fadeUp-delay-1">
+            Delta Special
             <br />
-            <span className="text-[#FF5722]">Industrial</span> Frontier
+            <span className="text-[#FF5722]">Economic Zone</span> Management
+            Company fzc
           </h1>
 
           {/* Subtext */}
           <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed max-w-2xl animate-fadeUp-delay-2">
-            Pioneering the future of global trade with state-of-the-art
-            infrastructure, digital governance, and unparalleled logistics
-            connectivity.
+            Trust... Turns dreams into reality.
           </p>
-
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 animate-fadeUp-delay-2">
             <button className="bg-[#FF5722] hover:bg-[#E64A19] active:scale-95 text-white font-bold px-10 py-4 rounded-lg shadow-xl transition-all flex items-center gap-3 text-base">
-              Invest Now
-              <Icon name="trendingUp" className="w-5 h-5" />
+              Explore More
             </button>
             <button className="border-2 border-white/80 text-white hover:bg-white hover:text-[#001e40] font-bold px-10 py-4 rounded-lg transition-all text-base flex items-center gap-3">
               View Roadmap
