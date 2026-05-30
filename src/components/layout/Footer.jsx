@@ -82,11 +82,13 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#001e40] text-white">
-      {/* ══════════════════════════════════════════ MAIN GRID ══ */}
-      <div className="max-w-7xl mx-auto px-4 md:px-16 pt-20 pb-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-        {/* ── Column 1 : Brand + Social ───────────────────────── */}
+      {/*MAIN GRID */}
+      <div
+        className="max-w-7xl mx-auto px-4 md:px-16 pt-20 pb-14
+                      grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12"
+      >
+        {/* ── Column 1: Brand identity*/}
         <div className="space-y-6 lg:col-span-1">
-          {/* Logo */}
           <Link to="/" className="inline-block">
             <span className="font-display text-3xl font-black tracking-tight">
               DS<span className="text-[#FF5722]">EZ</span>
@@ -100,33 +102,9 @@ const Footer = () => {
             Building the digital backbone for Africa's industrial revolution.
             Authoritative, secure, and globally connected.
           </p>
-
-          {/* Social icons */}
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-3">
-              Follow Us
-            </p>
-            <div className="flex gap-2 flex-wrap">
-              {socialLinks.map(({ name, href, icon }) => (
-                <a
-                  key={name}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`DSEZ on ${name}`}
-                  title={name}
-                  className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center
-                             hover:bg-[#FF5722] hover:text-white text-white/70
-                             transition-all duration-200"
-                >
-                  {icon}
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* ── Column 2 : Quick Links ──────────────────────────── */}
+        {/* ── Column 2 : Quick Links */}
         <div>
           <h6 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-6">
             Quick Links
@@ -141,7 +119,7 @@ const Footer = () => {
               >
                 <span
                   className="w-1 h-1 rounded-full bg-[#FF5722] opacity-0
-                                 group-hover:opacity-100 transition-opacity"
+                                 group-hover:opacity-100 transition-opacity shrink-0"
                 />
                 {label}
               </Link>
@@ -155,7 +133,6 @@ const Footer = () => {
             Contact Information
           </h6>
           <ul className="space-y-4">
-            {/* Physical address */}
             <li className="flex gap-3">
               <span
                 className="mt-0.5 w-8 h-8 rounded-lg bg-white/8 flex items-center
@@ -264,7 +241,7 @@ const Footer = () => {
                   Mon – Fri: 8:00 AM – 5:00 PM
                   <br />
                   <span className="text-white/45">
-                    Weekends & Public Holidays: Closed
+                    Weekends &amp; Public Holidays: Closed
                   </span>
                 </p>
               </div>
@@ -272,81 +249,102 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* ── Column 4 : Newsletter ───────────────────────────── */}
-        <div>
-          <h6 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-6">
-            Stay Informed
-          </h6>
-          <p className="text-white/65 text-sm leading-relaxed mb-5">
-            Subscribe for zone updates, investment alerts, and market
-            intelligence — delivered straight to your inbox.
-          </p>
+        {/* ── Column 4 : Newsletter */}
+        <div className="space-y-8">
+          <div>
+            <h6 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-6">
+              Stay Informed
+            </h6>
+            <p className="text-white/65 text-sm leading-relaxed mb-5">
+              Subscribe for zone updates, investment alerts, and market
+              intelligence — delivered straight to your inbox.
+            </p>
 
-          {/* Input */}
-          <div
-            className="flex rounded-lg overflow-hidden border border-white/15
-                          focus-within:border-[#66dd8b] transition-colors"
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
-              placeholder="Your email address"
-              aria-label="Email for newsletter subscription"
-              className="flex-1 bg-white/8 px-4 py-3 text-sm text-white
-                         placeholder:text-white/35 focus:outline-none min-w-0"
-            />
-            <button
-              onClick={handleSubscribe}
-              aria-label="Subscribe"
-              className="bg-[#66dd8b] hover:bg-white text-[#001e40] px-4 py-3
-                         font-bold transition-colors duration-150 shrink-0"
+            <div
+              className="flex rounded-lg overflow-hidden border border-white/15
+                            focus-within:border-[#66dd8b] transition-colors"
             >
-              <Icon name="send" className="w-4 h-4" />
-            </button>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
+                placeholder="Your email address"
+                aria-label="Email for newsletter subscription"
+                className="flex-1 bg-white/8 px-4 py-3 text-sm text-white
+                           placeholder:text-white/35 focus:outline-none min-w-0"
+              />
+              <button
+                onClick={handleSubscribe}
+                aria-label="Subscribe"
+                className="bg-[#66dd8b] hover:bg-white text-[#001e40] px-4 py-3
+                           font-bold transition-colors duration-150 shrink-0"
+              >
+                <Icon name="send" className="w-4 h-4" />
+              </button>
+            </div>
+
+            {submitted && (
+              <p className="mt-3 text-[#66dd8b] text-xs font-semibold flex items-center gap-2">
+                <svg
+                  className="w-4 h-4 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                You're subscribed! Thanks for joining.
+              </p>
+            )}
+
+            <p className="mt-4 text-white/35 text-xs leading-relaxed">
+              No spam. Unsubscribe at any time. We respect your privacy.
+            </p>
           </div>
 
-          {/* Success feedback */}
-          {submitted && (
-            <p className="mt-3 text-[#66dd8b] text-xs font-semibold flex items-center gap-2 animate-fadeUp">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.5}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              You're subscribed! Thanks for joining.
+          {/* ── Social Media */}
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-3">
+              Follow Us
             </p>
-          )}
-
-          {/* Trust note */}
-          <p className="mt-4 text-white/35 text-xs leading-relaxed">
-            No spam. Unsubscribe at any time. We respect your privacy.
-          </p>
+            <div className="flex gap-2 flex-wrap">
+              {socialLinks.map(({ name, href, icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`DSEZ on ${name}`}
+                  title={name}
+                  className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center
+                             text-white/70 hover:bg-[#FF5722] hover:text-white
+                             transition-all duration-200"
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════ BOTTOM BAR ══ */}
+      {/* BOTTOM BAR ══ */}
       <div className="border-t border-white/10">
         <div
           className="max-w-7xl mx-auto px-4 md:px-16 py-6
                         flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          {/* Copyright */}
           <p className="text-white/40 text-xs text-center md:text-left">
             © {new Date().getFullYear()} Digital Special Economic Zone (DSEZ).
             All rights reserved.
           </p>
 
-          {/* Legal links */}
           <nav
             className="flex flex-wrap justify-center gap-x-6 gap-y-2"
             aria-label="Legal links"
@@ -362,7 +360,6 @@ const Footer = () => {
             ))}
           </nav>
 
-          {/* Built-in country flag / region tag */}
           <div className="flex items-center gap-2 text-white/30 text-xs">
             <span>🌍</span>
             <span>Africa's Industrial Frontier</span>
