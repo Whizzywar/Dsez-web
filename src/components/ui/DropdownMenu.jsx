@@ -41,7 +41,7 @@ const DropdownMenu = ({ label, items }) => {
 
   // ── Close on route change ──────────────────────────────────────────────────
   useEffect(() => {
-    setOpen(false);
+    return () => setOpen(false);
   }, [location.pathname]);
 
   // ── Highlight trigger when a child route is active ─────────────────────────

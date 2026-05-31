@@ -352,6 +352,95 @@ const Icon = ({ name, className = "w-6 h-6" }) => {
         />
       </svg>
     ),
+    photo: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+        />
+      </svg>
+    ),
+    newspaper: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+        />
+      </svg>
+    ),
+    calendar: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+        />
+      </svg>
+    ),
+    tag: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+        />
+      </svg>
+    ),
+    play: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+    close2: (
+      <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+        <path
+          fillRule="evenodd"
+          d="M4.293 4.293a1 1 0 011.414 0L12 10.586l6.293-6.293a1 1 0 111.414 1.414L13.414 12l6.293 6.293a1 1 0 01-1.414 1.414L12 13.414l-6.293 6.293a1 1 0 01-1.414-1.414L10.586 12 4.293 5.707a1 1 0 010-1.414z"
+          clipRule="evenodd"
+        />
+      </svg>
+    ),
   };
 
   return icons[name] ?? null;

@@ -60,6 +60,23 @@ export const investmentItems = [
   },
 ];
 
+// ─── Media Dropdown Data ─────────────────────────────────────────────────────
+
+export const mediaItems = [
+  {
+    label: "News & Events",
+    icon: "analytics",
+    sub: "Press releases & zone updates",
+    href: "/media/news",
+  },
+  {
+    label: "Gallery",
+    icon: "photo",
+    sub: "Photos & videos from the zone",
+    href: "/media/gallery",
+  },
+];
+
 // ─── Stats Ticker ─────────────────────────────────────────────────────────────
 
 export const stats = [
