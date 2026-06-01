@@ -18,15 +18,15 @@ const CTASection = () => (
     </div>
 
     <div className="max-w-7xl mx-auto px-4 md:px-16 text-center relative z-10">
-      <span className="text-xs font-bold text-[#FF5722] tracking-[0.25em] uppercase mb-4 block">
+      <span className="text-2xl font-bold text-[#FF5722] tracking-[0.25em] uppercase mb-4 block">
         Limited Availability
       </span>
 
-      <h2 className="font-display text-4xl md:text-6xl font-black text-white mb-8 leading-tight max-w-4xl mx-auto">
+      <h2 className="font-display text-4xl md:text-6xl font-black text-[#50C878] mb-8 leading-tight max-w-4xl mx-auto">
         Secure Your Position in the Future of Trade
       </h2>
 
-      <p className="text-lg md:text-xl text-white/80 mb-14 max-w-3xl mx-auto leading-relaxed">
+      <p className="text-lg md:text-xl text-white mb-14 max-w-3xl mx-auto leading-relaxed">
         Limited prime industrial plots and commercial blocks are currently
         available for early-stage investors. Leverage exclusive tax incentives
         and rapid permitting in the region's most advanced economic zone.

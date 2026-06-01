@@ -9,10 +9,10 @@ const StatsTicker = () => (
     <div className="flex gap-16 items-center px-4 md:px-16 flex-wrap justify-center md:justify-start">
       {stats.map(({ value, label }, i) => (
         <div key={label} className="flex items-center gap-4 shrink-0">
-          <span className="font-display text-2xl font-black text-[#FF5722]">
+          <span className="font-display text-2xl font-black text-[#50C878]">
             {value}
           </span>
-          <span className="text-white/60 text-sm font-medium uppercase tracking-widest">
+          <span className="text-white/70 text-sm font-medium uppercase tracking-widest">
             {label}
           </span>
           {i < stats.length - 1 && (

@@ -11,7 +11,7 @@ const NewsSection = () => (
       {/* Header row */}
       <div className="flex flex-col md:flex-row justify-between items-baseline mb-14 gap-4">
         <div className="max-w-xl">
-          <h2 className="font-display text-3xl font-black text-[#001e40]">
+          <h2 className="font-display text-3xl font-black text-[#FF4500]">
             Latest News &amp; Events
           </h2>
           <p className="text-[#4A4A4A] mt-2 text-base">
@@ -21,7 +21,7 @@ const NewsSection = () => (
         </div>
         <a
           href="#"
-          className="flex items-center gap-2 text-[#001e40] font-bold text-sm border-b-2 border-[#001e40] pb-1 hover:text-[#FF5722] hover:border-[#FF5722] transition-all group"
+          className="flex items-center gap-2 text-[#FF4500] font-bold text-sm border-b-2 border-[#FF4500] pb-1 hover:text-[#FF5722] hover:border-[#FF5722] transition-all group"
         >
           View All Updates
           <Icon

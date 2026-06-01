@@ -8,7 +8,7 @@ import Icon from "../ui/Icon";
 const BentoGrid = () => (
   <section className="py-28 bg-[#f3f3f3]">
     <div className="max-w-7xl mx-auto px-4 md:px-16">
-      <h3 className="font-display text-3xl font-black text-[#001e40] mb-14 text-center lg:text-left">
+      <h3 className="font-display text-3xl font-black text-[#FF4500] mb-14 text-center lg:text-left">
         Core Sectors &amp; Resources
       </h3>
 
@@ -33,7 +33,7 @@ const BentoGrid = () => (
             </p>
             <a
               href="#"
-              className="text-[#66dd8b] font-bold text-sm flex items-center gap-2 mt-2 group/link"
+              className="text-[#FF4500] font-bold text-sm flex items-center gap-2 mt-2 group/link"
             >
               Explore Sector
               <Icon
@@ -49,9 +49,9 @@ const BentoGrid = () => (
           <div className="flex justify-between items-start">
             <div className="space-y-3">
               <div className="w-10 h-10 rounded-xl bg-[#001e40]/[0.08] flex items-center justify-center">
-                <Icon name="globe" className="w-5 h-5 text-[#001e40]" />
+                <Icon name="globe" className="w-5 h-5 text-[#50C878]" />
               </div>
-              <h4 className="font-display text-xl font-bold text-[#001e40]">
+              <h4 className="font-display text-xl font-bold text-[#50C878]">
                 Logistics &amp; Hubs
               </h4>
               <p className="text-[#4A4A4A] text-sm leading-relaxed">
@@ -69,9 +69,9 @@ const BentoGrid = () => (
         {/* ── Digital Services ── */}
         <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm bento-card-hover">
           <div className="w-10 h-10 rounded-xl bg-[#001e40]/[0.08] flex items-center justify-center mb-4">
-            <Icon name="cloud" className="w-5 h-5 text-[#001e40]" />
+            <Icon name="cloud" className="w-5 h-5 text-[#50C878]" />
           </div>
-          <h4 className="font-display text-lg font-bold text-[#001e40] mb-2">
+          <h4 className="font-display text-lg font-bold text-[#50C878] mb-2">
             Digital Services
           </h4>
           <p className="text-[#4A4A4A] text-sm leading-relaxed">
@@ -80,14 +80,14 @@ const BentoGrid = () => (
         </div>
 
         {/* ── Green Energy ── */}
-        <div className="bg-[#FF5722] rounded-2xl p-8 bento-card-hover">
+        <div className="bg-[#50C878] rounded-2xl p-8 bento-card-hover">
           <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-4">
             <Icon name="bolt" className="w-5 h-5 text-white" />
           </div>
           <h4 className="font-display text-lg font-bold text-white mb-2">
             Green Energy
           </h4>
-          <p className="text-white/85 text-sm leading-relaxed">
+          <p className="text-[#001e40]/85 text-sm leading-relaxed">
             100% sustainable power grid for net-zero operations.
           </p>
         </div>

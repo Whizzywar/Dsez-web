@@ -13,7 +13,7 @@ const HeroSection = () => {
   const videoRef = useRef(null);
 
   return (
-    <section className="relative h-screen flex items-center overflow-hidden">
+    <section className="relative h-screen flex items-center overflow-hidden -mt-20">
       {/* ── Video Background ── */}
       <video
         ref={videoRef}
@@ -44,10 +44,10 @@ const HeroSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full">
         <div className="max-w-3xl">
           {/* Headline */}
-          <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-5 animate-fadeUp-delay-1">
+          <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-4 animate-fadeUp-delay-1">
             Delta Special
             <br />
-            <span className="text-[#FF5722]">Economic Zone</span> Management
+            <span className="text-[#50C878]">Economic Zone</span> Management
             Company fzc
           </h1>
 
@@ -59,9 +59,6 @@ const HeroSection = () => {
           <div className="flex flex-wrap gap-4 animate-fadeUp-delay-2">
             <button className="bg-[#FF5722] hover:bg-[#E64A19] active:scale-95 text-white font-bold px-10 py-4 rounded-lg shadow-xl transition-all flex items-center gap-3 text-base">
               Explore More
-            </button>
-            <button className="border-2 border-white/80 text-white hover:bg-white hover:text-[#001e40] font-bold px-10 py-4 rounded-lg transition-all text-base flex items-center gap-3">
-              View Roadmap
               <Icon name="arrowRight" className="w-5 h-5" />
             </button>
           </div>

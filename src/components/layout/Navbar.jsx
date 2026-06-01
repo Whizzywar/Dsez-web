@@ -429,7 +429,7 @@ const Navbar = () => {
           <button
             onClick={() => navigate("/invest")}
             className="
-              w-full bg-[#FF5722] hover:bg-[#E64A19] active:scale-95 text-white
+              w-full bg-[#FF4500] hover:bg-[#E64A19] active:scale-95 text-white
               font-bold py-4 rounded-xl transition-all shadow-md
               flex items-center justify-center gap-2
             "

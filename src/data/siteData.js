@@ -141,7 +141,7 @@ export const bentoCards = [
 export const newsItems = [
   {
     tag: "Partnership",
-    tagColor: "bg-orange-100 text-orange-700",
+    tagColor: "bg-orange-100 text-[#FF4500]",
     title: "Strategic MoU Signed with Global Logistics Giant",
     desc: "Agreement to develop a 400-acre automated terminal expected to triple export capacity by 2026.",
     date: "October 24, 2024",

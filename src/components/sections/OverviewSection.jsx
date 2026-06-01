@@ -12,10 +12,10 @@ const OverviewSection = () => (
         {/* ── Left: text ── */}
         <div className="space-y-7">
           <div>
-            <span className="text-xs font-bold text-[#FF5722] tracking-[0.25em] uppercase mb-3 block">
+            <span className="text-2xl font-bold text-[#FF5722] tracking-[0.18em] uppercase mb-3 block">
               Strategic Vision
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-black text-[#001e40] leading-tight">
+            <h2 className="font-display text-3xl md:text-4xl font-black text-[#50C878] leading-tight">
               Redefining Economic Development
             </h2>
           </div>
@@ -32,7 +32,7 @@ const OverviewSection = () => (
           <div className="grid grid-cols-2 gap-8 border-t border-gray-100 pt-8">
             {overviewStats.map(({ value, label }) => (
               <div key={label}>
-                <div className="font-display text-4xl font-black text-[#001e40] mb-1">
+                <div className="font-display text-4xl font-black text-[#50C878] mb-1">
                   {value}
                 </div>
                 <div className="text-xs font-bold text-[#4A4A4A] uppercase tracking-widest">
