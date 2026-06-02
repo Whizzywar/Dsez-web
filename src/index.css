@@ -103,3 +103,10 @@ body {
 input:focus {
   outline: none;
 }
+
+{/* Statsticker Keyframe */}
+
+ @keyframes ticker-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
