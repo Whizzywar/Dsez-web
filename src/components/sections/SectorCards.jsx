@@ -1,20 +1,20 @@
 import Icon from "../ui/Icon";
 
 /**
- * BentoGrid
+
  * Asymmetric 4-column grid showcasing the four core sectors:
  * Smart Manufacturing (large), Logistics, Digital Services, Green Energy.
  */
-const BentoGrid = () => (
+const SectorCards = () => (
   <section className="py-28 bg-[#f3f3f3]">
     <div className="max-w-7xl mx-auto px-4 md:px-16">
       <h3 className="font-display text-3xl font-black text-[#FF4500] mb-14 text-center lg:text-left">
         Core Sectors &amp; Resources
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:h-[660px]">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:h-165">
         {/* ── Smart Manufacturing (large) ── */}
-        <div className="md:col-span-2 md:row-span-2 group relative overflow-hidden bg-[#001e40] rounded-2xl p-10 flex flex-col justify-end bento-card-hover">
+        <div className="md:col-span-2 md:row-span-2 group relative overflow-hidden bg-[#001e40] rounded-2xl p-10 flex flex-col justify-end sector-card-hover">
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN0M1x3egZuOtUSakYZEHQOnaIZjqMSpG8fSjyYDhKgb6vev0dbtxR2XgspKOATvhNLDPMSjRwv66al1u8pRinX_YQjhX9yF6f2HZKRAfW3BPmIbtfmQpPHPZbawPGfrWlxKvJBw8L4C17hm2N9EO9m449ay-ZQYQT8RiG5rjl8gUSJUNTRSWg1hgn7cPQgbpsdt5HEUBya1nT4TzVmk9LlbnpaQ-47DqOn4IDvTZSncnJS6d4FpL6IihxDactyhmDbcckwtizKufz"
             alt="Smart Manufacturing floor"
@@ -45,10 +45,10 @@ const BentoGrid = () => (
         </div>
 
         {/* ── Logistics & Hubs ── */}
-        <div className="md:col-span-2 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm bento-card-hover flex flex-col justify-between">
+        <div className="md:col-span-2 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm sector-card-hover flex flex-col justify-between">
           <div className="flex justify-between items-start">
             <div className="space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-[#001e40]/[0.08] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-[#001e40]/8 flex items-center justify-center">
                 <Icon name="globe" className="w-5 h-5 text-[#50C878]" />
               </div>
               <h4 className="font-display text-xl font-bold text-[#50C878]">
@@ -61,14 +61,14 @@ const BentoGrid = () => (
             </div>
             <Icon
               name="externalLink"
-              className="w-5 h-5 text-gray-300 flex-shrink-0"
+              className="w-5 h-5 text-gray-300 shrink-0"
             />
           </div>
         </div>
 
         {/* ── Digital Services ── */}
-        <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm bento-card-hover">
-          <div className="w-10 h-10 rounded-xl bg-[#001e40]/[0.08] flex items-center justify-center mb-4">
+        <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm sector-card-hover">
+          <div className="w-10 h-10 rounded-xl bg-[#001e40]/8 flex items-center justify-center mb-4">
             <Icon name="cloud" className="w-5 h-5 text-[#50C878]" />
           </div>
           <h4 className="font-display text-lg font-bold text-[#50C878] mb-2">
@@ -80,7 +80,7 @@ const BentoGrid = () => (
         </div>
 
         {/* ── Green Energy ── */}
-        <div className="bg-[#50C878] rounded-2xl p-8 bento-card-hover">
+        <div className="bg-[#50C878] rounded-2xl p-8 sector-card-hover">
           <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-4">
             <Icon name="bolt" className="w-5 h-5 text-white" />
           </div>
@@ -96,4 +96,4 @@ const BentoGrid = () => (
   </section>
 );
 
-export default BentoGrid;
+export default SectorCards;
