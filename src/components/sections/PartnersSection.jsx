@@ -231,7 +231,7 @@ const PartnersSection = () => {
               onClick={() => goTo(i)}
               className={`rounded-full transition-all duration-300 ${
                 i === current
-                  ? "w-6 h-2.5 bg-[#FF5722]"
+                  ? "w-3 h-2.5 bg-[#003366]"
                   : "w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400"
               }`}
             />
@@ -249,7 +249,7 @@ const PartnersSection = () => {
             Interested in partnering with DSEZ?
           </p>
           <button
-            className="inline-flex items-center gap-2 bg-[#001e40] hover:bg-[#003366]
+            className="inline-flex items-center gap-2 bg-[#FF5722]  hover:bg-[#E64A19]
                              text-white font-bold text-sm px-8 py-3.5 rounded-lg
                              transition-all shadow-md active:scale-95"
           >

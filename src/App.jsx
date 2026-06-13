@@ -2,9 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-
-// ── Pages ────────────────────────────────────────────────────────────────────
 import Homepage from "./pages/DsezHomepage";
+import AboutPage from "./pages/AboutUs Page";
 import PlaceholderPage from "./pages/PlaceholderPage";
 
 /**
@@ -49,6 +48,9 @@ const App = () => (
               <PlaceholderPage title="Our Vision & Mission" section="About" />
             }
           />
+
+          <Route path="/about/vision" element={<AboutPage />} />
+
           <Route
             path="/about/leadership"
             element={
