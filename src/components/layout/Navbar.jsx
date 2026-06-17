@@ -157,9 +157,10 @@ const Navbar = () => {
               Home
             </NavLink>
 
-            {/* About Us — dropdown with child NavLinks */}
+            {/* About Us — label navigates to /about, chevron opens sub-link dropdown */}
             <DropdownMenu
               label="About Us"
+              baseHref="/about"
               items={aboutItems}
               isScrolled={scrolled}
             />
@@ -167,6 +168,7 @@ const Navbar = () => {
             {/* Investment Opportunities — dropdown with child NavLinks */}
             <DropdownMenu
               label="Investment Opportunities"
+              baseHref="/investment"
               items={investmentItems}
               isScrolled={scrolled}
             />
@@ -174,6 +176,7 @@ const Navbar = () => {
             {/* Media — dropdown: News & Events + Gallery */}
             <DropdownMenu
               label="Media"
+              baseHref="/media"
               items={mediaItems}
               isScrolled={scrolled}
             />
@@ -254,30 +257,41 @@ const Navbar = () => {
             )}
           </NavLink>
 
-          {/* ── About Us accordion ────────────────────────────────────────── */}
-          <div>
-            <button
-              onClick={() => setMobileAboutOpen((v) => !v)}
-              aria-expanded={mobileAboutOpen}
-              aria-controls="about-submenu"
-              className={accordionHeaderCls(aboutItems)}
-            >
-              <Icon name="info" className="w-5 h-5 flex-shrink-0" />
-              <span className="flex-1">About Us</span>
-              <span
-                className={`transition-transform duration-200 ${mobileAboutOpen ? "rotate-180" : ""}`}
+          {/* ── About Us accordion (split trigger) ───────────────────────────────── */}
+          <div
+            className={accordionHeaderCls(aboutItems)}
+            style={{ padding: 0 }}
+          >
+            <div className="flex items-center w-full">
+              {/* LABEL — tapping this navigates straight to /about and closes the drawer */}
+              <NavLink
+                to="/about"
+                end
+                className="flex items-center gap-3 p-4 flex-1 font-semibold"
               >
-                <Icon name="chevronDown" className="w-4 h-4" />
-              </span>
-            </button>
+                <Icon name="info" className="w-5 h-5 shrink-0" />
+                <span>About Us</span>
+              </NavLink>
 
-            {/* CSS max-height transition — no JS height calculation needed */}
+              {/* CHEVRON — tapping this only opens/closes the sub-link accordion */}
+              <button
+                onClick={() => setMobileAboutOpen((v) => !v)}
+                aria-expanded={mobileAboutOpen}
+                aria-controls="about-submenu"
+                className="p-4"
+              >
+                <span
+                  className={`transition-transform duration-200 ${mobileAboutOpen ? "rotate-180" : ""}`}
+                >
+                  <Icon name="chevronDown" className="w-4 h-4" />
+                </span>
+              </button>
+            </div>
+
             <div
               id="about-submenu"
-              className={`
-                overflow-hidden transition-all duration-300 ease-in-out
-                ${mobileAboutOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
-              `}
+              className={`overflow-hidden transition-all duration-300 ease-in-out
+      ${mobileAboutOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
             >
               <div className="ml-4 pl-4 border-l-2 border-gray-100 space-y-1 mt-1 pb-2">
                 {aboutItems.map((item) => (
@@ -290,10 +304,8 @@ const Navbar = () => {
                     {({ isActive }) => (
                       <>
                         <span
-                          className={`
-                          w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0
-                          ${isActive ? "bg-orange-100 text-[#FF5722]" : "text-current"}
-                        `}
+                          className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0
+                ${isActive ? "bg-orange-100 text-[#FF5722]" : "text-current"}`}
                         >
                           <Icon name={item.icon} className="w-3.5 h-3.5" />
                         </span>
@@ -306,32 +318,44 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* ── Investment Opportunities accordion ───────────────────────── */}
-          <div>
-            <button
-              onClick={() => setMobileInvestOpen((v) => !v)}
-              aria-expanded={mobileInvestOpen}
-              aria-controls="invest-submenu"
-              className={accordionHeaderCls(investmentItems)}
-            >
-              <Icon name="briefcase" className="w-5 h-5 flex-shrink-0" />
-              <span className="flex-1">Investment Opportunities</span>
-              <span
-                className={`transition-transform duration-200 ${mobileInvestOpen ? "rotate-180" : ""}`}
+          {/* ── About Us accordion (split trigger) ───────────────────────────────── */}
+          <div
+            className={accordionHeaderCls(aboutItems)}
+            style={{ padding: 0 }}
+          >
+            <div className="flex items-center w-full">
+              {/* LABEL — tapping this navigates straight to /about and closes the drawer */}
+              <NavLink
+                to="Investment"
+                end
+                className="flex items-center gap-3 p-4 flex-1 font-semibold"
               >
-                <Icon name="chevronDown" className="w-4 h-4" />
-              </span>
-            </button>
+                <Icon name="info" className="w-5 h-5 shrink-0" />
+                <span>Investment Opportunities</span>
+              </NavLink>
+
+              {/* CHEVRON — tapping this only opens/closes the sub-link accordion */}
+              <button
+                onClick={() => setMobileAboutOpen((v) => !v)}
+                aria-expanded={mobileAboutOpen}
+                aria-controls="about-submenu"
+                className="p-4"
+              >
+                <span
+                  className={`transition-transform duration-200 ${mobileAboutOpen ? "rotate-180" : ""}`}
+                >
+                  <Icon name="chevronDown" className="w-4 h-4" />
+                </span>
+              </button>
+            </div>
 
             <div
-              id="invest-submenu"
-              className={`
-                overflow-hidden transition-all duration-300 ease-in-out
-                ${mobileInvestOpen ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0"}
-              `}
+              id="about-submenu"
+              className={`overflow-hidden transition-all duration-300 ease-in-out
+      ${mobileAboutOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
             >
               <div className="ml-4 pl-4 border-l-2 border-gray-100 space-y-1 mt-1 pb-2">
-                {investmentItems.map((item) => (
+                {aboutItems.map((item) => (
                   <NavLink
                     key={item.label}
                     to={item.href}
@@ -341,10 +365,8 @@ const Navbar = () => {
                     {({ isActive }) => (
                       <>
                         <span
-                          className={`
-                          w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0
-                          ${isActive ? "bg-orange-100 text-[#FF5722]" : "text-current"}
-                        `}
+                          className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0
+                ${isActive ? "bg-orange-100 text-[#FF5722]" : "text-current"}`}
                         >
                           <Icon name={item.icon} className="w-3.5 h-3.5" />
                         </span>
@@ -357,32 +379,44 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* ── Media accordion ──────────────────────────────────────────── */}
-          <div>
-            <button
-              onClick={() => setMobileMediaOpen((v) => !v)}
-              aria-expanded={mobileMediaOpen}
-              aria-controls="media-submenu"
-              className={accordionHeaderCls(mediaItems)}
-            >
-              <Icon name="photo" className="w-5 h-5 flex-shrink-0" />
-              <span className="flex-1">Media</span>
-              <span
-                className={`transition-transform duration-200 ${mobileMediaOpen ? "rotate-180" : ""}`}
+          {/* ── About Us accordion (split trigger) ───────────────────────────────── */}
+          <div
+            className={accordionHeaderCls(aboutItems)}
+            style={{ padding: 0 }}
+          >
+            <div className="flex items-center w-full">
+              {/* LABEL — tapping this navigates straight to /about and closes the drawer */}
+              <NavLink
+                to="/media"
+                end
+                className="flex items-center gap-3 p-4 flex-1 font-semibold"
               >
-                <Icon name="chevronDown" className="w-4 h-4" />
-              </span>
-            </button>
+                <Icon name="info" className="w-5 h-5 shrink-0" />
+                <span>Media</span>
+              </NavLink>
+
+              {/* CHEVRON — tapping this only opens/closes the sub-link accordion */}
+              <button
+                onClick={() => setMobileAboutOpen((v) => !v)}
+                aria-expanded={mobileAboutOpen}
+                aria-controls="about-submenu"
+                className="p-4"
+              >
+                <span
+                  className={`transition-transform duration-200 ${mobileAboutOpen ? "rotate-180" : ""}`}
+                >
+                  <Icon name="chevronDown" className="w-4 h-4" />
+                </span>
+              </button>
+            </div>
 
             <div
-              id="media-submenu"
-              className={`
-                overflow-hidden transition-all duration-300 ease-in-out
-                ${mobileMediaOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"}
-              `}
+              id="about-submenu"
+              className={`overflow-hidden transition-all duration-300 ease-in-out
+      ${mobileAboutOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
             >
               <div className="ml-4 pl-4 border-l-2 border-gray-100 space-y-1 mt-1 pb-2">
-                {mediaItems.map((item) => (
+                {aboutItems.map((item) => (
                   <NavLink
                     key={item.label}
                     to={item.href}
@@ -392,10 +426,8 @@ const Navbar = () => {
                     {({ isActive }) => (
                       <>
                         <span
-                          className={`
-                          w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0
-                          ${isActive ? "bg-orange-100 text-[#FF5722]" : "text-current"}
-                        `}
+                          className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0
+                ${isActive ? "bg-orange-100 text-[#FF5722]" : "text-current"}`}
                         >
                           <Icon name={item.icon} className="w-3.5 h-3.5" />
                         </span>

@@ -3,7 +3,7 @@ import "./index.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Homepage from "./pages/DsezHomepage";
-import AboutPage from "./pages/AboutUs Page";
+import AboutPage from "./pages/About Page";
 import PlaceholderPage from "./pages/PlaceholderPage";
 
 /**
@@ -42,36 +42,12 @@ const App = () => (
           <Route path="/" element={<Homepage />} />
 
           {/* ── About ── */}
-          <Route
-            path="/about/vision"
-            element={
-              <PlaceholderPage title="Our Vision & Mission" section="About" />
-            }
-          />
 
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/about/vision" element={<AboutPage />} />
-
-          <Route
-            path="/about/leadership"
-            element={
-              <PlaceholderPage title="Leadership Team" section="About" />
-            }
-          />
-          <Route
-            path="/about/master-plan"
-            element={
-              <PlaceholderPage title="Zone Master Plan" section="About" />
-            }
-          />
-          <Route
-            path="/about/governance"
-            element={
-              <PlaceholderPage
-                title="Governance & Compliance"
-                section="About"
-              />
-            }
-          />
+          <Route path="/about/leadership" element={<AboutPage />} />
+          <Route path="/about/master-plan" element={<AboutPage />} />
+          <Route path="/about/governance" element={<AboutPage />} />
 
           {/* ── Investment ── */}
           <Route
