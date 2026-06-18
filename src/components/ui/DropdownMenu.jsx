@@ -1,19 +1,21 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Icon from "./Icon";
 
 /**
- * DropdownMenu — split-trigger version
+ * DropdownMenu — split-trigger version, enhanced
  * ─────────────────────────────────────────────────────────────────────────────
- * The label and the chevron are now TWO SEPARATE click targets:
- *
- *  • Clicking the LABEL  → navigates directly to `baseHref` (e.g. "/about")
- *                          and does NOT open the dropdown panel.
- *  • Clicking the CHEVRON → toggles the dropdown panel open/closed and
- *                          does NOT navigate anywhere.
- *  • Hovering the whole group → still opens the panel (desktop convenience),
- *                          but a deliberate click on the label always wins
- *                          and takes the user straight to the page.
+ * Behaviour:
+ *  • Clicking the LABEL   → navigates directly to `baseHref`, panel stays closed.
+ *  • Clicking the CHEVRON → toggles the panel; no navigation.
+ *  • Hovering the group   → opens the panel after a short intent delay, and
+ *                            stays open briefly after the mouse leaves, so a
+ *                            quick pass across the navbar doesn't flicker it.
+ *  • Keyboard support      → ArrowDown opens + focuses first item, ArrowUp/Down
+ *                            move between items, Escape closes and returns
+ *                            focus to the chevron, Home/End jump to first/last.
+ *  • Focus-visible ring    → trigger and items get a clear focus outline for
+ *                            keyboard users (not just :hover).
  *
  * Props:
  *   label      {string}   — trigger text (e.g. "About Us")
@@ -21,45 +23,133 @@ import Icon from "./Icon";
  *   items      {Array}    — [{ label, icon, sub, href }] — dropdown sub-links
  *   isScrolled {boolean}  — reserved for theming
  */
-const DropdownMenu = ({ label, baseHref, items, isScrolled }) => {
+const HOVER_OPEN_DELAY = 80; // ms — avoids opening on an accidental graze
+const HOVER_CLOSE_DELAY = 200; // ms — avoids closing while crossing a small gap
+
+const DropdownMenu = ({ label, baseHref, items }) => {
   const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1); // keyboard-focused item
+
   const ref = useRef(null);
+  const chevronRef = useRef(null);
+  const itemRefs = useRef([]);
+  const openTimer = useRef(null);
+  const closeTimer = useRef(null);
   const location = useLocation();
+
+  const clearTimers = () => {
+    clearTimeout(openTimer.current);
+    clearTimeout(closeTimer.current);
+  };
+
+  const requestOpen = useCallback(() => {
+    clearTimers();
+    openTimer.current = setTimeout(() => setOpen(true), HOVER_OPEN_DELAY);
+  }, []);
+
+  const requestClose = useCallback(() => {
+    clearTimers();
+    closeTimer.current = setTimeout(() => {
+      setOpen(false);
+      setActiveIndex(-1);
+    }, HOVER_CLOSE_DELAY);
+  }, []);
+
+  const closeNow = useCallback(() => {
+    clearTimers();
+    setOpen(false);
+    setActiveIndex(-1);
+  }, []);
 
   // Close on outside click
   useEffect(() => {
     const handler = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+      if (ref.current && !ref.current.contains(e.target)) closeNow();
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
-  }, []);
+  }, [closeNow]);
 
   // Close on route change
   useEffect(() => {
-    setOpen(false);
-  }, [location.pathname]);
+    const id = setTimeout(closeNow);
+    return () => clearTimeout(id);
+  }, [location.pathname, closeNow]);
 
-  // Highlight whole trigger group if the base page OR any child route is active
+  // Clean up pending timers on unmount
+  useEffect(() => () => clearTimers(), []);
+
+  // Move focus to the active item whenever it changes via keyboard
+  useEffect(() => {
+    if (open && activeIndex >= 0) {
+      itemRefs.current[activeIndex]?.focus();
+    }
+  }, [open, activeIndex]);
+
   const isGroupActive =
     location.pathname === baseHref ||
     items.some((item) => location.pathname.startsWith(item.href));
 
+  // ── Keyboard handling on the chevron button ──────────────────────────────
+  const onChevronKeyDown = (e) => {
+    if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setOpen(true);
+      setActiveIndex(0);
+    }
+  };
+
+  // ── Keyboard handling inside the open panel ───────────────────────────────
+  const onPanelKeyDown = (e) => {
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        setActiveIndex((i) => (i + 1) % items.length);
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        setActiveIndex((i) => (i - 1 + items.length) % items.length);
+        break;
+      case "Home":
+        e.preventDefault();
+        setActiveIndex(0);
+        break;
+      case "End":
+        e.preventDefault();
+        setActiveIndex(items.length - 1);
+        break;
+      case "Escape":
+        e.preventDefault();
+        closeNow();
+        chevronRef.current?.focus();
+        break;
+      case "Tab":
+        // Let focus naturally leave the panel; just close it behind them.
+        closeNow();
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
-    <div className="relative h-full flex items-center" ref={ref}>
+    <div
+      className="relative h-full flex items-center"
+      ref={ref}
+      onMouseEnter={requestOpen}
+      onMouseLeave={requestClose}
+    >
       {/* ── Trigger group: label + chevron are independent click targets ── */}
-      <div
-        className="flex items-center h-full"
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
-      >
-        {/* LABEL — navigates straight to the base About page */}
+      <div className="flex items-center h-full">
+        {/* LABEL — navigates straight to the base page */}
         <NavLink
           to={baseHref}
           end
+          onClick={closeNow}
           className={() =>
             `font-bold text-sm tracking-wide h-full flex items-center pr-1
-             transition-colors duration-200
+             transition-colors duration-200 rounded-sm
+             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5722]/50
              ${isGroupActive ? "text-[#FF5722]" : "text-[#001e40] hover:text-[#FF5722]"}`
           }
         >
@@ -68,12 +158,22 @@ const DropdownMenu = ({ label, baseHref, items, isScrolled }) => {
 
         {/* CHEVRON — only this toggles the dropdown panel */}
         <button
-          onClick={() => setOpen((v) => !v)}
+          ref={chevronRef}
+          onClick={() => {
+            clearTimers();
+            setOpen((v) => {
+              const next = !v;
+              if (next) setActiveIndex(-1);
+              return next;
+            });
+          }}
+          onKeyDown={onChevronKeyDown}
           aria-haspopup="true"
           aria-expanded={open}
           aria-label={`Show ${label} submenu`}
-          className={`h-full flex items-center pl-1 pr-0.5
+          className={`h-full flex items-center pl-1 pr-0.5 rounded-sm
                       transition-colors duration-200
+                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5722]/50
                       ${isGroupActive ? "text-[#FF5722]" : "text-[#001e40] hover:text-[#FF5722]"}`}
         >
           <span
@@ -83,31 +183,36 @@ const DropdownMenu = ({ label, baseHref, items, isScrolled }) => {
           </span>
         </button>
 
-        {/* Active underline (matches the look of the flat NavLinks beside it) */}
+        {/* Active underline */}
         {isGroupActive && (
           <span className="absolute bottom-0 left-0 right-5 h-0.5 bg-[#FF5722]" />
         )}
       </div>
 
-      {/* ── Dropdown panel — sub-links only, label itself is not duplicated ── */}
+      {/* ── Dropdown panel ── */}
       {open && (
         <div
-          onMouseEnter={() => setOpen(true)}
-          onMouseLeave={() => setOpen(false)}
           className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50"
           role="menu"
           aria-label={`${label} submenu`}
+          onKeyDown={onPanelKeyDown}
         >
           <div className="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden min-w-60 animate-fadeInDown">
-            {items.map((item) => (
+            {items.map((item, i) => (
               <NavLink
                 key={item.label}
+                ref={(el) => (itemRefs.current[i] = el)}
                 to={item.href}
                 role="menuitem"
                 end
+                tabIndex={-1}
+                onClick={closeNow}
+                onMouseEnter={() => setActiveIndex(i)}
+                style={{ transitionDelay: `${i * 25}ms` }}
                 className={({ isActive }) => `
                   flex items-center gap-3 px-5 py-3.5 text-sm font-semibold
-                  transition-all duration-150 group
+                  transition-all duration-150 group outline-none
+                  ${activeIndex === i ? "bg-gray-50" : ""}
                   ${
                     isActive
                       ? "bg-orange-50 text-[#FF5722]"

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { leaders, objectives, orgDepts } from "../data/siteData";
 import { LinkedInIcon, regulatoryItems } from "../components/ui/Icon";
@@ -77,7 +77,7 @@ const AboutPage = () => {
 
       <div className="about-page">
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
-        <section className="relative hero-clip h-[560px] min-h-[500px] flex items-center overflow-hidden">
+        <section className="relative hero-clip h-[560px] min-h-[500px] flex items-center overflow-hidden -mt-20">
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYFAlwJ9D0cDp8ZXiH4vKDTHRjKg37VxbP-3Ga4tdL0WGnrc1L6KE-UKg2yfhsL-UvPAE5KD4mxhm5307m2NTdnZTIyHrme2AD4O0gjNLyQ7lbbKa3xb5V2vGFGqh86zLqpvw5tXpZcwcS6gYk6U3gJ0yU1Akr9F343lcJDv1TZRx8v_edUiRV3Iwq5RpeCiNBLhzS-yPm6aN-474iNMQxQM2qK_febldZHoNZ-ZQVc8k8Tr5CuyRG9QUrkiQICG5jTYRzBBa3CFUs"
             alt="DSEZ Corporate Skyline"
@@ -92,14 +92,6 @@ const AboutPage = () => {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-white/50 text-xs font-medium mb-8">
-              <Link to="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#FF5722]">About Us</span>
-            </nav>
             <div className="max-w-3xl">
               <span className="text-[#66dd8b] text-xs font-bold tracking-[0.25em] uppercase block mb-4">
                 Global Infrastructure
@@ -419,7 +411,7 @@ const AboutPage = () => {
                 <div className="relative">
                   <div className="absolute top-0 left-0 right-0 h-0.5 bg-gray-300" />
                   <div className="grid grid-cols-4 gap-4 pt-8">
-                    {orgDepts.map((dept, i) => (
+                    {orgDepts.map((dept) => (
                       <div key={dept} className="relative">
                         {/* Drop line */}
                         <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-0.5 h-8 bg-gray-300" />
