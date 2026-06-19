@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { leaders, objectives, orgDepts } from "../data/siteData";
-import { LinkedInIcon, regulatoryItems } from "../components/ui/Icon";
+import { regulatoryItems } from "../components/ui/Icon";
 
 //─── Scroll-reveal hook ───────────────────────────────────────────────────────//
 const useReveal = () => {

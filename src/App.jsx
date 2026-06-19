@@ -4,6 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Homepage from "./pages/DsezHomepage";
 import AboutPage from "./pages/About Page";
+import InvestmentPage from "./pages/Investment Page";
 import PlaceholderPage from "./pages/PlaceholderPage";
 
 /**
@@ -50,12 +51,7 @@ const App = () => (
           <Route path="/about/governance" element={<AboutPage />} />
 
           {/* ── Investment ── */}
-          <Route
-            path="/invest"
-            element={
-              <PlaceholderPage title="Investment Hub" section="Invest" />
-            }
-          />
+          <Route path="/invest" element={<InvestmentPage />} />
           <Route
             path="/invest/manufacturing"
             element={

@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { advantages, sectors, incentives, resources } from "../data/siteData";
+import PageIcon from "../components/ui/Icon";
+import { partnerStats, journeySteps } from "../data/siteData";
 
 // ─── Scroll-reveal hook (same pattern used on AboutPage) ──────────────────────
 const useReveal = () => {
@@ -37,141 +40,6 @@ const Reveal = ({ children, delay = 0, className = "" }) => {
     </div>
   );
 };
-
-// ─── Inline icon set (kept local to this page; merge into Icon.jsx if reused) ─
-const PageIcon = ({ name, className = "w-6 h-6" }) => {
-  const paths = {
-    arrowRight: "M17 8l4 4m0 0l-4 4m4-4H3",
-    check: "M5 13l4 4L19 7",
-    agriculture:
-      "M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.3L18 8v8l-6 3.7L6 16V8l6-3.7z",
-    oil: "M12 2C8 6 5 9.5 5 13a7 7 0 0014 0c0-3.5-3-7-7-11z",
-    factory:
-      "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
-    box: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
-    receipt:
-      "M9 14h6m-6 4h6M9 10h6M5 4h14a1 1 0 011 1v15l-3-2-3 2-3-2-3 2-3-2-3 2V5a1 1 0 011-1z",
-    exchange: "M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4",
-    leaf: "M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10zm0 0c0-5.5 0-7.5-3.5-9.5",
-    quote:
-      "M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z",
-    download: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4",
-    doc: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
-    shield:
-      "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-    map: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7",
-    close: "M6 18L18 6M6 6l12 12",
-  };
-  return (
-    <svg
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.8}
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d={paths[name] || paths.check}
-      />
-    </svg>
-  );
-};
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
-const advantages = [
-  {
-    title: "Strategic Location",
-    body: "Direct access to deep-water ports and major rail networks connecting 14 landlocked nations.",
-  },
-  {
-    title: "AfCFTA Alignment",
-    body: "Benefit from zero-tariff trade across the continent through our certified regional hub status.",
-  },
-  {
-    title: "Digital-First Infrastructure",
-    body: "Fibre-optic backbone and dedicated power grid ensures 99.9% operational uptime.",
-  },
-];
-
-const sectors = [
-  {
-    icon: "agriculture",
-    title: "Agro-processing",
-    body: "Advanced facilities for value-addition to regional agricultural exports.",
-  },
-  {
-    icon: "oil",
-    title: "Oil & Gas",
-    body: "Downstream processing and specialised logistics for energy infrastructure.",
-  },
-  {
-    icon: "factory",
-    title: "Manufacturing",
-    body: "Light and heavy industrial facilities with ready-to-use factory shells.",
-  },
-  {
-    icon: "box",
-    title: "Global Logistics",
-    body: "State-of-the-art warehousing and smart supply chain management systems.",
-  },
-];
-
-const incentives = [
-  {
-    icon: "receipt",
-    title: "Tax Exemptions",
-    body: "10-year corporate income tax holiday, followed by a flat rate of 15% for the subsequent decade.",
-  },
-  {
-    icon: "exchange",
-    title: "Capital Repatriation",
-    body: "100% foreign ownership allowed with guaranteed full repatriation of profits and capital dividends.",
-  },
-  {
-    icon: "leaf",
-    title: "Sustainability Credits",
-    body: "Additional carbon credit offsets for enterprises implementing green energy and waste management.",
-  },
-];
-
-const journeySteps = [
-  {
-    num: "01",
-    title: "Expression of Interest",
-    body: "Submit your preliminary project proposal and facility requirements.",
-  },
-  {
-    num: "02",
-    title: "Review & Approval",
-    body: "Our technical committee evaluates the proposal for zone alignment within 14 days.",
-  },
-  {
-    num: "03",
-    title: "Licensing",
-    body: "Obtain your SEZ operator licence through our integrated single-window portal.",
-  },
-  {
-    num: "04",
-    title: "Development",
-    body: "Commence site construction or move into your pre-built factory shell.",
-  },
-];
-
-const partnerStats = [
-  { value: "50+", label: "Multinational Tenants" },
-  { value: "$2.4B", label: "Foreign Direct Investment" },
-  { value: "12k+", label: "Jobs Created" },
-  { value: "100%", label: "Sustainability Compliance" },
-];
-
-const resources = [
-  { icon: "doc", label: "DSEZ Brochure 2024", size: "3.2 MB" },
-  { icon: "doc", label: "Tax Policy Docs", size: "1.4 MB" },
-  { icon: "map", label: "Site Map & Plots", size: "5.1 MB" },
-];
 
 // ─── Plot enquiry modal ───────────────────────────────────────────────────────
 const EnquiryModal = ({ open, onClose }) => {
