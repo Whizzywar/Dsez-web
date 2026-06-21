@@ -323,7 +323,6 @@ export const orgDepts = [
 ];
 
 // ───Investment Data ─────────────────────────────────────────────────────────────────────
-
 export const advantages = [
   {
     title: "Strategic Location",
@@ -339,29 +338,31 @@ export const advantages = [
   },
 ];
 
+// ─── Priority sectors — icon keys match Icon.jsx's iconMap ────────────────────
 export const sectors = [
   {
-    icon: "agriculture",
+    icon: "factory",
     title: "Agro-processing",
     body: "Advanced facilities for value-addition to regional agricultural exports.",
   },
   {
-    icon: "oil",
+    icon: "bolt",
     title: "Oil & Gas",
     body: "Downstream processing and specialised logistics for energy infrastructure.",
   },
   {
-    icon: "factory",
+    icon: "office",
     title: "Manufacturing",
     body: "Light and heavy industrial facilities with ready-to-use factory shells.",
   },
   {
-    icon: "box",
+    icon: "ship",
     title: "Global Logistics",
     body: "State-of-the-art warehousing and smart supply chain management systems.",
   },
 ];
 
+// ─── Incentives — icon keys match Icon.jsx's iconMap ──────────────────────────
 export const incentives = [
   {
     icon: "receipt",
@@ -380,6 +381,7 @@ export const incentives = [
   },
 ];
 
+// ─── Investment journey steps ──────────────────────────────────────────────────
 export const journeySteps = [
   {
     num: "01",
@@ -403,6 +405,7 @@ export const journeySteps = [
   },
 ];
 
+// ─── Partner stats ─────────────────────────────────────────────────────────────
 export const partnerStats = [
   { value: "50+", label: "Multinational Tenants" },
   { value: "$2.4B", label: "Foreign Direct Investment" },
@@ -410,6 +413,7 @@ export const partnerStats = [
   { value: "100%", label: "Sustainability Compliance" },
 ];
 
+// ─── Resources — icon keys match Icon.jsx's iconMap ───────────────────────────
 export const resources = [
   { icon: "doc", label: "DSEZ Brochure 2024", size: "3.2 MB" },
   { icon: "doc", label: "Tax Policy Docs", size: "1.4 MB" },

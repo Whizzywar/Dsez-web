@@ -1,7 +1,14 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { leaders, objectives, orgDepts } from "../data/siteData";
-import { regulatoryItems } from "../components/ui/Icon";
+import Icon, { regulatoryItems, LinkedInIcon } from "../components/ui/Icon";
+
+// ↑ FIX: `Icon` (default export) was never imported — only the named
+//   exports `regulatoryItems` and `LinkedInIcon` were. Every raw <svg> in
+//   this file existed because there was no way to call <Icon name="..." />
+//   without that default import. This single line fixes both the missing
+//   icons AND the underlying cause of the page failing to render whenever
+//   anything in the file referenced `Icon`.
 
 //─── Scroll-reveal hook ───────────────────────────────────────────────────────//
 const useReveal = () => {
@@ -61,7 +68,11 @@ const Reveal = ({ children, delay = 0, className = "" }) => {
 };
 
 const AboutPage = () => {
+  const navigate = useNavigate();
   const [activeLeader, setActiveLeader] = useState(null);
+  // ↑ ENHANCEMENT: this state existed before but was never actually used
+  //   anywhere — clicking a leader card toggled it but nothing visually
+  //   changed. Now it expands the bio with a "Read more" interaction.
 
   return (
     <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
@@ -92,6 +103,15 @@ const AboutPage = () => {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full">
+            {/* ENHANCEMENT: breadcrumb nav, matches Investment/Homepage pattern */}
+            <nav className="flex items-center gap-2 text-white/50 text-xs font-medium mb-8">
+              <Link to="/" className="hover:text-white transition-colors">
+                Home
+              </Link>
+              <span>/</span>
+              <span className="text-[#FF5722]">About Us</span>
+            </nav>
+
             <div className="max-w-3xl">
               <span className="text-[#66dd8b] text-xs font-bold tracking-[0.25em] uppercase block mb-4">
                 Global Infrastructure
@@ -121,7 +141,6 @@ const AboutPage = () => {
               <h2 className="font-display text-3xl font-black text-[#001e40] leading-snug">
                 The Mission of Facilitation
               </h2>
-              {/* Vertical accent rule */}
               <div className="mt-6 w-0.5 h-16 bg-gradient-to-b from-[#FF5722] to-transparent" />
             </Reveal>
 
@@ -142,7 +161,6 @@ const AboutPage = () => {
                 location — it is an engine for regional and global prosperity.
               </p>
 
-              {/* Quick stats row */}
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gray-100">
                 {[
                   ["$1.2B", "Initial Investment"],
@@ -170,19 +188,8 @@ const AboutPage = () => {
             <Reveal>
               <div className="bg-white border border-gray-200 rounded-2xl p-12 h-full flex flex-col gap-6 hover:shadow-lg transition-shadow">
                 <div className="w-14 h-14 rounded-xl bg-[#001e40]/8 flex items-center justify-center">
-                  <svg
-                    className="w-7 h-7 text-[#001e40]"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1.8}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
+                  {/* FIX: was raw <svg> with a bolt path — now uses the shared Icon */}
+                  <Icon name="bolt" className="w-7 h-7 text-[#001e40]" />
                 </div>
                 <div>
                   <span className="text-[10px] font-bold text-[#FF5722] tracking-[0.2em] uppercase mb-2 block">
@@ -204,27 +211,11 @@ const AboutPage = () => {
             {/* Vision */}
             <Reveal delay={120}>
               <div className="bg-[#001e40] rounded-2xl p-12 h-full flex flex-col gap-6 relative overflow-hidden hover:shadow-xl transition-shadow">
-                {/* bg ring decoration */}
                 <div className="absolute -right-10 -bottom-10 w-48 h-48 rounded-full border border-white/5" />
                 <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center">
-                  <svg
-                    className="w-7 h-7 text-[#66dd8b]"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1.8}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    />
-                  </svg>
+                  {/* FIX: was raw <svg> with an eye path — needs "eye" added
+                      to Icon.jsx's iconMap (see Icon_add_eye.txt) */}
+                  <Icon name="eye" className="w-7 h-7 text-[#66dd8b]" />
                 </div>
                 <div className="relative z-10">
                   <span className="text-[10px] font-bold text-[#66dd8b] tracking-[0.2em] uppercase mb-2 block">
@@ -277,9 +268,7 @@ const AboutPage = () => {
                         OBJECTIVE {obj.number}
                       </span>
                       <h4
-                        className={`font-display text-xl font-black mb-3 leading-snug ${
-                          obj.dark ? "text-white" : "text-[#001e40]"
-                        }`}
+                        className={`font-display text-xl font-black mb-3 leading-snug ${obj.dark ? "text-white" : "text-[#001e40]"}`}
                       >
                         {obj.title}
                       </h4>
@@ -312,55 +301,79 @@ const AboutPage = () => {
                 </p>
               </div>
               <p className="text-xs text-gray-400 font-medium shrink-0">
-                Hover a card to reveal colour
+                Click a card to read full bio
               </p>
             </Reveal>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {leaders.map((leader, i) => (
-                <Reveal key={leader.name} delay={i * 80}>
-                  <div
-                    className="leader-card bg-white border border-gray-200 rounded-2xl overflow-hidden
-                               group cursor-pointer hover:shadow-xl transition-all duration-300"
-                    onClick={() =>
-                      setActiveLeader(activeLeader === i ? null : i)
-                    }
-                  >
-                    {/* Photo */}
-                    <div className="aspect-[3/4] overflow-hidden">
-                      <img
-                        src={leader.img}
-                        alt={leader.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+              {leaders.map((leader, i) => {
+                const isExpanded = activeLeader === i;
+                return (
+                  <Reveal key={leader.name} delay={i * 80}>
+                    <div
+                      className="leader-card bg-white border border-gray-200 rounded-2xl overflow-hidden
+                                 group cursor-pointer hover:shadow-xl transition-all duration-300"
+                      onClick={() => setActiveLeader(isExpanded ? null : i)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setActiveLeader(isExpanded ? null : i);
+                        }
+                      }}
+                      aria-expanded={isExpanded}
+                    >
+                      {/* Photo */}
+                      <div className="aspect-[3/4] overflow-hidden">
+                        <img
+                          src={leader.img}
+                          alt={leader.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
 
-                    {/* Info */}
-                    <div className="p-6">
-                      <h5 className="font-display text-lg font-black text-[#001e40] mb-0.5">
-                        {leader.name}
-                      </h5>
-                      <span className="text-xs font-bold text-[#FF5722] uppercase tracking-widest">
-                        {leader.role}
-                      </span>
-                      <p className="text-xs text-[#4A4A4A] mt-3 leading-relaxed">
-                        {leader.bio}
-                      </p>
+                      {/* Info */}
+                      <div className="p-6">
+                        <h5 className="font-display text-lg font-black text-[#001e40] mb-0.5">
+                          {leader.name}
+                        </h5>
+                        <span className="text-xs font-bold text-[#FF5722] uppercase tracking-widest">
+                          {leader.role}
+                        </span>
 
-                      {/* LinkedIn */}
-                      <a
-                        href={leader.linkedin}
-                        onClick={(e) => e.stopPropagation()}
-                        className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#001e40]
-                                   hover:text-[#FF5722] transition-colors"
-                      >
-                        <LinkedInIcon />
-                        LinkedIn
-                      </a>
+                        {/* ENHANCEMENT: activeLeader now actually drives an
+                            expand/collapse of the bio instead of doing nothing */}
+                        <p
+                          className={`text-xs text-[#4A4A4A] mt-3 leading-relaxed transition-all duration-300 ${
+                            isExpanded ? "line-clamp-none" : "line-clamp-2"
+                          }`}
+                        >
+                          {leader.bio}
+                        </p>
+
+                        <div className="flex items-center justify-between mt-4">
+                          <a
+                            href={leader.linkedin}
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#001e40]
+                                       hover:text-[#FF5722] transition-colors"
+                          >
+                            <LinkedInIcon />
+                            LinkedIn
+                          </a>
+                          <span
+                            className={`text-[10px] font-bold uppercase tracking-widest text-gray-400
+                                       transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                          >
+                            <Icon name="chevronDown" className="w-3.5 h-3.5" />
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </Reveal>
-              ))}
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -378,42 +391,30 @@ const AboutPage = () => {
             </Reveal>
 
             <div className="min-w-[640px] flex flex-col items-center">
-              {/* Board */}
               <Reveal>
-                <div
-                  className="bg-[#001e40] text-white px-10 py-4 rounded-xl font-bold text-sm
-                                tracking-wide shadow-lg"
-                >
+                <div className="bg-[#001e40] text-white px-10 py-4 rounded-xl font-bold text-sm tracking-wide shadow-lg">
                   Board of Directors
                 </div>
               </Reveal>
 
-              {/* Connector */}
               <div className="w-0.5 h-10 bg-gray-300" />
 
-              {/* CEO */}
               <Reveal delay={100}>
-                <div
-                  className="bg-[#001e40] text-white px-10 py-4 rounded-xl font-bold text-sm
-                                tracking-wide shadow-lg"
-                >
+                <div className="bg-[#001e40] text-white px-10 py-4 rounded-xl font-bold text-sm tracking-wide shadow-lg">
                   CEO Office
                 </div>
               </Reveal>
 
-              {/* Connector to departments */}
               <div className="relative w-full flex justify-center">
                 <div className="w-0.5 h-10 bg-gray-300" />
               </div>
 
-              {/* Horizontal bridge */}
               <Reveal delay={200} className="w-full px-[12.5%]">
                 <div className="relative">
                   <div className="absolute top-0 left-0 right-0 h-0.5 bg-gray-300" />
                   <div className="grid grid-cols-4 gap-4 pt-8">
                     {orgDepts.map((dept) => (
                       <div key={dept} className="relative">
-                        {/* Drop line */}
                         <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-0.5 h-8 bg-gray-300" />
                         <div
                           className="bg-white border border-gray-200 rounded-xl px-4 py-3 text-center
@@ -434,7 +435,6 @@ const AboutPage = () => {
         {/* ══════════════════════════════ REGULATORY FRAMEWORK ══ */}
         <section className="py-28 bg-[#001e40]">
           <div className="max-w-7xl mx-auto px-4 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left: text */}
             <Reveal>
               <span className="text-[10px] font-bold text-[#FF5722] tracking-[0.25em] uppercase mb-3 block">
                 Governance
@@ -473,7 +473,6 @@ const AboutPage = () => {
               </div>
             </Reveal>
 
-            {/* Right: stats panel */}
             <Reveal delay={150}>
               <div className="bg-white/5 border border-white/10 rounded-2xl p-10 backdrop-blur-sm">
                 <div className="flex items-center gap-3 mb-8">
@@ -501,7 +500,6 @@ const AboutPage = () => {
                   />
                 </div>
 
-                {/* Divider */}
                 <div className="border-t border-white/10 mt-10 pt-8 grid grid-cols-2 gap-6">
                   {[
                     ["48 hrs", "Licensing time"],
@@ -539,28 +537,19 @@ const AboutPage = () => {
                 there's a place for you inside the DSEZ ecosystem.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
+                {/* ENHANCEMENT: button now actually navigates instead of doing nothing */}
                 <button
+                  onClick={() => navigate("/invest")}
                   className="bg-[#FF5722] hover:bg-[#E64A19] active:scale-95 text-white font-bold
-                                   px-10 py-4 rounded-xl shadow-lg transition-all flex items-center gap-2"
+                             px-10 py-4 rounded-xl shadow-lg transition-all flex items-center gap-2"
                 >
                   Invest Now
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
+                  {/* FIX: was raw <svg> with arrowRight path — now uses Icon */}
+                  <Icon name="arrowRight" className="w-4 h-4" />
                 </button>
                 <button
                   className="border-2 border-[#001e40] text-[#001e40] font-bold px-10 py-4 rounded-xl
-                                   hover:bg-[#001e40] hover:text-white transition-all"
+                             hover:bg-[#001e40] hover:text-white transition-all"
                 >
                   Download Brochure
                 </button>

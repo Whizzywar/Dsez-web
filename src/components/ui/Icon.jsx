@@ -24,28 +24,31 @@
  *
  * Direct import (when you need the raw component):
  *   import { HiOutlineArrowRight } from "react-icons/hi2";
+ *
  */
+import { HiDocument } from "react-icons/hi";
 
 // ── Heroicons v2 outline ──────────────────────────────────────────────────────
 import {
-  HiOutlineBars3          as HiBars3,
-  HiOutlineXMark          as HiXMark,
+  HiOutlineBars3 as HiBars3,
+  HiOutlineXMark as HiXMark,
   HiOutlineChevronDown,
   HiOutlineArrowRight,
   HiOutlineArrowTrendingUp,
-  HiOutlineArrowDownTray  as HiDownload,
-  HiOutlinePaperAirplane  as HiSend,
-  HiOutlineChartBar       as HiAnalytics,
+  HiOutlineArrowDownTray as HiDownload,
+  HiOutlinePaperAirplane as HiSend,
+  HiOutlineChartBar as HiAnalytics,
   HiOutlineBuildingOffice as HiFactory,
-  HiOutlineGlobeAlt       as HiGlobe,
+  HiOutlineGlobeAlt as HiGlobe,
   HiOutlineCloud,
   HiOutlineBolt,
+  HiOutlineEye as HiEye,
   HiOutlineBuildingOffice2 as HiOffice,
-  HiOutlineMapPin         as HiMap,
+  HiOutlineMapPin as HiMap,
   HiOutlinePhone,
-  HiOutlineEnvelope       as HiMail,
+  HiOutlineEnvelope as HiMail,
   HiOutlineArrowTopRightOnSquare as HiExternalLink,
-  HiOutlineShareNodes     as HiShare,
+  HiOutlineShare as HiShare,
   HiOutlineHome,
   HiOutlineInformationCircle as HiInfo,
   HiOutlineBriefcase,
@@ -53,13 +56,13 @@ import {
   HiOutlineChatBubbleLeftRight as HiContact,
   HiOutlinePhoto,
   HiOutlineNewspaper,
-  HiOutlineCalendarDays   as HiCalendar,
+  HiOutlineCalendarDays as HiCalendar,
   HiOutlineTag,
-  HiOutlinePlayCircle     as HiPlay,
-  HiOutlineXCircle        as HiClose2,
-  HiOutlineShieldCheck    as HiShield,
-  HiOutlineScale          as HiScale,
-  HiOutlineDocumentText   as HiDoc,
+  HiOutlinePlayCircle as HiPlay,
+  HiOutlineXCircle as HiClose2,
+  HiOutlineShieldCheck as HiShield,
+  HiOutlineScale as HiScale,
+  HiOutlineDocumentText as HiDoc,
 } from "react-icons/hi2";
 
 // ── Remix Icons (social logos) ────────────────────────────────────────────────
@@ -74,7 +77,7 @@ import {
 
 // ── Tabler Icons (industry / finance extras) ──────────────────────────────────
 import {
-  TbReceipt2        as TbReceipt,
+  TbReceipt2 as TbReceipt,
   TbCurrencyExchange as TbExchange,
   TbLeaf,
   TbQuote,
@@ -88,65 +91,66 @@ import {
 
 const iconMap = {
   // ── Navigation ──────────────────────────────────────────
-  menu:         HiBars3,
-  close:        HiXMark,
-  close2:       HiClose2,
-  chevronDown:  HiOutlineChevronDown,
-  arrowRight:   HiOutlineArrowRight,
+  menu: HiBars3,
+  close: HiXMark,
+  close2: HiClose2,
+  eye: HiEye,
+  chevronDown: HiOutlineChevronDown,
+  arrowRight: HiOutlineArrowRight,
 
   // ── Business / Finance ──────────────────────────────────
-  trendingUp:   HiOutlineArrowTrendingUp,
-  analytics:    HiAnalytics,
-  briefcase:    HiOutlineBriefcase,
-  receipt:      TbReceipt,
-  exchange:     TbExchange,
+  trendingUp: HiOutlineArrowTrendingUp,
+  analytics: HiAnalytics,
+  briefcase: HiOutlineBriefcase,
+  receipt: TbReceipt,
+  exchange: TbExchange,
 
   // ── Communication ───────────────────────────────────────
-  send:         HiSend,
-  phone:        HiOutlinePhone,
-  mail:         HiMail,
-  contact:      HiContact,
+  send: HiSend,
+  phone: HiOutlinePhone,
+  mail: HiMail,
+  contact: HiContact,
 
   // ── Actions ─────────────────────────────────────────────
-  download:     HiDownload,
+  download: HiDownload,
   externalLink: HiExternalLink,
-  share:        HiShare,
+  share: HiShare,
 
   // ── Infrastructure / Industry ───────────────────────────
-  factory:      HiFactory,
-  office:       HiOffice,
-  bolt:         HiOutlineBolt,
-  leaf:         TbLeaf,
-  ship:         TbShip,
+  factory: HiFactory,
+  office: HiOffice,
+  bolt: HiOutlineBolt,
+  leaf: TbLeaf,
+  ship: TbShip,
 
   // ── Maps / Location ─────────────────────────────────────
-  globe:        HiGlobe,
-  map:          HiMap,
+  globe: HiGlobe,
+  map: HiMap,
 
   // ── Cloud / Tech ────────────────────────────────────────
-  cloud:        HiOutlineCloud,
+  cloud: HiOutlineCloud,
 
   // ── UI / Content ────────────────────────────────────────
-  home:         HiOutlineHome,
-  info:         HiInfo,
+  home: HiOutlineHome,
+  info: HiInfo,
   questionMark: HiQuestionMark,
-  shield:       HiShield,
-  scale:        HiScale,
-  doc:          HiDoc,
-  photo:        HiOutlinePhoto,
-  newspaper:    HiOutlineNewspaper,
-  calendar:     HiCalendar,
-  tag:          HiOutlineTag,
-  play:         HiPlay,
-  quote:        TbQuote,
+  shield: HiShield,
+  scale: HiScale,
+  doc: HiDoc,
+  photo: HiOutlinePhoto,
+  newspaper: HiOutlineNewspaper,
+  calendar: HiCalendar,
+  tag: HiOutlineTag,
+  play: HiPlay,
+  quote: TbQuote,
 
   // ── Social ──────────────────────────────────────────────
-  linkedin:     RiLinkedinFill,
-  twitter:      RiTwitterXFill,
-  facebook:     RiFacebookFill,
-  instagram:    RiInstagramFill,
-  youtube:      RiYoutubeFill,
-  whatsapp:     RiWhatsappFill,
+  linkedin: RiLinkedinFill,
+  twitter: RiTwitterXFill,
+  facebook: RiFacebookFill,
+  instagram: RiInstagramFill,
+  youtube: RiYoutubeFill,
+  whatsapp: RiWhatsappFill,
 };
 
 /**
@@ -162,10 +166,13 @@ const Icon = ({ name, className = "w-6 h-6", title, ...rest }) => {
 
   if (!Component) {
     // Warn in dev, render nothing in prod — never crashes the UI
-    if (process.env.NODE_ENV !== "production") {
+    const shouldWarn =
+      typeof import.meta !== "undefined" && import.meta.env?.DEV;
+
+    if (shouldWarn) {
       console.warn(
         `[Icon] Unknown icon name: "${name}". ` +
-        `Available names: ${Object.keys(iconMap).join(", ")}`
+          `Available names: ${Object.keys(iconMap).join(", ")}`,
       );
     }
     return null;
@@ -197,6 +204,8 @@ export const LinkedInIcon = ({ className = "w-4 h-4", ...rest }) => (
  * Used by AboutPage:  import { regulatoryItems } from "../components/ui/Icon"
  * Icons are now react-icons components instead of raw SVG JSX.
  */
+
+// eslint-disable-next-line react-refresh/only-export-components
 export const regulatoryItems = [
   {
     icon: <HiScale className="w-6 h-6" />,
@@ -209,28 +218,58 @@ export const regulatoryItems = [
     body: "Guarantees against expropriation and 100% foreign ownership of companies and assets.",
   },
   {
-    icon: <HiDoc className="w-6 h-6" />,
+    icon: <HiDocument className="w-6 h-6" />,
     title: "One-Stop Licensing",
     body: "Streamlined digital permitting process reducing registration time to less than 48 hours.",
   },
 ];
-
 // ─────────────────────────────────────────────────────────────────────────────
 // 3. Re-export raw react-icons for direct use anywhere in the project
 //    (avoids double-importing the same pack in other files)
 // ─────────────────────────────────────────────────────────────────────────────
 export {
   // Heroicons
-  HiBars3, HiXMark, HiOutlineChevronDown, HiOutlineArrowRight,
-  HiOutlineArrowTrendingUp, HiDownload, HiSend, HiAnalytics,
-  HiFactory, HiGlobe, HiOutlineCloud, HiOutlineBolt, HiOffice,
-  HiMap, HiOutlinePhone, HiMail, HiExternalLink, HiShare,
-  HiOutlineHome, HiInfo, HiQuestionMark, HiContact, HiOutlinePhoto,
-  HiOutlineNewspaper, HiCalendar, HiOutlineTag, HiPlay, HiClose2,
-  HiShield, HiScale, HiDoc,
+  HiBars3,
+  HiXMark,
+  HiOutlineChevronDown,
+  HiOutlineArrowRight,
+  HiOutlineArrowTrendingUp,
+  HiDownload,
+  HiSend,
+  HiAnalytics,
+  HiFactory,
+  HiGlobe,
+  HiOutlineCloud,
+  HiOutlineBolt,
+  HiOffice,
+  HiMap,
+  HiOutlinePhone,
+  HiMail,
+  HiExternalLink,
+  HiOutlineHome,
+  HiInfo,
+  HiQuestionMark,
+  HiContact,
+  HiOutlinePhoto,
+  HiOutlineNewspaper,
+  HiCalendar,
+  HiOutlineTag,
+  HiPlay,
+  HiClose2,
+  HiShield,
+  HiScale,
+  HiDoc,
   // Remix Icons
-  RiLinkedinFill, RiTwitterXFill, RiFacebookFill,
-  RiInstagramFill, RiYoutubeFill, RiWhatsappFill,
+  RiLinkedinFill,
+  RiTwitterXFill,
+  RiFacebookFill,
+  RiInstagramFill,
+  RiYoutubeFill,
+  RiWhatsappFill,
   // Tabler
-  TbReceipt, TbExchange, TbLeaf, TbQuote, TbShip,
+  TbReceipt,
+  TbExchange,
+  TbLeaf,
+  TbQuote,
+  TbShip,
 };

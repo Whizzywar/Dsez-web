@@ -1,8 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { advantages, sectors, incentives, resources } from "../data/siteData";
-import PageIcon from "../components/ui/Icon";
-import { partnerStats, journeySteps } from "../data/siteData";
+import {
+  advantages,
+  sectors,
+  incentives,
+  resources,
+  partnerStats,
+  journeySteps,
+} from "../data/siteData";
+import Icon from "../components/ui/Icon"; // ← single shared Icon, PageIcon removed entirely
 
 // ─── Scroll-reveal hook (same pattern used on AboutPage) ──────────────────────
 const useReveal = () => {
@@ -70,7 +76,7 @@ const EnquiryModal = ({ open, onClose }) => {
                      flex items-center justify-center text-gray-500 transition-colors"
           aria-label="Close"
         >
-          <PageIcon name="close" className="w-4 h-4" />
+          <Icon name="close" className="w-4 h-4" />
         </button>
 
         {submitted ? (
@@ -79,7 +85,9 @@ const EnquiryModal = ({ open, onClose }) => {
               className="w-14 h-14 rounded-full bg-[#66dd8b]/15 flex items-center justify-center
                             text-[#66dd8b] mx-auto mb-5"
             >
-              <PageIcon name="check" className="w-7 h-7" />
+              {/* "check" isn't in the shared icon map — using "trendingUp" success state instead.
+                  If you want a literal checkmark, add HiOutlineCheck to Icon.jsx's iconMap. */}
+              <Icon name="trendingUp" className="w-7 h-7" />
             </div>
             <h3 className="font-display text-xl font-black text-[#001e40] mb-2">
               Enquiry Submitted
@@ -143,7 +151,7 @@ const EnquiryModal = ({ open, onClose }) => {
                            rounded-lg transition-all shadow-md flex items-center justify-center gap-2"
               >
                 Submit Enquiry
-                <PageIcon name="arrowRight" className="w-4 h-4" />
+                <Icon name="arrowRight" className="w-4 h-4" />
               </button>
             </form>
           </>
@@ -155,12 +163,11 @@ const EnquiryModal = ({ open, onClose }) => {
 
 // ─── Live ROI calculator (enhancement) ─────────────────────────────────────────
 const RoiCalculator = () => {
-  const [plotSize, setPlotSize] = useState(5000); // sqm
+  const [plotSize, setPlotSize] = useState(5000);
   const [years, setYears] = useState(10);
 
-  // Simplified illustrative model — not real financial advice, just a directional tool.
-  const baseCostPerSqm = 45; // $ — competitor benchmark
-  const dsezCostPerSqm = baseCostPerSqm * 0.7; // 30% reduction, per the stat banner
+  const baseCostPerSqm = 45;
+  const dsezCostPerSqm = baseCostPerSqm * 0.7;
   const annualSavings = plotSize * (baseCostPerSqm - dsezCostPerSqm);
   const taxHolidayYears = Math.min(years, 10);
   const projectedSavings = annualSavings * years;
@@ -269,13 +276,11 @@ const InvestmentPage = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#001e40]/95 via-[#001e40]/75 to-[#001e40]/30" />
 
-          {/* Decorative rings */}
           <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none overflow-hidden">
             <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full border border-white/5 animate-[spin_45s_linear_infinite]" />
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full">
-            {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-white/50 text-xs font-medium mb-8">
               <Link to="/" className="hover:text-white transition-colors">
                 Home
@@ -310,7 +315,7 @@ const InvestmentPage = () => {
                              font-bold flex items-center gap-2 hover:scale-[1.02] transition-transform"
                 >
                   View Available Plots
-                  <PageIcon name="arrowRight" className="w-5 h-5" />
+                  <Icon name="arrowRight" className="w-5 h-5" />
                 </button>
                 <button
                   className="bg-white/10 backdrop-blur-md border border-white/20 text-white
@@ -343,8 +348,9 @@ const InvestmentPage = () => {
                 {advantages.map((a) => (
                   <li key={a.title} className="flex items-start gap-4">
                     <div className="mt-0.5 shrink-0 w-7 h-7 rounded-full bg-[#001e40]/8 flex items-center justify-center">
-                      <PageIcon
-                        name="check"
+                      {/* "check" isn't in the shared map — "trendingUp" used as a stand-in bullet icon */}
+                      <Icon
+                        name="trendingUp"
                         className="w-3.5 h-3.5 text-[#001e40]"
                       />
                     </div>
@@ -408,7 +414,7 @@ const InvestmentPage = () => {
                       className="w-14 h-14 rounded-xl bg-[#001e40]/8 flex items-center justify-center
                                     mb-6 group-hover:scale-110 group-hover:bg-[#FF5722]/10 transition-all"
                     >
-                      <PageIcon
+                      <Icon
                         name={s.icon}
                         className="w-7 h-7 text-[#001e40] group-hover:text-[#FF5722] transition-colors"
                       />
@@ -486,7 +492,7 @@ const InvestmentPage = () => {
                                  font-bold transition-all flex items-center gap-2"
               >
                 Explore Site Map
-                <PageIcon name="map" className="w-4 h-4" />
+                <Icon name="map" className="w-4 h-4" />
               </button>
             </Reveal>
           </div>
@@ -508,7 +514,7 @@ const InvestmentPage = () => {
                 facility size and timeline.
               </p>
               <div className="flex items-center gap-3 text-sm text-[#4A4A4A]">
-                <PageIcon
+                <Icon
                   name="shield"
                   className="w-5 h-5 text-[#66dd8b] shrink-0"
                 />
@@ -544,7 +550,7 @@ const InvestmentPage = () => {
                                   transition-colors h-full"
                   >
                     <div className="w-14 h-14 rounded-xl bg-[#66dd8b]/15 flex items-center justify-center mb-6">
-                      <PageIcon
+                      <Icon
                         name={inc.icon}
                         className="w-7 h-7 text-[#66dd8b]"
                       />
@@ -608,7 +614,7 @@ const InvestmentPage = () => {
                 Partner Success Stories
               </h2>
               <div className="bg-white p-10 rounded-2xl border border-gray-200 relative">
-                <PageIcon
+                <Icon
                   name="quote"
                   className="w-16 h-16 text-[#001e40]/10 absolute -top-3 -left-3"
                 />
@@ -674,7 +680,7 @@ const InvestmentPage = () => {
                   className="flex items-center gap-3 px-6 py-3 border border-gray-200 rounded-lg
                              hover:bg-gray-50 hover:border-[#001e40]/30 transition-all"
                 >
-                  <PageIcon name={r.icon} className="w-5 h-5 text-[#001e40]" />
+                  <Icon name={r.icon} className="w-5 h-5 text-[#001e40]" />
                   <span className="text-sm font-bold text-[#001e40]">
                     {r.label}
                   </span>
@@ -702,7 +708,7 @@ const InvestmentPage = () => {
                              px-10 py-4 rounded-xl shadow-lg transition-all flex items-center gap-2"
                 >
                   Reserve a Plot
-                  <PageIcon name="arrowRight" className="w-4 h-4" />
+                  <Icon name="arrowRight" className="w-4 h-4" />
                 </button>
                 <button
                   className="border-2 border-white/30 text-white font-bold px-10 py-4
