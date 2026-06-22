@@ -51,8 +51,8 @@ const Reveal = ({ children, delay = 0, className = "" }) => {
 const EnquiryModal = ({ open, onClose }) => {
   const [submitted, setSubmitted] = useState(false);
 
+  // ✅ Better — reacts to open changing, not just mounting
   useEffect(() => {
-    if (!open) setSubmitted(false);
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -63,7 +63,7 @@ const EnquiryModal = ({ open, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-90 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
@@ -268,16 +268,16 @@ const InvestmentPage = () => {
 
       <div className="invest-page">
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
-        <section className="relative h-[680px] min-h-[560px] flex items-center overflow-hidden -mt-20">
+        <section className="relative h-170 min-h-140 flex items-center overflow-hidden -mt-20">
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQiHThBhrofGhpCVxoqDUO1JcBOqhkhda1aTzu-OMF8oDKLf6yb6BUbyd_PANOIi5Y0LushuKJXsBAhTGjRmVw07ZbgHJsnrhhXGwcRDWivLsbJm3sny1UWlEvhAeXC-mcKe90hpyWGPBVQNQf83RUl1mPjMnQskH91gVnQiyOUrEaEPQw26gzmucqRf03SD4oYocGjAVt5-zdmYswsrhTFrFUkng_jkLqGhDlVQ61N2AO4Hh9cb0W2l60RbAVs5XgMDyQ_UW1glZU"
             alt="DSEZ industrial zone at dusk"
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#001e40]/95 via-[#001e40]/75 to-[#001e40]/30" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#001e40]/95 via-[#001e40]/75 to-[#001e40]/30" />
 
           <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none overflow-hidden">
-            <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full border border-white/5 animate-[spin_45s_linear_infinite]" />
+            <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-120 h-120 rounded-full border border-white/5 animate-[spin_45s_linear_infinite]" />
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full">
@@ -372,7 +372,7 @@ const InvestmentPage = () => {
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAON6-M9vrzolOE7IogoTPGZya-BDDLYIM9u6v3zRJwNTwYTqicllOpUS15uYjJaj7V4D9nJjaystwZh57trLR8lHU6jKCamBVEK94pIHGsMPGPKx9e1E9XtPlfj_TCZUzX5tac0NKVRIOEOwGUN2FvXTukPtRbJDPPREQ7qXYvPDiVOvSJsUJ59AvE3Cy_RAgP27Mf0sW9V35OmOg4DbhkiJ_SosbKD7t9TVQNc6Z3nB6aOCMVCW-d8U1cyptMhuQ5zOCJ2e-YPOQf"
                 alt="DSEZ headquarters architecture"
-                className="relative rounded-xl w-full h-[480px] object-cover shadow-sm"
+                className="relative rounded-xl w-full h-120 object-cover shadow-sm"
               />
               <div className="absolute bottom-8 -left-6 bg-white p-7 rounded-xl shadow-xl border border-gray-100 max-w-xs">
                 <div className="font-display text-3xl font-black text-[#001e40]">
@@ -440,9 +440,9 @@ const InvestmentPage = () => {
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5bsZBcipXkW9QL-RWdAKlDXmDjLGJkcBj7gyGpR4HobtijtMBI9PJkHZXC_y1i_2qQpZLG03EYEFmnpMPZT4pZMfKJ5vwSfjkriN3_cXHWecWkTvVnA0kKMnwwaQzohL7nC3zr0HbMO4q9T4mYi76ut8ZeQbDJfchwHgex-2I83UkeFPKmU0bkR81DQbhzlpiOKnMcJ0jfiwdsRO-EIkjs8EV4iNITNw-7WhMHYmh_RodgFZHqeSw0CLYa0fwxzpXxm6Mv90Ea0qS"
                   alt="Warehouse park"
-                  className="w-full h-[420px] object-cover"
+                  className="w-full h-105 object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent flex items-end p-8">
+                <div className="absolute inset-0 bg-linear-to-t from-black/65 to-transparent flex items-end p-8">
                   <div className="text-white">
                     <span className="text-xs font-bold bg-[#66dd8b] text-[#00210c] px-3 py-1 rounded-full mb-2 inline-block">
                       Featured Facility

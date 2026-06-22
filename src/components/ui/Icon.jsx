@@ -26,7 +26,6 @@
  *   import { HiOutlineArrowRight } from "react-icons/hi2";
  *
  */
-import { HiDocument } from "react-icons/hi";
 
 // ── Heroicons v2 outline ──────────────────────────────────────────────────────
 import {
@@ -78,7 +77,6 @@ import {
 // ── Tabler Icons (industry / finance extras) ──────────────────────────────────
 import {
   TbReceipt2 as TbReceipt,
-  TbCurrencyExchange as TbExchange,
   TbLeaf,
   TbQuote,
   TbShip,
@@ -103,7 +101,6 @@ const iconMap = {
   analytics: HiAnalytics,
   briefcase: HiOutlineBriefcase,
   receipt: TbReceipt,
-  exchange: TbExchange,
 
   // ── Communication ───────────────────────────────────────
   send: HiSend,
@@ -218,7 +215,7 @@ export const regulatoryItems = [
     body: "Guarantees against expropriation and 100% foreign ownership of companies and assets.",
   },
   {
-    icon: <HiDocument className="w-6 h-6" />,
+    icon: <HiDoc className="w-6 h-6" />,
     title: "One-Stop Licensing",
     body: "Streamlined digital permitting process reducing registration time to less than 48 hours.",
   },
@@ -268,7 +265,6 @@ export {
   RiWhatsappFill,
   // Tabler
   TbReceipt,
-  TbExchange,
   TbLeaf,
   TbQuote,
   TbShip,

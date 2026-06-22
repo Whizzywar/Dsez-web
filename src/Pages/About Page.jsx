@@ -88,18 +88,18 @@ const AboutPage = () => {
 
       <div className="about-page">
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
-        <section className="relative hero-clip h-[560px] min-h-[500px] flex items-center overflow-hidden -mt-20">
+        <section className="relative hero-clip h-140 min-h-125 flex items-center overflow-hidden -mt-20">
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYFAlwJ9D0cDp8ZXiH4vKDTHRjKg37VxbP-3Ga4tdL0WGnrc1L6KE-UKg2yfhsL-UvPAE5KD4mxhm5307m2NTdnZTIyHrme2AD4O0gjNLyQ7lbbKa3xb5V2vGFGqh86zLqpvw5tXpZcwcS6gYk6U3gJ0yU1Akr9F343lcJDv1TZRx8v_edUiRV3Iwq5RpeCiNBLhzS-yPm6aN-474iNMQxQM2qK_febldZHoNZ-ZQVc8k8Tr5CuyRG9QUrkiQICG5jTYRzBBa3CFUs"
             alt="DSEZ Corporate Skyline"
             className="absolute inset-0 w-full h-full object-cover grayscale opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#001e40] via-[#001e40]/85 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#001e40] via-[#001e40]/85 to-transparent" />
 
           {/* Decorative rings */}
           <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none overflow-hidden">
-            <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-white/5 animate-[spin_50s_linear_infinite]" />
-            <div className="absolute -right-10 top-1/2 -translate-y-1/2 w-[320px] h-[320px] rounded-full border border-white/5 animate-[spin_30s_linear_infinite_reverse]" />
+            <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-125 h-125 rounded-full border border-white/5 animate-[spin_50s_linear_infinite]" />
+            <div className="absolute -right-10 top-1/2 -translate-y-1/2 w-[320px] h-80 rounded-full border border-white/5 animate-[spin_30s_linear_infinite_reverse]" />
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full">
@@ -141,7 +141,7 @@ const AboutPage = () => {
               <h2 className="font-display text-3xl font-black text-[#001e40] leading-snug">
                 The Mission of Facilitation
               </h2>
-              <div className="mt-6 w-0.5 h-16 bg-gradient-to-b from-[#FF5722] to-transparent" />
+              <div className="mt-6 w-0.5 h-16 bg-linear-to-b from-[#FF5722] to-transparent" />
             </Reveal>
 
             <Reveal delay={120} className="md:col-span-8 space-y-6">
@@ -251,7 +251,7 @@ const AboutPage = () => {
               {objectives.map((obj, i) => (
                 <Reveal key={obj.number} delay={i * 80} className={obj.span}>
                   <div
-                    className={`rounded-2xl p-8 h-full flex flex-col justify-between min-h-[220px]
+                    className={`rounded-2xl p-8 h-full flex flex-col justify-between min-h-55
                       transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
                         obj.dark
                           ? "bg-[#001e40]"
@@ -325,7 +325,7 @@ const AboutPage = () => {
                       aria-expanded={isExpanded}
                     >
                       {/* Photo */}
-                      <div className="aspect-[3/4] overflow-hidden">
+                      <div className="aspect-3/4 overflow-hidden">
                         <img
                           src={leader.img}
                           alt={leader.name}
@@ -390,7 +390,7 @@ const AboutPage = () => {
               </h2>
             </Reveal>
 
-            <div className="min-w-[640px] flex flex-col items-center">
+            <div className="min-w-160 flex flex-col items-center">
               <Reveal>
                 <div className="bg-[#001e40] text-white px-10 py-4 rounded-xl font-bold text-sm tracking-wide shadow-lg">
                   Board of Directors
