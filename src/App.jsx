@@ -5,6 +5,7 @@ import Footer from "./components/layout/Footer";
 import Homepage from "./pages/DsezHomepage";
 import AboutPage from "./pages/About Page";
 import InvestmentPage from "./pages/Investment Page";
+import MediaPage from "./pages/Media Page";
 import PlaceholderPage from "./pages/PlaceholderPage";
 
 /**
@@ -27,6 +28,7 @@ import PlaceholderPage from "./pages/PlaceholderPage";
  *   /invest/energy             → Green Energy
  *   /invest/real-estate        → Commercial Real Estate
  *
+ *   /media                     → Media Hub
  *   /faqs                      → FAQs
  *   /contact                   → Contact Us
  *
@@ -58,6 +60,14 @@ const App = () => (
               <PlaceholderPage title="Smart Manufacturing" section="Invest" />
             }
           />
+
+          {/* ── Media page ── */}
+          <Route path="/media" element={<MediaPage />} />
+          <Route
+            path="/media/news"
+            element={<PlaceholderPage title="News & Events" section="Media" />}
+          />
+
           <Route
             path="/invest/logistics"
             element={
