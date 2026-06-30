@@ -6,6 +6,7 @@ import Homepage from "./pages/DsezHomepage";
 import AboutPage from "./pages/About Page";
 import InvestmentPage from "./pages/Investment Page";
 import MediaPage from "./pages/Media Page";
+import FaqPage from "./pages/faq Page";
 import PlaceholderPage from "./pages/PlaceholderPage";
 
 /**
@@ -95,15 +96,7 @@ const App = () => (
           />
 
           {/* ── Flat pages ── */}
-          <Route
-            path="/faqs"
-            element={
-              <PlaceholderPage
-                title="Frequently Asked Questions"
-                section="Support"
-              />
-            }
-          />
+          <Route path="/faqs" element={<FaqPage />} />
           <Route
             path="/contact"
             element={<PlaceholderPage title="Contact Us" section="Support" />}

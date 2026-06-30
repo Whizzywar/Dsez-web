@@ -2,6 +2,13 @@ import {
   HiOutlinePhoto,
   HiOutlineSwatch,
   HiOutlineDocumentText,
+  HiOutlineShieldCheck,
+  HiOutlineCheckCircle,
+  HiOutlineBolt,
+  HiOutlineCurrencyDollar,
+  HiOutlineClipboardDocumentList,
+  HiOutlineMapPin,
+  HiOutlineBuildingOffice2,
 } from "react-icons/hi2";
 
 // ─── Navbar Dropdown Data ─────────────────────────────────────────────────────
@@ -582,6 +589,187 @@ export const galleryImages = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAlNrRV7BzY8qVscTLGrJUR57sufDr_YUUh9Q6T8aLYYPqObvQs2z3BTMrzGBYDV7T6vdy07n8FQI8Qu07pxHv6Un6k_v1rQrhqua7Sz_VnFih2_EX1XNMGqgjGgIMyypbLaT0NWTU_P8pfc9_dS8wdD_J8-TWUt7-3Z3C_zaxTm89gD4XFcYdeGy8CkyHJvThl2euIB3u6HGMvVFAgLGVpbwjus_OvOQHeYTvZ4dTJ1mr2JPbhB4w_XQ172iMzGlqa7z8OaEinYjVi",
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAe0HJ02N6S_7UkF452R9ajOu2SoPuMHtCLxAm-ckAycMeZu4MsSDO34gqJGZvNj2e4kTGO4OId80VNWaBJYIrSljEaJnERerlezeV5NvKbmv6D-jJx99JnmZmY2cFbjQtsqexm5xFHOtjPg-Xj-2YdMr_cpIk0wKW9yzIF7RzwuyPmc4eRudwKLgwx3Coz3rbRZj7H99zSQqPZqyTuFoMqR1LOl7fMYiiy86aA34lXozdkgF7_CPsQzEWZ9en76wehEwNfjzkF5Lov",
   "https://lh3.googleusercontent.com/aida-public/AB6AXuB8Qi2sHfPHAm1Aac7yQKuR7Yks0QZ3KGf-UlMAMhgbtap-_oMdXXVYZXrA6PC_TqCgzo1iNWN0-s5M4QhLH9e3cxKVrJFN8i_kJ7FP4NQaTHlJHAqWl9S0Y5c2YV1vLAnS0n8UMbLHh0ggN1uTwC4Y8_nxcNiGFKBzAW3-hx8FdKhYGRj8E7fIbgETLCUKIh_2l9mVADXSf5B6Kc6I-t7gQNxvGEHMqPqBw8F08YR3xfXk2uCxkzxYiNf76pWy39gCQyVQfh7o",
+];
+
+// ── FAQs Page ──────────────────────────────────────────────────────────────
+
+export const categories = [
+  { id: "all", label: "All Questions", Icon: HiOutlineClipboardDocumentList },
+  { id: "eligibility", label: "Eligibility", Icon: HiOutlineCheckCircle },
+  { id: "licensing", label: "Licensing & Setup", Icon: HiOutlineDocumentText },
+  {
+    id: "investment",
+    label: "Investment & Finance",
+    Icon: HiOutlineCurrencyDollar,
+  },
+  { id: "operations", label: "Operations", Icon: HiOutlineBuildingOffice2 },
+  { id: "legal", label: "Legal & Compliance", Icon: HiOutlineShieldCheck },
+  { id: "digital", label: "Digital Services", Icon: HiOutlineBolt },
+  { id: "location", label: "Location & Logistics", Icon: HiOutlineMapPin },
+];
+
+export const faqs = [
+  // ── Eligibility ──────────────────────────────────────────────────────────────
+  {
+    id: 1,
+    category: "eligibility",
+    question: "Who is eligible to operate within the DSEZ?",
+    answer:
+      "Any legally incorporated entity — domestic or foreign — engaged in manufacturing, digital services, logistics, agro-processing, or financial technology may apply for a DSEZ operator licence. Sole proprietors and individuals are not eligible to register directly; a registered company structure is required. Joint ventures with local entities are encouraged but not mandated.",
+  },
+  {
+    id: 2,
+    category: "eligibility",
+    question: "Are there minimum investment thresholds for zone entry?",
+    answer:
+      "Yes. The minimum verified investment for a Standard Operator Licence is USD 500,000 in committed capital expenditure within the first 24 months of operations. Anchor Tenants (flagship industrial enterprises) require a minimum of USD 5 million. Micro-enterprise designations for digital-only operators carry a reduced threshold of USD 50,000.",
+  },
+  {
+    id: 3,
+    category: "eligibility",
+    question: "Can a foreign-owned company hold 100% equity in a DSEZ entity?",
+    answer:
+      "Yes. DSEZ operates under a 100% foreign ownership policy for all licensed entities, with no mandatory local partnership requirement. This is codified in the DSEZ Special Economic Zone Act (Section 14B) and applies across all approved sectors. Dividend repatriation is also fully guaranteed with no capital controls.",
+  },
+  {
+    id: 4,
+    category: "eligibility",
+    question: "Which sectors are prioritised for zone licensing in 2024–2026?",
+    answer:
+      "The current Strategic Priority Framework prioritises: (1) Advanced Manufacturing & Precision Engineering, (2) Agro-Industrial Processing & Cold Chain, (3) Digital Services, Fintech & Data Centres, (4) Clean Energy Infrastructure, and (5) Integrated Logistics & Multimodal Transport. Applications in these sectors receive expedited review within 5 business days.",
+  },
+
+  // ── Licensing & Setup ─────────────────────────────────────────────────────────
+  {
+    id: 5,
+    category: "licensing",
+    question: "How long does the licensing process take?",
+    answer:
+      "Standard operator licences are processed within 14 business days from submission of a complete application package. Priority Sector applicants receive a decision within 5 business days. The single-window digital portal (DSEZ-ONE) enables real-time tracking of application status, document verification, and payment processing — eliminating the need for in-person visits.",
+  },
+  {
+    id: 6,
+    category: "licensing",
+    question: "What documents are required to begin the registration process?",
+    answer:
+      "The core registration package includes: (1) Certificate of Incorporation or equivalent from country of origin, (2) Audited financial statements for the last two fiscal years, (3) Detailed Business Plan with 3-year financial projections, (4) Board Resolution authorising DSEZ registration, (5) KYC documentation for all Ultimate Beneficial Owners (UBOs) holding ≥10% equity, and (6) Proof of initial capitalisation. All documents must be certified translations in English if issued in another language.",
+  },
+  {
+    id: 7,
+    category: "licensing",
+    question:
+      "Can I operate multiple business activities under a single DSEZ licence?",
+    answer:
+      "A Primary Activity licence permits up to two related activities under a single entity without additional licencing fees. Materially distinct activities — for example, combining manufacturing and financial services — require a Multi-Activity Endorsement, which carries a supplementary annual review fee of USD 2,500. All activities must fall within DSEZ's approved sector classifications.",
+  },
+
+  // ── Investment & Finance ──────────────────────────────────────────────────────
+  {
+    id: 8,
+    category: "investment",
+    question: "What tax incentives are available to DSEZ entities?",
+    answer:
+      "DSEZ offers a comprehensive incentive package: a 10-year full corporate income tax holiday upon commencement of operations, followed by a preferential rate of 15% for the subsequent 10 years. Additionally, operators benefit from zero customs duty on capital equipment imports, VAT exemption on qualifying inputs, and a full waiver of withholding tax on dividends repatriated to foreign shareholders. Sustainability Compliance Certificates unlock an additional 2% tax credit.",
+  },
+  {
+    id: 9,
+    category: "investment",
+    question: "How is the AfCFTA free trade status applied within the zone?",
+    answer:
+      "As a certified AfCFTA-integrated hub, goods manufactured or substantially transformed within DSEZ qualify for zero-tariff access to all 54 African Union signatory markets under the Agreement's Rules of Origin provisions. A DSEZ Certificate of Origin (Form CO-DSEZ/2024) is issued alongside each commercial shipment and is recognised at all participating customs territories without additional authentication requirements.",
+  },
+  {
+    id: 10,
+    category: "investment",
+    question:
+      "Can DSEZ entities access external financing or raise debt within the zone?",
+    answer:
+      "Yes. DSEZ entities may raise capital through any internationally recognised mechanism including equity issuance, commercial bank debt, development finance institution loans, sukuk, or project finance structures. DSEZ maintains correspondent relationships with Afreximbank, the Africa Finance Corporation, and the IFC. The zone's dedicated Commercial Court provides lender protection through international arbitration under UNCITRAL rules, significantly reducing credit risk premiums.",
+  },
+
+  // ── Operations ────────────────────────────────────────────────────────────────
+  {
+    id: 11,
+    category: "operations",
+    question: "What physical facilities are available within the zone?",
+    answer:
+      "DSEZ offers: (1) Serviced industrial plots from 5,000 sqm to 50 hectares, (2) Type-A Standard Warehouse Shells (5,000–20,000 sqm, ready for immediate occupation), (3) Built-to-Suit Facility Development (custom construction under a Design-Build-Lease model, 18–24 month delivery), (4) Grade-A Office Suites in the Sovereign Commerce Tower, and (5) Shared Innovation Labs for digital and R&D enterprises. All facilities connect to the DSEZ Power Grid with a guaranteed 99.9% uptime SLA.",
+  },
+  {
+    id: 12,
+    category: "operations",
+    question:
+      "What are the working hours and operational schedules permitted within DSEZ?",
+    answer:
+      "DSEZ is a 24/7 operational zone with no restrictions on shift patterns or production hours. The zone's integrated customs and port facilities operate continuously. Entities in manufacturing may employ shift workers around the clock subject to applicable labour standards. The DSEZ Authority's Single-Window Portal and all digital government services are available 24/7 with a maximum 4-hour response SLA for critical service requests.",
+  },
+  {
+    id: 13,
+    category: "operations",
+    question: "How is the energy and utility supply managed?",
+    answer:
+      "The DSEZ Smart Grid — powered by Phase II AI-driven load management — delivers dedicated industrial-grade power from both grid-tied renewable sources (65% solar and wind) and gas-backed redundancy. Each operator receives a metered allocation with a guaranteed minimum supply commitment. Water, sewerage, and fibre-optic connectivity (1Gbps uplink standard, with 10Gbps available for Tier-1 facilities) are bundled into the zone's unified utility tariff.",
+  },
+
+  // ── Legal & Compliance ────────────────────────────────────────────────────────
+  {
+    id: 14,
+    category: "legal",
+    question:
+      "Which legal jurisdiction governs commercial disputes within DSEZ?",
+    answer:
+      "The DSEZ Commercial Court operates as an independent judicial body with jurisdiction over all intra-zone and zone-international commercial matters. Proceedings are conducted in English under a codified DSEZ Commercial Law framework modelled on English common law. International arbitration is available under UNCITRAL, ICC, and LCIA rules. Judgements are mutually enforceable under bilateral investment treaty obligations with 47 partner nations.",
+  },
+  {
+    id: 15,
+    category: "legal",
+    question: "What intellectual property protections apply within the zone?",
+    answer:
+      "DSEZ is a signatory to the WIPO Convention and provides full patent, trademark, copyright, and trade secret protection under its IP statute. Rights registered in any WIPO member state are automatically recognised within DSEZ without re-registration. The DSEZ IP Enforcement Unit provides expedited provisional measures (injunctive relief within 48 hours) for cases of suspected IP infringement affecting zone-registered entities.",
+  },
+  {
+    id: 16,
+    category: "legal",
+    question: "Are DSEZ employees subject to local labour laws?",
+    answer:
+      "Entities within DSEZ are governed by the DSEZ Employment Standards Act, which establishes minimum wage benchmarks (indexed annually to CPI), mandatory contributions to the DSEZ Worker Provident Fund, occupational health and safety requirements, and anti-discrimination protections. The Act is substantially aligned with ILO core conventions. Collective bargaining rights are preserved. Operators employing more than 100 staff are required to maintain a certified HR Compliance Officer.",
+  },
+
+  // ── Digital Services ──────────────────────────────────────────────────────────
+  {
+    id: 17,
+    category: "digital",
+    question:
+      "What digital government services are available to zone operators?",
+    answer:
+      "DSEZ-ONE (the Single-Window Digital Portal) consolidates all government touchpoints: business registration, licence management, customs declarations, work permit applications, tax filing, utility connections, and zoning approvals. All services are accessible via web and mobile with full API integration for enterprise-grade ERP systems. Digital signatures issued under the DSEZ e-Signature Framework have full legal standing in all zone proceedings.",
+  },
+  {
+    id: 18,
+    category: "digital",
+    question:
+      "Can DSEZ entities issue or transact in digital assets and cryptocurrencies?",
+    answer:
+      "Yes, subject to the DSEZ Digital Asset Regulatory Framework (DARF-2024). Licensed Digital Asset Operators (DAO designation) may issue, trade, and custody regulated digital assets including utility tokens, security tokens, and stablecoins. All DAOs are subject to AML/KYC requirements aligned with FATF Recommendation 16. Consumer-facing crypto exchanges require a separate Exchange Operating Licence with additional capital adequacy requirements.",
+  },
+
+  // ── Location & Logistics ──────────────────────────────────────────────────────
+  {
+    id: 19,
+    category: "location",
+    question:
+      "Where is DSEZ located and how does it connect to major trade routes?",
+    answer:
+      "DSEZ is strategically situated at the convergence of two international highway corridors, a dedicated standard-gauge rail link to the national network, and a deep-water port berth with 14-metre draft clearance. The zone is 45 minutes from the international airport by dedicated shuttle. Berth 7 (operational from Oct 2024) provides direct container throughput of 12,000 TEU/month. Feeder vessel connections serve 22 coastal and island destinations weekly.",
+  },
+  {
+    id: 20,
+    category: "location",
+    question:
+      "What customs procedures apply to goods entering and leaving the zone?",
+    answer:
+      "DSEZ operates as a bonded free zone — goods imported into the zone are not subject to customs duty, VAT, or import levies until they leave the zone for the domestic market. Zone-to-zone transfers within DSEZ are duty-free. Exports to international markets are processed through DSEZ's integrated customs declaration system (ISO 9001-certified) with an average clearance time of 4 hours for standard cargo and 24 hours for specialised or oversized consignments.",
+  },
 ];
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
