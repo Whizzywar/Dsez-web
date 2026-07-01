@@ -9,6 +9,9 @@ import {
   HiOutlineClipboardDocumentList,
   HiOutlineMapPin,
   HiOutlineBuildingOffice2,
+  HiOutlineEnvelope,
+  HiOutlinePhone,
+  HiOutlineClock,
 } from "react-icons/hi2";
 
 // ─── Navbar Dropdown Data ─────────────────────────────────────────────────────
@@ -769,6 +772,43 @@ export const faqs = [
       "What customs procedures apply to goods entering and leaving the zone?",
     answer:
       "DSEZ operates as a bonded free zone — goods imported into the zone are not subject to customs duty, VAT, or import levies until they leave the zone for the domestic market. Zone-to-zone transfers within DSEZ are duty-free. Exports to international markets are processed through DSEZ's integrated customs declaration system (ISO 9001-certified) with an average clearance time of 4 hours for standard cargo and 24 hours for specialised or oversized consignments.",
+  },
+];
+
+// ─── Contact page Data ─────────────────────────────────────────────────────────────────────/; //
+
+export const subjects = [
+  "Investment Inquiry",
+  "Operational Support",
+  "Media Relations",
+  "Regulatory Framework",
+  "Other",
+];
+
+export const contactInfo = [
+  {
+    Icon: HiOutlineEnvelope,
+    label: "Email",
+    primary: "invest@dsez.gov.int",
+    secondary: "General: info@dsez.gov.int",
+  },
+  {
+    Icon: HiOutlinePhone,
+    label: "Phone",
+    primary: "+1 (800) DSEZ-GOV",
+    secondary: "Mon–Fri, 08:00–18:00 GMT+3",
+  },
+  {
+    Icon: HiOutlineMapPin,
+    label: "Headquarters",
+    primary: "400 Innovation Drive",
+    secondary: "Financial District, DSEZ 90210",
+  },
+  {
+    Icon: HiOutlineClock,
+    label: "Hours",
+    primary: "Mon–Fri  08:00–18:00",
+    secondary: "Saturday  09:00–13:00",
   },
 ];
 

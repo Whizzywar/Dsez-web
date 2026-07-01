@@ -7,6 +7,7 @@ import AboutPage from "./pages/About Page";
 import InvestmentPage from "./pages/Investment Page";
 import MediaPage from "./pages/Media Page";
 import FaqPage from "./pages/faq Page";
+import ContactPage from "./pages/Contact Page";
 import PlaceholderPage from "./pages/PlaceholderPage";
 
 /**
@@ -95,12 +96,11 @@ const App = () => (
             }
           />
 
-          {/* ── Flat pages ── */}
+          {/* ── Faqs page ── */}
           <Route path="/faqs" element={<FaqPage />} />
-          <Route
-            path="/contact"
-            element={<PlaceholderPage title="Contact Us" section="Support" />}
-          />
+
+          {/* ── Contact page ── */}
+          <Route path="/contact" element={<ContactPage />} />
 
           {/* ── 404 ── */}
           <Route
