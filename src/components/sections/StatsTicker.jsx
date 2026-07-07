@@ -16,12 +16,12 @@ const StatsTicker = () => {
       {/* Left fade edge */}
       <div
         className="absolute left-0 top-0 h-full w-16 z-10
-                      bg-gradient-to-r from-[#001e40] to-transparent pointer-events-none"
+                      bg-linear-to-r from-[#001e40] to-transparent pointer-events-none"
       />
       {/* Right fade edge */}
       <div
         className="absolute right-0 top-0 h-full w-16 z-10
-                      bg-gradient-to-l from-[#001e40] to-transparent pointer-events-none"
+                      bg-linear-to-l from-[#001e40] to-transparent pointer-events-none"
       />
 
       {/* Scrolling track */}

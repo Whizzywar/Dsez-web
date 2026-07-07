@@ -45,8 +45,6 @@ const Reveal = ({ children, delay = 0, className = "" }) => {
   );
 };
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
 // ─── Contact form ─────────────────────────────────────────────────────────────
 const ContactForm = () => {
   const [status, setStatus] = useState("idle"); // idle | loading | done
@@ -198,9 +196,6 @@ const ContactForm = () => {
   );
 };
 
-// ═════════════════════════════════════════════════════════════════════════════
-// Page
-// ═════════════════════════════════════════════════════════════════════════════
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#f9f9f9]">
@@ -224,18 +219,7 @@ export default function ContactPage() {
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <nav className="flex items-center gap-2 text-white/40 text-xs mb-8">
-              <Link to="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#66dd8b]">Contact Us</span>
-            </nav>
-
             <div className="max-w-2xl">
-              <span className="text-[#66dd8b] text-[10px] font-bold tracking-[0.25em] uppercase block mb-3">
-                Investor Support
-              </span>
               <h1 className="font-display text-4xl md:text-5xl font-black text-white leading-tight mb-4">
                 Get in Touch
               </h1>
@@ -243,37 +227,6 @@ export default function ContactPage() {
                 Reach our investment desk, regulatory team, or press office.
                 Every inquiry is assigned to a named contact within 24 hours.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Contact info strip ────────────────────────────────────────────── */}
-        <section className="bg-white border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 md:px-16">
-            <div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0
-                            sm:divide-x divide-gray-100"
-            >
-              {contactInfo.map(({ Icon, label, primary, secondary }, i) => (
-                <Reveal
-                  key={label}
-                  delay={i * 60}
-                  className="flex items-start gap-4 px-0 sm:px-8 py-8 first:pl-0 last:pr-0"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#001e40]/6 flex items-center justify-center shrink-0 mt-0.5">
-                    <Icon className="w-5 h-5 text-[#001e40]" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                      {label}
-                    </p>
-                    <p className="text-sm font-semibold text-[#001e40]">
-                      {primary}
-                    </p>
-                    <p className="text-xs text-gray-400 mt-0.5">{secondary}</p>
-                  </div>
-                </Reveal>
-              ))}
             </div>
           </div>
         </section>
@@ -337,27 +290,6 @@ export default function ContactPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
-              </Reveal>
-
-              {/* FAQ prompt */}
-              <Reveal delay={200}>
-                <div className="border border-gray-200 rounded-2xl p-7 bg-[#f9f9f9]">
-                  <p className="text-sm font-bold text-[#001e40] mb-2">
-                    Looking for quick answers?
-                  </p>
-                  <p className="text-xs text-gray-400 leading-relaxed mb-5">
-                    Our FAQ portal covers licensing, tax incentives, and zone
-                    operations in detail — no waiting required.
-                  </p>
-                  <Link
-                    to="/faqs"
-                    className="inline-flex items-center gap-2 text-xs font-bold text-[#FF5722]
-                               hover:gap-3 transition-all"
-                  >
-                    Browse FAQs
-                    <HiOutlineArrowRight className="w-3.5 h-3.5" />
-                  </Link>
                 </div>
               </Reveal>
             </div>

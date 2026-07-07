@@ -1,14 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { leaders, objectives, orgDepts } from "../data/siteData";
 import Icon, { regulatoryItems, LinkedInIcon } from "../components/ui/Icon";
-
-// ↑ FIX: `Icon` (default export) was never imported — only the named
-//   exports `regulatoryItems` and `LinkedInIcon` were. Every raw <svg> in
-//   this file existed because there was no way to call <Icon name="..." />
-//   without that default import. This single line fixes both the missing
-//   icons AND the underlying cause of the page failing to render whenever
-//   anything in the file referenced `Icon`.
 
 //─── Scroll-reveal hook ───────────────────────────────────────────────────────//
 const useReveal = () => {
@@ -76,16 +69,6 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
-        .about-page, .about-page * { font-family: 'DM Sans', sans-serif; }
-        .about-page h1,.about-page h2,.about-page h3,.about-page h4,.about-page .font-display { font-family: 'Syne', sans-serif; }
-        .dot-grid { background-image: radial-gradient(circle, #D1D5DB 1px, transparent 1px); background-size: 28px 28px; }
-        .hero-clip { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
-        .leader-card img { filter: grayscale(100%); transition: filter 0.5s ease, transform 0.6s ease; }
-        .leader-card:hover img { filter: grayscale(0%); transform: scale(1.05); }
-      `}</style>
-
       <div className="about-page">
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
         <section className="relative hero-clip h-140 min-h-125 flex items-center overflow-hidden -mt-20">
@@ -103,31 +86,16 @@ const AboutPage = () => {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full">
-            {/* ENHANCEMENT: breadcrumb nav, matches Investment/Homepage pattern */}
-            <nav className="flex items-center gap-2 text-white/50 text-xs font-medium mb-8">
-              <Link to="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#FF5722]">About Us</span>
-            </nav>
-
-            <div className="max-w-3xl">
-              <span className="text-[#66dd8b] text-xs font-bold tracking-[0.25em] uppercase block mb-4">
-                Global Infrastructure
-              </span>
-              <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-6">
-                Pioneering the Digital
-                <br />
-                <span className="text-[#FF5722]">Economic Frontier.</span>
-              </h1>
-              <p className="text-lg text-white/80 leading-relaxed max-w-2xl">
-                DSEZ serves as the premier gateway for international trade,
-                leveraging advanced logistics and high-tech digital
-                infrastructure to redefine economic facilitation in the modern
-                era.
-              </p>
-            </div>
+            <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-6">
+              Pioneering the Digital
+              <br />
+              <span className="text-[#FF5722]">Economic Frontier.</span>
+            </h1>
+            <p className="text-lg text-white/80 leading-relaxed max-w-2xl">
+              DSEZ serves as the premier gateway for international trade,
+              leveraging advanced logistics and high-tech digital infrastructure
+              to redefine economic facilitation in the modern era.
+            </p>
           </div>
         </section>
 

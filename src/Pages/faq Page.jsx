@@ -128,9 +128,6 @@ const ContactCard = ({ Icon: CardIcon, title, detail, sub, action, href }) => (
   </a>
 );
 
-// ═════════════════════════════════════════════════════════════════════════════
-// Page
-// ═════════════════════════════════════════════════════════════════════════════
 const FaqPage = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [openId, setOpenId] = useState(null);
@@ -146,12 +143,6 @@ const FaqPage = () => {
     setActiveCategory(id);
     setOpenId(null);
   };
-
-  const stats = [
-    { value: "20+", label: "Questions answered" },
-    { value: "7", label: "Topic categories" },
-    { value: "48hr", label: "Max response time" },
-  ];
 
   return (
     <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
@@ -178,19 +169,7 @@ const FaqPage = () => {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full pt-36 pb-20">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-white/45 text-xs font-medium mb-10">
-              <Link to="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#66dd8b]">FAQ Portal</span>
-            </nav>
-
             <div className="max-w-3xl">
-              <span className="text-[#66dd8b] text-[10px] font-bold tracking-[0.3em] uppercase block mb-4">
-                Investor Support Centre
-              </span>
               <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-6">
                 Frequently Asked
                 <br />
@@ -200,20 +179,6 @@ const FaqPage = () => {
                 Everything you need to know about operating, investing, and
                 thriving within the Digital Special Economic Zone.
               </p>
-            </div>
-
-            {/* Stats strip */}
-            <div className="flex flex-wrap gap-8 mt-12 pt-10 border-t border-white/10">
-              {stats.map(({ value, label }) => (
-                <div key={label}>
-                  <p className="font-display text-2xl font-black text-white">
-                    {value}
-                  </p>
-                  <p className="text-xs text-white/50 font-medium mt-0.5">
-                    {label}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -254,27 +219,6 @@ const FaqPage = () => {
                         </span>
                       </button>
                     ))}
-                  </div>
-                </Reveal>
-
-                {/* Contact prompt — desktop only */}
-                <Reveal delay={100} className="hidden lg:block mt-8">
-                  <div className="bg-[#001e40] rounded-2xl p-6 text-white">
-                    <HiOutlineChatBubbleLeftRight className="w-7 h-7 text-[#66dd8b] mb-3" />
-                    <p className="font-display font-bold mb-2">
-                      Can't find your answer?
-                    </p>
-                    <p className="text-white/65 text-xs leading-relaxed mb-4">
-                      Our investment advisory team responds within one business
-                      day.
-                    </p>
-                    <a
-                      href="mailto:invest@dsez-gov.com"
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#66dd8b] hover:gap-2.5 transition-all"
-                    >
-                      Ask directly{" "}
-                      <HiOutlineArrowRight className="w-3.5 h-3.5" />
-                    </a>
                   </div>
                 </Reveal>
               </div>

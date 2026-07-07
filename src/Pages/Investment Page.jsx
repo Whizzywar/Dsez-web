@@ -1,14 +1,13 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { SuccessStories } from "../components/sections/SuccessStories";
 import {
   advantages,
   sectors,
   incentives,
   resources,
-  partnerStats,
   journeySteps,
 } from "../data/siteData";
-import Icon from "../components/ui/Icon"; // ← single shared Icon, PageIcon removed entirely
+import Icon from "../components/ui/Icon";
 
 // ─── Scroll-reveal hook (same pattern used on AboutPage) ──────────────────────
 const useReveal = () => {
@@ -85,8 +84,6 @@ const EnquiryModal = ({ open, onClose }) => {
               className="w-14 h-14 rounded-full bg-[#66dd8b]/15 flex items-center justify-center
                             text-[#66dd8b] mx-auto mb-5"
             >
-              {/* "check" isn't in the shared icon map — using "trendingUp" success state instead.
-                  If you want a literal checkmark, add HiOutlineCheck to Icon.jsx's iconMap. */}
               <Icon name="trendingUp" className="w-7 h-7" />
             </div>
             <h3 className="font-display text-xl font-black text-[#001e40] mb-2">
@@ -161,97 +158,6 @@ const EnquiryModal = ({ open, onClose }) => {
   );
 };
 
-// ─── Live ROI calculator (enhancement) ─────────────────────────────────────────
-const RoiCalculator = () => {
-  const [plotSize, setPlotSize] = useState(5000);
-  const [years, setYears] = useState(10);
-
-  const baseCostPerSqm = 45;
-  const dsezCostPerSqm = baseCostPerSqm * 0.7;
-  const annualSavings = plotSize * (baseCostPerSqm - dsezCostPerSqm);
-  const taxHolidayYears = Math.min(years, 10);
-  const projectedSavings = annualSavings * years;
-
-  return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-      <div className="flex items-center gap-2 mb-1">
-        <span className="w-2 h-2 rounded-full bg-[#66dd8b] animate-pulse" />
-        <span className="text-[10px] font-bold text-[#66dd8b] uppercase tracking-[0.2em]">
-          Illustrative Tool
-        </span>
-      </div>
-      <h4 className="font-display text-xl font-black text-[#001e40] mb-1">
-        Estimate Your Operational Savings
-      </h4>
-      <p className="text-xs text-gray-400 mb-6">
-        Directional estimate only — actual figures depend on sector, facility
-        type, and final lease terms.
-      </p>
-
-      <div className="space-y-6">
-        <div>
-          <div className="flex justify-between mb-2">
-            <label className="text-sm font-semibold text-[#001e40]">
-              Plot Size
-            </label>
-            <span className="text-sm font-bold text-[#FF5722]">
-              {plotSize.toLocaleString()} sqm
-            </span>
-          </div>
-          <input
-            type="range"
-            min="1000"
-            max="50000"
-            step="500"
-            value={plotSize}
-            onChange={(e) => setPlotSize(Number(e.target.value))}
-            className="w-full accent-[#FF5722]"
-          />
-        </div>
-
-        <div>
-          <div className="flex justify-between mb-2">
-            <label className="text-sm font-semibold text-[#001e40]">
-              Operating Horizon
-            </label>
-            <span className="text-sm font-bold text-[#FF5722]">
-              {years} years
-            </span>
-          </div>
-          <input
-            type="range"
-            min="1"
-            max="20"
-            value={years}
-            onChange={(e) => setYears(Number(e.target.value))}
-            className="w-full accent-[#FF5722]"
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-gray-100">
-        <div>
-          <p className="font-display text-2xl font-black text-[#001e40]">
-            ${Math.round(annualSavings).toLocaleString()}
-          </p>
-          <p className="text-xs text-gray-400 font-medium mt-0.5">
-            Estimated annual savings
-          </p>
-        </div>
-        <div>
-          <p className="font-display text-2xl font-black text-[#FF5722]">
-            ${Math.round(projectedSavings).toLocaleString()}
-          </p>
-          <p className="text-xs text-gray-400 font-medium mt-0.5">
-            Projected over {years}yr{" "}
-            {taxHolidayYears === 10 ? "+ tax holiday" : ""}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 // ═════════════════════════════════════════════════════════════════════════════
 // Page Component
 // ═════════════════════════════════════════════════════════════════════════════
@@ -260,12 +166,6 @@ const InvestmentPage = () => {
 
   return (
     <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
-        .invest-page, .invest-page * { font-family: 'DM Sans', sans-serif; }
-        .invest-page h1,.invest-page h2,.invest-page h3,.invest-page h4,.invest-page .font-display { font-family: 'Syne', sans-serif; }
-      `}</style>
-
       <div className="invest-page">
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
         <section className="relative h-170 min-h-140 flex items-center overflow-hidden -mt-20">
@@ -281,21 +181,7 @@ const InvestmentPage = () => {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full">
-            <nav className="flex items-center gap-2 text-white/50 text-xs font-medium mb-8">
-              <Link to="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#FF5722]">Investment Opportunities</span>
-            </nav>
-
             <div className="max-w-3xl space-y-6">
-              <div
-                className="inline-flex items-center px-3 py-1.5 rounded-full border border-[#66dd8b]/30
-                              bg-[#66dd8b]/10 text-[#66dd8b] text-xs font-bold uppercase tracking-wider"
-              >
-                Strategic Economic Advantage
-              </div>
               <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight">
                 Unlock Growth in Africa's
                 <br />
@@ -498,37 +384,6 @@ const InvestmentPage = () => {
           </div>
         </section>
 
-        {/* ═══════════════════════ ROI CALCULATOR (Enhancement) ══ */}
-        <section className="py-28 bg-[#f3f3f3]">
-          <div className="max-w-7xl mx-auto px-4 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <Reveal>
-              <span className="text-[10px] font-bold text-[#FF5722] tracking-[0.25em] uppercase block mb-3">
-                Plan Ahead
-              </span>
-              <h2 className="font-display text-3xl md:text-4xl font-black text-[#001e40] mb-5 leading-tight">
-                Model Your Cost Advantage
-              </h2>
-              <p className="text-[#4A4A4A] text-lg leading-relaxed mb-6">
-                Use the interactive calculator to get a directional sense of how
-                DSEZ's reduced operational costs compound over your planned
-                facility size and timeline.
-              </p>
-              <div className="flex items-center gap-3 text-sm text-[#4A4A4A]">
-                <Icon
-                  name="shield"
-                  className="w-5 h-5 text-[#66dd8b] shrink-0"
-                />
-                Figures are illustrative; request a formal quote for binding
-                terms.
-              </div>
-            </Reveal>
-
-            <Reveal delay={150}>
-              <RoiCalculator />
-            </Reveal>
-          </div>
-        </section>
-
         {/* ══════════════════════════ INCENTIVES & BENEFITS ══ */}
         <section className="py-28 bg-[#001e40] text-white">
           <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-16">
@@ -606,56 +461,7 @@ const InvestmentPage = () => {
           </div>
         </section>
 
-        {/* ══════════════════════════════ TESTIMONIALS ══ */}
-        <section className="py-28 bg-[#eeeeee]">
-          <div className="max-w-7xl mx-auto px-4 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <Reveal className="space-y-6">
-              <h2 className="font-display text-3xl md:text-4xl font-black text-[#001e40]">
-                Partner Success Stories
-              </h2>
-              <div className="bg-white p-10 rounded-2xl border border-gray-200 relative">
-                <Icon
-                  name="quote"
-                  className="w-16 h-16 text-[#001e40]/10 absolute -top-3 -left-3"
-                />
-                <p className="text-lg italic text-[#4A4A4A] mb-8 relative z-10">
-                  "DSEZ has fundamentally changed our export logistics. The
-                  integrated customs clearance and dedicated power
-                  infrastructure allowed us to scale production by 40% in our
-                  first year of operations."
-                </p>
-                <div className="flex items-center gap-4">
-                  <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3A8y34oLeOTfkhMOl-TjvruVGC3cGThkayseyl4KJ1KLmRqcS7jQAwi7CbLe6lKjNeOiY6-dQPEB9_AZkY0eqDuS4g9epPmI2YJ_K0nh_PuSdfZK_tnzeTagLHD_PGqifYYGBP-L4rybUxpTStkzWZzLjN8SB1_OpJ7NSNlbqjDQuAN9JiRkvJH78PoBID8FjczLmvakJkH4Ahh2c_ZUF6ba8SXYN1an8H9MD4cZZj9dI2kCbdAmbPIV7XZiNYY1oOkssZ0MeqgSy"
-                    alt="John Mensah"
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <h5 className="font-bold text-[#001e40]">John Mensah</h5>
-                    <p className="text-xs text-[#4A4A4A]">
-                      CEO, AgroTech Exports Ltd.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={150} className="grid grid-cols-2 gap-4">
-              {partnerStats.map((s) => (
-                <div
-                  key={s.label}
-                  className="bg-white p-6 rounded-2xl border border-gray-200
-                                              text-center flex flex-col justify-center hover:shadow-md transition-shadow"
-                >
-                  <div className="font-display text-2xl font-black text-[#001e40]">
-                    {s.value}
-                  </div>
-                  <p className="text-xs text-[#4A4A4A] mt-1">{s.label}</p>
-                </div>
-              ))}
-            </Reveal>
-          </div>
-        </section>
+        <SuccessStories />
 
         {/* ══════════════════════════ RESOURCES + FINAL CTA ══ */}
         <section className="py-20 bg-white border-t border-gray-200">

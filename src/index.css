@@ -120,3 +120,47 @@ input:focus {
     transform: translateX(-50%);
   }
 }
+
+.dot-grid {
+  background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.hero-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+}
+.leader-card img {
+  filter: grayscale(100%);
+  transition:
+    filter 0.5s ease,
+    transform 0.6s ease;
+}
+.leader-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+.ticker-track {
+  animation: ticker 35s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -1,20 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+
+import { pressReleases, CATEGORIES, inTheNews } from "../data/siteData.js";
+
 import {
-  pressReleases,
-  CATEGORIES,
-  mediaAssets,
-  galleryImages,
-  inTheNews,
-} from "../data/siteData.js";
-// ─── react-icons — every icon used on this page ───────────────────────────────
-// All from react-icons/hi2 (Heroicons v2 outline). No inline SVGs anywhere.
-import {
-  HiOutlineArrowRight, // section CTAs, card links, featured card
-  HiOutlineChevronRight, // "Read" link in PressCard
-  HiOutlineArrowDownTray, // toolkit download button
-  HiOutlineArrowTopRightOnSquare, // "In The News" external link icon
-  HiOutlineCheckCircle, // newsletter success state
+  HiOutlineArrowRight,
+  HiOutlineChevronRight,
+  HiOutlineArrowTopRightOnSquare,
 } from "react-icons/hi2";
 
 // ─── Scroll-reveal hook ───────────────────────────────────────────────────────
@@ -129,7 +120,7 @@ const PressCard = ({ article, delay = 0 }) => (
             {article.title}
           </h4>
         </div>
-        {/* ← HiOutlineChevronRight replaces the raw <svg> chevron */}
+
         <span
           className="text-xs font-bold text-[#001e40]/60 mt-2 group-hover:text-[#FF5722]
                          inline-flex items-center gap-1 transition-colors"
@@ -142,56 +133,6 @@ const PressCard = ({ article, delay = 0 }) => (
   </Reveal>
 );
 
-const NewsletterForm = () => {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email) setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="text-center py-4">
-        {/* ← HiOutlineCheckCircle replaces the raw <svg> check */}
-        <HiOutlineCheckCircle className="w-12 h-12 text-[#66dd8b] mx-auto mb-3" />
-        <p className="font-bold text-white">You're subscribed.</p>
-        <p className="text-white/60 text-sm mt-1">
-          Your first briefing arrives next month.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto"
-    >
-      <input
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Professional email address"
-        className="flex-1 px-5 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white
-                   placeholder-white/40 text-sm focus:outline-none focus:border-[#66dd8b] transition-colors"
-      />
-      <button
-        type="submit"
-        className="bg-[#66dd8b] hover:bg-[#50c878] text-[#001e40] font-bold px-8 py-3.5
-                   rounded-xl transition-all text-sm whitespace-nowrap active:scale-95"
-      >
-        Subscribe
-      </button>
-    </form>
-  );
-};
-
-// ═════════════════════════════════════════════════════════════════════════════
-// Page
-// ═════════════════════════════════════════════════════════════════════════════
 const MediaPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(6);
@@ -205,17 +146,6 @@ const MediaPage = () => {
 
   return (
     <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
-        .news-page { font-family: 'DM Sans', sans-serif; }
-        .news-page h1,.news-page h2,.news-page h3,.news-page h4,.news-page .font-display { font-family: 'Syne', sans-serif; }
-        .ticker-track { animation: ticker 35s linear infinite; }
-        .ticker-track:hover { animation-play-state: paused; }
-        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-      `}</style>
-
       <div className="news-page">
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
         <section className="relative min-h-135 flex items-center overflow-hidden -mt-20">
@@ -231,17 +161,7 @@ const MediaPage = () => {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full pt-32 pb-20">
-            <nav className="flex items-center gap-2 text-white/45 text-xs font-medium mb-10">
-              <Link to="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#66dd8b]">News & Media</span>
-            </nav>
             <div className="max-w-3xl">
-              <span className="text-[#66dd8b] text-[10px] font-bold tracking-[0.3em] uppercase block mb-4">
-                Communications Hub
-              </span>
               <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-6">
                 News &amp; Media
                 <br />
@@ -361,83 +281,8 @@ const MediaPage = () => {
           )}
         </section>
 
-        {/* ════════════════════════════════════ MEDIA TOOLKIT ══ */}
-        <section className="bg-[#f3f3f3] border-y border-gray-200 py-24">
-          <div className="max-w-7xl mx-auto px-4 md:px-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <Reveal>
-                <span className="text-[10px] font-bold text-[#FF5722] tracking-[0.25em] uppercase mb-3 block">
-                  Press Resources
-                </span>
-                <h2 className="font-display text-3xl font-black text-[#001e40] mb-4">
-                  Media Toolkit
-                </h2>
-                <p className="text-[#4A4A4A] leading-relaxed mb-8">
-                  High-resolution assets for press use. All materials are
-                  subject to DSEZ brand usage guidelines for international
-                  recognition.
-                </p>
-
-                <div className="space-y-3">
-                  {mediaAssets.map(({ Icon: AssetIcon, title, meta }) => (
-                    <div
-                      key={title}
-                      className="flex items-center gap-4 bg-white border border-gray-200 rounded-xl px-5 py-4
-                                 hover:border-[#001e40]/30 hover:shadow-sm transition-all group"
-                    >
-                      <div
-                        className="w-10 h-10 rounded-lg bg-[#001e40]/5 flex items-center justify-center
-                                      text-[#001e40] shrink-0 group-hover:bg-[#001e40] group-hover:text-white transition-all"
-                      >
-                        {/* ← AssetIcon is now HiOutlinePhoto / HiOutlineSwatch / HiOutlineDocumentText */}
-                        <AssetIcon className="w-5 h-5" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="font-bold text-sm text-[#001e40]">
-                          {title}
-                        </p>
-                        <p className="text-xs text-gray-400 mt-0.5">{meta}</p>
-                      </div>
-                      {/* ← HiOutlineArrowDownTray replaces raw <svg> download arrow */}
-                      <button
-                        className="text-xs font-bold text-[#001e40] hover:text-[#FF5722] transition-colors
-                                         flex items-center gap-1 shrink-0"
-                      >
-                        Download
-                        <HiOutlineArrowDownTray className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-
-              <Reveal delay={120} className="grid grid-cols-2 gap-4">
-                {galleryImages.slice(0, 2).map((img, i) => (
-                  <div
-                    key={i}
-                    className="rounded-xl overflow-hidden aspect-video"
-                  >
-                    <img
-                      src={img}
-                      alt="DSEZ facility"
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                ))}
-                <div className="col-span-2 rounded-xl overflow-hidden aspect-video">
-                  <img
-                    src={galleryImages[2]}
-                    alt="DSEZ digital infrastructure"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-
         {/* ════════════════════════════════ IN THE NEWS ══ */}
-        <section className="py-24 max-w-7xl mx-auto px-4 md:px-16">
+        <section className="py-10 max-w-7xl mx-auto px-4 md:px-16">
           <Reveal className="text-center mb-14">
             <span className="text-[10px] font-bold text-[#FF5722] tracking-[0.25em] uppercase mb-2 block">
               External Coverage
@@ -495,40 +340,13 @@ const MediaPage = () => {
                     <span className="text-gray-400 text-[10px]">
                       {item.date}
                     </span>
-                    {/* ← HiOutlineArrowTopRightOnSquare replaces raw <svg> */}
+
                     <HiOutlineArrowTopRightOnSquare className="w-4 h-4 text-gray-300 group-hover:text-[#001e40] transition-colors" />
                   </div>
                 </div>
               </Reveal>
             ))}
           </div>
-        </section>
-
-        {/* ═══════════════════════════════════ NEWSLETTER ══ */}
-        <section className="pb-24 px-4 md:px-16 max-w-7xl mx-auto">
-          <Reveal>
-            <div className="bg-[#001e40] rounded-2xl px-8 md:px-16 py-16 text-center relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-72 h-72 bg-[#66dd8b]/8 blur-3xl rounded-full -mr-32 -mt-32" />
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#FF5722]/8 blur-3xl rounded-full -ml-32 -mb-32" />
-              <div className="relative z-10">
-                <span className="text-[10px] font-bold text-[#66dd8b] tracking-[0.25em] uppercase mb-4 block">
-                  Stay Informed
-                </span>
-                <h2 className="font-display text-3xl md:text-4xl font-black text-white mb-4">
-                  Monthly Executive Briefing
-                </h2>
-                <p className="text-white/65 text-base max-w-xl mx-auto mb-10 leading-relaxed">
-                  Policy updates, infrastructure progress reports, and
-                  investment opportunities — curated for decision-makers,
-                  delivered once a month.
-                </p>
-                <NewsletterForm />
-                <p className="text-white/30 text-xs mt-6">
-                  By subscribing, you agree to the DSEZ Privacy Policy.
-                </p>
-              </div>
-            </div>
-          </Reveal>
         </section>
       </div>
     </div>

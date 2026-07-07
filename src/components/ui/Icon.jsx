@@ -47,7 +47,7 @@ import {
   HiOutlinePhone,
   HiOutlineEnvelope as HiMail,
   HiOutlineArrowTopRightOnSquare as HiExternalLink,
-  HiOutlineShare as HiShare,
+  HiOutlineShare as HiShare, // ← was HiOutlineShareNodes (wrong name)
   HiOutlineHome,
   HiOutlineInformationCircle as HiInfo,
   HiOutlineBriefcase,
@@ -61,7 +61,7 @@ import {
   HiOutlineXCircle as HiClose2,
   HiOutlineShieldCheck as HiShield,
   HiOutlineScale as HiScale,
-  HiOutlineDocumentText as HiDoc,
+  HiOutlineDocumentText as HiDoc, // ← replaces HiDocument from hi (v1)
 } from "react-icons/hi2";
 
 // ── Remix Icons (social logos) ────────────────────────────────────────────────
@@ -77,6 +77,7 @@ import {
 // ── Tabler Icons (industry / finance extras) ──────────────────────────────────
 import {
   TbReceipt2 as TbReceipt,
+  TbExchange,
   TbLeaf,
   TbQuote,
   TbShip,
@@ -127,13 +128,13 @@ const iconMap = {
   // ── Cloud / Tech ────────────────────────────────────────
   cloud: HiOutlineCloud,
 
-  // ── UI / Content ────────────────────────────────────────
-  home: HiOutlineHome,
+  // UI / Content
   info: HiInfo,
   questionMark: HiQuestionMark,
   shield: HiShield,
   scale: HiScale,
-  doc: HiDoc,
+  doc: HiDoc, // ← HiOutlineDocumentText (hi2), NOT HiDocument (hi v1)
+
   photo: HiOutlinePhoto,
   newspaper: HiOutlineNewspaper,
   calendar: HiCalendar,
@@ -162,14 +163,10 @@ const Icon = ({ name, className = "w-6 h-6", title, ...rest }) => {
   const Component = iconMap[name];
 
   if (!Component) {
-    // Warn in dev, render nothing in prod — never crashes the UI
-    const shouldWarn =
-      typeof import.meta !== "undefined" && import.meta.env?.DEV;
-
-    if (shouldWarn) {
+    if (typeof import.meta !== "undefined" && import.meta.env?.DEV) {
       console.warn(
         `[Icon] Unknown icon name: "${name}". ` +
-          `Available names: ${Object.keys(iconMap).join(", ")}`,
+          `Available: ${Object.keys(iconMap).join(", ")}`,
       );
     }
     return null;
@@ -215,7 +212,7 @@ export const regulatoryItems = [
     body: "Guarantees against expropriation and 100% foreign ownership of companies and assets.",
   },
   {
-    icon: <HiDoc className="w-6 h-6" />,
+    icon: <HiDoc className="w-6 h-6" />, // ← HiDoc (hi2), not HiDocument (hi v1)
     title: "One-Stop Licensing",
     body: "Streamlined digital permitting process reducing registration time to less than 48 hours.",
   },
@@ -238,11 +235,13 @@ export {
   HiGlobe,
   HiOutlineCloud,
   HiOutlineBolt,
+  HiEye,
   HiOffice,
   HiMap,
   HiOutlinePhone,
   HiMail,
   HiExternalLink,
+  HiShare,
   HiOutlineHome,
   HiInfo,
   HiQuestionMark,
@@ -256,15 +255,14 @@ export {
   HiShield,
   HiScale,
   HiDoc,
-  // Remix Icons
   RiLinkedinFill,
   RiTwitterXFill,
   RiFacebookFill,
   RiInstagramFill,
   RiYoutubeFill,
   RiWhatsappFill,
-  // Tabler
   TbReceipt,
+  TbExchange,
   TbLeaf,
   TbQuote,
   TbShip,
