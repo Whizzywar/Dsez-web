@@ -2,27 +2,6 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Icon from "./Icon";
 
-/**
- * DropdownMenu — split-trigger version, enhanced
- * ─────────────────────────────────────────────────────────────────────────────
- * Behaviour:
- *  • Clicking the LABEL   → navigates directly to `baseHref`, panel stays closed.
- *  • Clicking the CHEVRON → toggles the panel; no navigation.
- *  • Hovering the group   → opens the panel after a short intent delay, and
- *                            stays open briefly after the mouse leaves, so a
- *                            quick pass across the navbar doesn't flicker it.
- *  • Keyboard support      → ArrowDown opens + focuses first item, ArrowUp/Down
- *                            move between items, Escape closes and returns
- *                            focus to the chevron, Home/End jump to first/last.
- *  • Focus-visible ring    → trigger and items get a clear focus outline for
- *                            keyboard users (not just :hover).
- *
- * Props:
- *   label      {string}   — trigger text (e.g. "About Us")
- *   baseHref   {string}   — route the label itself navigates to (e.g. "/about")
- *   items      {Array}    — [{ label, icon, sub, href }] — dropdown sub-links
- *   isScrolled {boolean}  — reserved for theming
- */
 const HOVER_OPEN_DELAY = 80; // ms — avoids opening on an accidental graze
 const HOVER_CLOSE_DELAY = 200; // ms — avoids closing while crossing a small gap
 

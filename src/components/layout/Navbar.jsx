@@ -199,7 +199,7 @@ const Navbar = () => {
       {/* ═══════════════════════════════════════════════════ MOBILE OVERLAY ══ */}
       {drawerOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-[55] backdrop-blur-sm"
+          className="fixed inset-0 bg-black/60 z-55 backdrop-blur-sm"
           onClick={() => setDrawerOpen(false)}
           aria-hidden="true"
         />
@@ -211,7 +211,7 @@ const Navbar = () => {
            - flex flex-col + the CTA pinned at the bottom via mt-auto        */}
       <aside
         className={`
-          fixed left-0 top-0 h-full z-[60] bg-white shadow-2xl
+          fixed left-0 top-0 h-full z-60 bg-white shadow-2xl
           w-[85vw] max-w-sm
           flex flex-col
           transition-transform duration-300 ease-in-out

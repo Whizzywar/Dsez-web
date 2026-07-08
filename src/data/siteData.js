@@ -817,6 +817,6 @@ export const footerLegalLinks = [
 ];
 
 export const footerContact = {
-  phone: "+254 700 000 000",
-  email: "info@dsez.global",
+  phone: "+2348023919724",
+  email: " info@dsez-mc.ng",
 };
