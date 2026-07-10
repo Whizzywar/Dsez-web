@@ -35,7 +35,7 @@ const NewsSection = () => (
             className="group news-card cursor-pointer"
           >
             {/* Image */}
-            <div className="aspect-[16/10] overflow-hidden rounded-xl mb-6 border border-gray-100 shadow-sm">
+            <div className="aspect-16/10 overflow-hidden rounded-xl mb-6 border border-gray-100 shadow-sm">
               <img
                 src={item.img}
                 alt={item.title}

@@ -12,9 +12,9 @@ const CTASection = () => (
       className="absolute inset-0 pointer-events-none overflow-hidden"
       aria-hidden="true"
     >
-      <div className="absolute -right-40 -top-40 w-[500px] h-[500px] rounded-full border border-white/5" />
-      <div className="absolute -left-20 bottom-0 w-[300px] h-[300px] rounded-full border border-white/5" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/[0.03]" />
+      <div className="absolute -right-40 -top-40 w-125 h-125 rounded-full border border-white/5" />
+      <div className="absolute -left-20 bottom-0 w-75 h-75 rounded-full border border-white/5" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 rounded-full border border-white/3" />
     </div>
 
     <div className="max-w-7xl mx-auto px-4 md:px-16 text-center relative z-10">

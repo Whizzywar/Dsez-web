@@ -1,11 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { subjects, contactInfo } from "../data/siteData";
+import { subjects } from "../data/siteData";
 import {
   HiOutlinePaperAirplane,
   HiOutlineCheckCircle,
   HiOutlineArrowPath,
-  HiOutlineArrowRight,
 } from "react-icons/hi2";
 
 // ─── Reveal hook ─────────────────────────────────────────────────────────────

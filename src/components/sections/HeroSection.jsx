@@ -32,12 +32,12 @@ const HeroSection = () => {
       </video>
 
       {/* ── Gradient Overlay ── */}
-      <div className="video-overlay absolute inset-0 z-[1]" />
+      <div className="video-overlay absolute inset-0 z-1" />
 
       {/* ── Decorative Animated Rings ── */}
-      <div className="absolute right-0 top-0 w-1/2 h-full z-[2] pointer-events-none overflow-hidden">
-        <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/5 animate-[spin_40s_linear_infinite]" />
-        <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-white/5 animate-[spin_25s_linear_infinite_reverse]" />
+      <div className="absolute right-0 top-0 w-1/2 h-full z-2 pointer-events-none overflow-hidden">
+        <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-150 h-150 rounded-full border border-white/5 animate-[spin_40s_linear_infinite]" />
+        <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-150 h-150 rounded-full border border-white/5 animate-[spin_25s_linear_infinite_reverse]" />
       </div>
 
       {/* ── Content ── */}
@@ -66,7 +66,7 @@ const HeroSection = () => {
       </div>
 
       {/* ── Bottom fade into page ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#f9f9f9] to-transparent z-[3]" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#f9f9f9] to-transparent z-3" />
     </section>
   );
 };
