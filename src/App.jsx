@@ -2,12 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import Homepage from "./pages/DsezHomepage";
-import AboutPage from "./pages/About Page";
-import InvestmentPage from "./pages/Investment Page";
-import MediaPage from "./pages/Media Page";
-import FaqPage from "./pages/faq Page";
-import ContactPage from "./pages/Contact Page";
+import DsezHomepage from "./pages/DsezHomepage";
+import AboutPage from "./pages/AboutPage";
+import InvestmentPage from "./pages/InvestmentPage";
+import MediaPage from "./pages/MediaPage";
+import FaqPage from "./pages/FaqPage";
+import ContactPage from "./pages/ContactPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
 
 /**
@@ -16,7 +16,7 @@ import PlaceholderPage from "./pages/PlaceholderPage";
  * every route. Inner <Routes> swaps only the page content.
  *
  * Route map:
- *   /                          → HomePage
+ *   /                          → DsezHomepage
  *
  *   /about/vision              → About — Vision & Mission
  *   /about/leadership          → About — Leadership Team
@@ -44,7 +44,7 @@ const App = () => (
       <main className="flex-1 pt-20">
         <Routes>
           {/* ── Home ── */}
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<DsezHomepage />} />
 
           {/* ── About ── */}
 

@@ -1,10 +1,6 @@
 import Icon from "../ui/Icon";
 import { newsItems } from "../../data/siteData";
 
-/**
- * NewsSection
- * Three-column grid of news / event cards with hover image zoom and tag badges.
- */
 const NewsSection = () => (
   <section className="py-28 bg-white">
     <div className="max-w-7xl mx-auto px-4 md:px-16">
