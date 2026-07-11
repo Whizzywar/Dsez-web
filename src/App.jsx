@@ -2,40 +2,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import DsezHomepage from "./pages/DsezHomepage";
+import DSEZHomepage from "./pages/DSEZHomepage";
 import AboutPage from "./pages/AboutPage";
 import InvestmentPage from "./pages/InvestmentPage";
-import MediaPage from "./pages/MediaPage";
+import NewsPage from "./pages/NewsPage";
 import FaqPage from "./pages/FaqPage";
 import ContactPage from "./pages/ContactPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
 
-/**
- * App
- * Wraps the whole site in <BrowserRouter>. Navbar and Footer render on
- * every route. Inner <Routes> swaps only the page content.
- *
- * Route map:
- *   /                          → DsezHomepage
- *
- *   /about/vision              → About — Vision & Mission
- *   /about/leadership          → About — Leadership Team
- *   /about/master-plan         → About — Zone Master Plan
- *   /about/governance          → About — Governance & Compliance
- *
- *   /invest                    → Investment hub / CTA landing
- *   /invest/manufacturing      → Smart Manufacturing
- *   /invest/logistics          → Logistics Hubs
- *   /invest/digital            → Digital Services
- *   /invest/energy             → Green Energy
- *   /invest/real-estate        → Commercial Real Estate
- *
- *   /media                     → Media Hub
- *   /faqs                      → FAQs
- *   /contact                   → Contact Us
- *
- *   *                          → 404 fallback
- */
 const App = () => (
   <BrowserRouter>
     <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c] flex flex-col">
@@ -44,7 +18,7 @@ const App = () => (
       <main className="flex-1 pt-20">
         <Routes>
           {/* ── Home ── */}
-          <Route path="/" element={<DsezHomepage />} />
+          <Route path="/" element={<DSEZHomepage />} />
 
           {/* ── About ── */}
 
@@ -63,8 +37,8 @@ const App = () => (
             }
           />
 
-          {/* ── Media page ── */}
-          <Route path="/media" element={<MediaPage />} />
+          {/* ── News page ── */}
+          <Route path="/news" element={<NewsPage />} />
           <Route
             path="/media/news"
             element={<PlaceholderPage title="News & Events" section="Media" />}

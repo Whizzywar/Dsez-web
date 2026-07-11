@@ -133,7 +133,7 @@ const PressCard = ({ article, delay = 0 }) => (
   </Reveal>
 );
 
-const MediaPage = () => {
+const NewsPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(6);
 
@@ -353,4 +353,4 @@ const MediaPage = () => {
   );
 };
 
-export default MediaPage;
+export default NewsPage;
