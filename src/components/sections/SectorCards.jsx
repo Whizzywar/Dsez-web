@@ -1,10 +1,45 @@
 import Icon from "../ui/Icon";
 
-/**
+const SectorCardData = [
+  {
+    id: "manufacturing",
+    span: "md:col-span-2 md:row-span-2",
+    dark: true,
+    accent: "#66dd8b",
+    icon: "factory",
+    title: "Smart Manufacturing",
+    desc: "Plug-and-play facilities for high-precision electronics and industrial equipment.",
+    cta: "Explore Sector",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDN0M1x3egZuOtUSakYZEHQOnaIZjqMSpG8fSjyYDhKgb6vev0dbtxR2XgspKOATvhNLDPMSjRwv66al1u8pRinX_YQjhX9yF6f2HZKRAfW3BPmIbtfmQpPHPZbawPGfrWlxKvJBw8L4C17hm2N9EO9m449ay-ZQYQT8RiG5rjl8gUSJUNTRSWg1hgn7cPQgbpsdt5HEUBya1nT4TzVmk9LlbnpaQ-47DqOn4IDvTZSncnJS6d4FpL6IihxDactyhmDbcckwtizKufz",
+  },
+  {
+    id: "logistics",
+    span: "md:col-span-2",
+    dark: false,
+    icon: "globe",
+    title: "Logistics & Hubs",
+    desc: "Integrated dry ports and multi-modal transport networks connecting to global markets.",
+    showExternal: true,
+  },
+  {
+    id: "digital",
+    span: "",
+    dark: false,
+    icon: "cloud",
+    title: "Digital Services",
+    desc: "Seamless licensing and financial gateways for modern businesses.",
+  },
+  {
+    id: "energy",
+    span: "",
+    dark: false,
+    orange: true,
+    icon: "bolt",
+    title: "Green Energy",
+    desc: "100% sustainable power grid for net-zero operations.",
+  },
+];
 
- * Asymmetric 4-column grid showcasing the four core sectors:
- * Smart Manufacturing (large), Logistics, Digital Services, Green Energy.
- */
 const SectorCards = () => (
   <section className="py-28 bg-[#f3f3f3]">
     <div className="max-w-7xl mx-auto px-4 md:px-16">

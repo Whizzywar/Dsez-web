@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "../ui/Icon";
-import { footerContact } from "../../data/siteData";
 
 // react-icons — replaces every raw <svg> that was in this file
 import {
@@ -17,6 +16,11 @@ import {
   RiInstagramFill, // was raw <svg>
   RiYoutubeFill, // was raw <svg>
 } from "react-icons/ri";
+
+const footerContact = {
+  phone: "+2348023919724",
+  email: " info@dsez-mc.ng",
+};
 
 // ─── Social links — icon now uses react-icons, no inline SVG ─────────────────
 const socialLinks = [

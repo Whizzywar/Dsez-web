@@ -1,12 +1,11 @@
-import { stats } from "../../data/siteData";
+const stats = [
+  { value: "2,400+", label: "Hectares Planned" },
+  { value: "$1.2B", label: "Initial Investment" },
+  { value: "40+", label: "Partner Nations" },
+  { value: "100%", label: "Renewable Power" },
+  { value: "0%", label: "Bureaucratic Friction" },
+];
 
-/**
- * StatsTicker
- * Infinite auto-scrolling horizontal marquee ticker of zone metrics.
- * - Duplicates the stats array so the loop appears seamless
- * - Pure CSS animation — no JS scroll logic needed
- * - Pauses on hover
- */
 const StatsTicker = () => {
   // Duplicate items so the marquee loops without a visible gap
   const items = [...stats, ...stats];

@@ -1,10 +1,10 @@
 import Icon from "../ui/Icon";
-import { overviewStats } from "../../data/siteData";
 
-/**
- * OverviewSection
- * Two-column layout: text + stats on the left, image with floating badge on the right.
- */
+const overviewStats = [
+  { value: "2.4k+", label: "Hectares Planned" },
+  { value: "$1.2B", label: "Initial Investment" },
+];
+
 const OverviewSection = () => (
   <section className="py-28 bg-white">
     <div className="max-w-7xl mx-auto px-4 md:px-16">

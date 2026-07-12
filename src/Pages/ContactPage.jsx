@@ -1,10 +1,50 @@
 import { useState, useRef, useEffect } from "react";
-import { subjects } from "../data/siteData";
+
 import {
   HiOutlinePaperAirplane,
   HiOutlineCheckCircle,
   HiOutlineArrowPath,
+  HiOutlineEnvelope,
+  HiOutlineClock,
+  HiOutlineMapPin,
+  HiOutlinePhone,
 } from "react-icons/hi2";
+
+const subjects = [
+  "Investment Inquiry",
+  "Operational Support",
+  "Media Relations",
+  "Regulatory Framework",
+  "Other",
+];
+
+// eslint-disable-next-line no-unused-vars
+const contactInfo = [
+  {
+    Icon: HiOutlineEnvelope,
+    label: "Email",
+    primary: "invest@dsez.gov.int",
+    secondary: "General: info@dsez.gov.int",
+  },
+  {
+    Icon: HiOutlinePhone,
+    label: "Phone",
+    primary: "+1 (800) DSEZ-GOV",
+    secondary: "Mon–Fri, 08:00–18:00 GMT+3",
+  },
+  {
+    Icon: HiOutlineMapPin,
+    label: "Headquarters",
+    primary: "400 Innovation Drive",
+    secondary: "Financial District, DSEZ 90210",
+  },
+  {
+    Icon: HiOutlineClock,
+    label: "Hours",
+    primary: "Mon–Fri  08:00–18:00",
+    secondary: "Saturday  09:00–13:00",
+  },
+];
 
 // ─── Reveal hook ─────────────────────────────────────────────────────────────
 const useReveal = () => {

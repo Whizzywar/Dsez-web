@@ -1,32 +1,3 @@
-/**
- * Icon.jsx — react-icons wrapper
- * ─────────────────────────────────────────────────────────────────────────────
- * Install once:   npm install react-icons
- *
- * This file provides two things:
- *
- *  1. A drop-in <Icon name="..." className="..." /> component that maps every
- *     name your project already uses to a specific react-icons icon — so
- *     nothing else in the codebase needs to change.
- *
- *  2. Named exports for anything that needs a direct import
- *     (e.g. LinkedInIcon, regulatoryItems used by AboutPage).
- *
- * Icon packs used (all included in react-icons, no extra install needed):
- *   HiOutline*  — Heroicons v2 outline  (navigation, UI)
- *   HiSolid*    — Heroicons v2 solid    (filled variants)
- *   Ri*         — Remix Icons            (logos, social)
- *   Tb*         — Tabler Icons           (industry, finance)
- *
- * Usage (unchanged from before):
- *   import Icon from "@/components/ui/Icon";
- *   <Icon name="arrowRight" className="w-5 h-5 text-white" />
- *
- * Direct import (when you need the raw component):
- *   import { HiOutlineArrowRight } from "react-icons/hi2";
- *
- */
-
 // ── Heroicons v2 outline ──────────────────────────────────────────────────────
 import {
   HiOutlineBars3 as HiBars3,
@@ -47,7 +18,7 @@ import {
   HiOutlinePhone,
   HiOutlineEnvelope as HiMail,
   HiOutlineArrowTopRightOnSquare as HiExternalLink,
-  HiOutlineShare as HiShare, // ← was HiOutlineShareNodes (wrong name)
+  HiOutlineShare as HiShare,
   HiOutlineHome,
   HiOutlineInformationCircle as HiInfo,
   HiOutlineBriefcase,
@@ -61,7 +32,7 @@ import {
   HiOutlineXCircle as HiClose2,
   HiOutlineShieldCheck as HiShield,
   HiOutlineScale as HiScale,
-  HiOutlineDocumentText as HiDoc, // ← replaces HiDocument from hi (v1)
+  HiOutlineDocumentText as HiDoc,
 } from "react-icons/hi2";
 
 // ── Remix Icons (social logos) ────────────────────────────────────────────────
@@ -82,11 +53,6 @@ import {
   TbQuote,
   TbShip,
 } from "react-icons/tb";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 1. Drop-in <Icon> component — identical API to the old file
-//    All existing  <Icon name="..." className="..." />  calls keep working.
-// ─────────────────────────────────────────────────────────────────────────────
 
 const iconMap = {
   // ── Navigation ──────────────────────────────────────────
@@ -133,7 +99,7 @@ const iconMap = {
   questionMark: HiQuestionMark,
   shield: HiShield,
   scale: HiScale,
-  doc: HiDoc, // ← HiOutlineDocumentText (hi2), NOT HiDocument (hi v1)
+  doc: HiDoc,
 
   photo: HiOutlinePhoto,
   newspaper: HiOutlineNewspaper,
@@ -151,14 +117,6 @@ const iconMap = {
   whatsapp: RiWhatsappFill,
 };
 
-/**
- * <Icon>
- * Drop-in replacement — same props as before.
- *
- * @param {string}  name       — key from iconMap above
- * @param {string}  className  — Tailwind size + colour classes (e.g. "w-5 h-5 text-white")
- * @param {string}  title      — accessible label for screen readers
- */
 const Icon = ({ name, className = "w-6 h-6", title, ...rest }) => {
   const Component = iconMap[name];
 
@@ -185,42 +143,6 @@ const Icon = ({ name, className = "w-6 h-6", title, ...rest }) => {
 
 export default Icon;
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 2. Named exports used by other files (AboutPage, Footer, etc.)
-// ─────────────────────────────────────────────────────────────────────────────
-
-/** Used by AboutPage:  import { LinkedInIcon } from "../components/ui/Icon" */
-export const LinkedInIcon = ({ className = "w-4 h-4", ...rest }) => (
-  <RiLinkedinFill className={className} {...rest} />
-);
-
-/**
- * Used by AboutPage:  import { regulatoryItems } from "../components/ui/Icon"
- * Icons are now react-icons components instead of raw SVG JSX.
- */
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const regulatoryItems = [
-  {
-    icon: <HiScale className="w-6 h-6" />,
-    title: "Independent Judiciary",
-    body: "A dedicated commercial court system for swift dispute resolution based on international law.",
-  },
-  {
-    icon: <HiShield className="w-6 h-6" />,
-    title: "Capital Protection",
-    body: "Guarantees against expropriation and 100% foreign ownership of companies and assets.",
-  },
-  {
-    icon: <HiDoc className="w-6 h-6" />, // ← HiDoc (hi2), not HiDocument (hi v1)
-    title: "One-Stop Licensing",
-    body: "Streamlined digital permitting process reducing registration time to less than 48 hours.",
-  },
-];
-// ─────────────────────────────────────────────────────────────────────────────
-// 3. Re-export raw react-icons for direct use anywhere in the project
-//    (avoids double-importing the same pack in other files)
-// ─────────────────────────────────────────────────────────────────────────────
 export {
   // Heroicons
   HiBars3,

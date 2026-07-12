@@ -1,7 +1,127 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { leaders, objectives, orgDepts } from "../data/siteData";
-import Icon, { regulatoryItems, LinkedInIcon } from "../components/ui/Icon";
+import { RiLinkedinFill } from "react-icons/ri";
+import { HiShield, HiScale, HiDoc } from "react-icons/hi2";
+
+const iconMap = {
+  linkedin: RiLinkedinFill,
+};
+
+const Icon = ({ name, className = "w-6 h-6", title, ...rest }) => {
+  const Component = iconMap[name];
+
+  if (!Component) {
+    if (typeof import.meta !== "undefined" && import.meta.env?.DEV) {
+      console.warn(
+        `[Icon] Unknown icon name: "${name}". ` +
+          `Available: ${Object.keys(iconMap).join(", ")}`,
+      );
+    }
+    return null;
+  }
+
+  return (
+    <Component
+      className={className}
+      aria-hidden={!title}
+      aria-label={title}
+      title={title}
+      {...rest}
+    />
+  );
+};
+
+const leaders = [
+  {
+    name: "Marcus Thorne",
+    role: "Chief Executive Officer",
+    bio: "Over 25 years of experience in global trade logistics and special economic zone policy development.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCbhruhFdWA4dZdtwy21d3iI6lFKovTgwPze0C_dvQspRPJ84aGmgy824Ly7beIKJhqDCUQRfj1SQPhJ2H06AbBzva01iJgiA-0rM2g-kQl4oRzgjptmCKj63cmKXg63__ziQTVSYjZsPseZKH9Ew6fXvXrYjSMqJBJjd0wdShMArIUxl9GhekJqjuMzrJKLOAE6Ht2DjUue9qiJn8MhBKzuWRHA-FDn80-bmzqHyU4HEiMXL3rHtqmyhvByP7csta3zGlnHw9bALZF",
+  },
+  {
+    name: "Elena Rostova",
+    role: "Chief Operating Officer",
+    bio: "Specialist in digital governance and cross-border regulatory harmonization for technology hubs.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC2v_nFjvWw5HsEx23JsWobLyhc5UQLnooRZDv0pAgV0xcASzCm9ol-d6OHBhqDV1tBqIy3hNtuAeUScXiXnb4c0kcYVISvHyVjlDHP9rVsayoGZHm-NFKYS7aLpDqb3SGeztcgl7mae2cg1ztWXa78G6MFJRHTxud8n6JWoTddLhWfn8PgAwUzKFbeME6kdIEsr2eZOJrimfneenJCQwYK6mNglJDKZ8sM53l_VQgQ56_4ArZtYaCKLn-No567bgCucU9cdA5DF64D",
+  },
+  {
+    name: "Dr. Julian Chen",
+    role: "Chief Technology Officer",
+    bio: "A pioneer in blockchain-based supply chain management and automated customs systems.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCGWMoNxn1u0bEGFUofvKTWphr9EHAXeBR93n7FHeH5RNIx76hkugKq_dJPaUPiETMDeAQ4yL6Eha2IjJkWL9u1PTzYaaKxN_lYf0kJ56TmelA99mOL8vteDAe8PPEdN2nH_bRctb6OpqxSzZaABALQBXCriU9YRMnHJhY3HUrBUF7rnKp0ZHpVwLwfdlFD8S50PvrPj4z_wRcrHtgI1ItxUKtqvqLNRcdzBIgu4N5ytnTzyEDPdU7lf7KkJiR7Tn3TtlrmaVdk8BH",
+  },
+  {
+    name: "Sarah Whitaker",
+    role: "Chief Financial Officer",
+    bio: "Expert in international capital markets and structured finance for large-scale infrastructure projects.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuABgecDo7_zNdAxtq2ABEtjwHqrOTHNWCKKfArMlnEnwQmdIQpFBAsyfaUTMz4laOJOjf1pF5rHKjEkGWjoLLS91P0KQVEX20uWQSHKsEgfoUmgtcMOVYjZJCN6EsA_0dgFLIPIEL9zVgOdroRF2nPTRL2pOXoM15YJaXRAFqA6cYefe2SRLqcDGSyXo4SYRX9phKkheBgENOuCu2zEhlVkle_oZFg2YDI3Yvjqx-fpzTCc_RAWfS7WpFewc4DlN2bDlbJdtB6l7Zjq",
+  },
+];
+
+const objectives = [
+  {
+    number: "01",
+    title: "Digital Trade Harmonization",
+    body: "Implementing unified digital protocols to reduce customs clearance times by 40% within the next three fiscal years.",
+    span: "md:col-span-2",
+    dark: false,
+    accent: "#FF5722",
+  },
+  {
+    number: "02",
+    title: "Green Logistics",
+    body: "Achieving a net-zero carbon footprint for all zone-operated transport facilities by 2030.",
+    span: "",
+    dark: false,
+    accent: "#66dd8b",
+    green: true,
+  },
+  {
+    number: "03",
+    title: "Foreign Investment",
+    body: "Attracting $10B in cumulative foreign direct investment by simplifying the corporate setup process.",
+    span: "",
+    dark: false,
+    accent: "#FF5722",
+  },
+  {
+    number: "04",
+    title: "Infrastructure Expansion",
+    body: "Phase II expansion of the ultra-high-speed data corridor connecting all regional logistics nodes.",
+    span: "md:col-span-2",
+    dark: true,
+    accent: "#66dd8b",
+  },
+];
+
+const orgDepts = [
+  "Operations & Logistics",
+  "Digital Strategy",
+  "Regulatory Affairs",
+  "Investor Relations",
+];
+
+const regulatoryItems = [
+  {
+    icon: <HiScale className="w-6 h-6" />,
+    title: "Independent Judiciary",
+    body: "A dedicated commercial court system for swift dispute resolution based on international law.",
+  },
+  {
+    icon: <HiShield className="w-6 h-6" />,
+    title: "Capital Protection",
+    body: "Guarantees against expropriation and 100% foreign ownership of companies and assets.",
+  },
+  {
+    icon: <HiDoc className="w-6 h-6" />, // ← HiDoc (hi2), not HiDocument (hi v1)
+    title: "One-Stop Licensing",
+    body: "Streamlined digital permitting process reducing registration time to less than 48 hours.",
+  },
+];
+
+const LinkedInIcon = ({ className = "w-4 h-4", ...rest }) => (
+  <RiLinkedinFill className={className} {...rest} />
+);
 
 //─── Scroll-reveal hook ───────────────────────────────────────────────────────//
 const useReveal = () => {

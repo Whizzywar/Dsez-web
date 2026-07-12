@@ -1,12 +1,107 @@
 import { useState, useRef, useEffect } from "react";
 
-import { pressReleases, CATEGORIES, inTheNews } from "../data/siteData.js";
+import { HiOutlineArrowRight, HiOutlineChevronRight, HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
 
-import {
-  HiOutlineArrowRight,
-  HiOutlineChevronRight,
-  HiOutlineArrowTopRightOnSquare,
-} from "react-icons/hi2";
+// ─── Data for media page ─────────────────────────────────────────────────────────────────────
+
+const CATEGORIES = [
+  "All",
+  "Infrastructure",
+  "Partnerships",
+  "Policy",
+  "Investment",
+  "Events",
+];
+
+const pressReleases = [
+  {
+    id: 1,
+    category: "Infrastructure",
+    categoryColor: "bg-emerald-50 text-emerald-700 border border-emerald-200",
+    date: "Oct 24, 2024",
+    title: "DSEZ Unveils Phase II Smart Grid Integration",
+    body: "The Authority has successfully integrated the Phase II AI-driven smart energy grid, ensuring 99.9% uptime for all industrial partners within the zone, cutting average energy costs by 22%.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAe0HJ02N6S_7UkF452R9ajOu2SoPuMHtCLxAm-ckAycMeZu4MsSDO34gqJGZvNj2e4kTGO4OId80VNWaBJYIrSljEaJnERerlezeV5NvKbmv6D-jJx99JnmZmY2cFbjQtsqexm5xFHOtjPg-Xj-2YdMr_cpIk0wKW9yzIF7RzwuyPmc4eRudwKLgwx3Coz3rbRZj7H99zSQqPZqyTuFoMqR1LOl7fMYiiy86aA34lXozdkgF7_CPsQzEWZ9en76wehEwNfjzkF5Lov",
+    featured: true,
+  },
+  {
+    id: 2,
+    category: "Partnerships",
+    categoryColor: "bg-blue-50 text-blue-700 border border-blue-200",
+    date: "Oct 18, 2024",
+    title: "Strategic MoU Signed with Global Logistics Alliance",
+    body: "New partnership aims to streamline cross-border digital customs processing, reducing transit times by up to 40% for all registered entities operating within DSEZ jurisdiction.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBWGInBh8G-7Wr7K0bcFu6IiUSYb2zS1C1LvHLDG4pXy2-8tB0kgUeXBluqolE4gjZ557cEw4gUWbAtbUIKquku9t-sDAhBjj2n7-QNdtYCX3-CIGBt7WlvzmwSKjpezEhbUaHO9IH43xXQ1FivCEehEodI0RHJOMTKaC1Y5p1jYgNrxaqKytJ9EiBeCuc3WuMwTdzT7Qn1PWOAlb4XJmbxocEa_fFWMnXNRYaAS-UKBTsR1NQ60GC-9eLTpWvRPGsMtTomtEfhttd0",
+    featured: false,
+  },
+  {
+    id: 3,
+    category: "Policy",
+    categoryColor: "bg-orange-50 text-orange-700 border border-orange-200",
+    date: "Oct 12, 2024",
+    title: "Revised Digital Asset Framework Published",
+    body: "The Regulatory Wing has released the updated framework for blockchain-based transactions within DSEZ jurisdiction, providing clarity for fintech operators seeking licensure.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAlNrRV7BzY8qVscTLGrJUR57sufDr_YUUh9Q6T8aLYYPqObvQs2z3BTMrzGBYDV7T6vdy07n8FQI8Qu07pxHv6Un6k_v1rQrhqua7Sz_VnFih2_EX1XNMGqgjGgIMyypbLaT0NWTU_P8pfc9_dS8wdD_J8-TWUt7-3Z3C_zaxTm89gD4XFcYdeGy8CkyHJvThl2euIB3u6HGMvVFAgLGVpbwjus_OvOQHeYTvZ4dTJ1mr2JPbhB4w_XQ172iMzGlqa7z8OaEinYjVi",
+    featured: false,
+  },
+  {
+    id: 4,
+    category: "Investment",
+    categoryColor: "bg-purple-50 text-purple-700 border border-purple-200",
+    date: "Oct 5, 2024",
+    title: "Zone Investment Surpasses $4B Target for Q3",
+    body: "DSEZ closed Q3 with $4.2B in verified foreign direct investment commitments, outperforming the annual target by 18% — driven by manufacturing and digital services entrants.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBWGInBh8G-7Wr7K0bcFu6IiUSYb2zS1C1LvHLDG4pXy2-8tB0kgUeXBluqolE4gjZ557cEw4gUWbAtbUIKquku9t-sDAhBjj2n7-QNdtYCX3-CIGBt7WlvzmwSKjpezEhbUaHO9IH43xXQ1FivCEehEodI0RHJOMTKaC1Y5p1jYgNrxaqKytJ9EiBeCuc3WuMwTdzT7Qn1PWOAlb4XJmbxocEa_fFWMnXNRYaAS-UKBTsR1NQ60GC-9eLTpWvRPGsMtTomtEfhttd0",
+    featured: false,
+  },
+  {
+    id: 5,
+    category: "Events",
+    categoryColor: "bg-sky-50 text-sky-700 border border-sky-200",
+    date: "Sep 28, 2024",
+    title: "Regional Investment Summit 2024 — Official Recap",
+    body: "Over 320 delegates from 42 nations attended the DSEZ Authority's flagship summit, resulting in 17 letters of intent and three confirmed anchor tenant agreements.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDlxpCrMl4bpiPRW0h9HLylNqQMWDxx49SfJMwZemZP2jEbl_jZwEkn-OZBpgu2iFwzwR-srtMYAcK13aUB4Xs46OhUrz2Vf41BYNWv5D2gkaKhBISWvLY2Ysg-qWYbyoHtFnyuRr2tx0_DDqVgsO3SshW34hmFnckeSVZGMXrex-beYHpXmCrBYWIGEIszCSSbl2uFsY4gX2dDrEfF3g2dcKA6XD8li2xKqczqOHqnIqFjeF6UL7A7Hz0JcXvctxgSgrWkdQPsyCeZ",
+    featured: false,
+  },
+  {
+    id: 6,
+    category: "Infrastructure",
+    categoryColor: "bg-emerald-50 text-emerald-700 border border-emerald-200",
+    date: "Sep 14, 2024",
+    title: "Port Integration Milestone: Berth 7 Now Operational",
+    body: "The completion of Berth 7 adds 12,000 TEU/month capacity to the zone's maritime gateway, making DSEZ the highest-throughput inland digital port in the subregion.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2rmKgH2pe3_wz_q5R75t21k30Uqwbc3B4SMtLNf8Cnt-ZSb4XInvpKr7o6_sypPsSQ6JeNMpb988Ree_5vBQA4WSbgn1_aAZjZUhAQfa_bkKy3Wk3eFosRgtMlkHYrdTpDbBPSkFiKReBzObqs58xycwbaJXatBYmDLs3pz7PoxJDvt1_uGc4D8jzXIwGmEIVC6ABjmGbkYv_NK9YfB0MaDwRkOszvfMTxrX0gC8nFcOkfkl2iw6mMeZi7xZMNc3Z-mnBXAZigTqH",
+    featured: false,
+  },
+];
+
+const inTheNews = [
+  {
+    outlet: "Global Trade Journal",
+    headline:
+      "How DSEZ is Redefining the Future of Trans-Continental Digital Trade",
+    summary:
+      "An in-depth analysis of the zone's regulatory framework and its ripple effect across APAC trade corridors.",
+    date: "November 2024",
+    large: true,
+  },
+  {
+    outlet: "The Financial Standard",
+    headline: "Zone Investment Surpasses $4B Target for Q3",
+    date: "October 2024",
+  },
+  {
+    outlet: "Maritime Weekly",
+    headline: "Port Integration Complete: A New Logistics Milestone",
+    date: "October 2024",
+  },
+  {
+    outlet: "Tech Insights Africa",
+    headline: "DSEZ Named AI Governance Lead in Emerging Markets Report",
+    date: "September 2024",
+  },
+];
 
 // ─── Scroll-reveal hook ───────────────────────────────────────────────────────
 const useReveal = (threshold = 0.1) => {

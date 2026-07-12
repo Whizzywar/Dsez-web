@@ -1,13 +1,98 @@
 import { useState, useRef, useEffect } from "react";
 import { SuccessStories } from "../components/sections/SuccessStories";
-import {
-  advantages,
-  sectors,
-  incentives,
-  resources,
-  journeySteps,
-} from "../data/siteData";
+
 import Icon from "../components/ui/Icon";
+
+const advantages = [
+  {
+    title: "Strategic Location",
+    body: "Direct access to deep-water ports and major rail networks connecting 14 landlocked nations.",
+  },
+  {
+    title: "AfCFTA Alignment",
+    body: "Benefit from zero-tariff trade across the continent through our certified regional hub status.",
+  },
+  {
+    title: "Digital-First Infrastructure",
+    body: "Fibre-optic backbone and dedicated power grid ensures 99.9% operational uptime.",
+  },
+];
+
+// ─── Priority sectors — icon keys match Icon.jsx's iconMap ────────────────────
+const sectors = [
+  {
+    icon: "factory",
+    title: "Agro-processing",
+    body: "Advanced facilities for value-addition to regional agricultural exports.",
+  },
+  {
+    icon: "bolt",
+    title: "Oil & Gas",
+    body: "Downstream processing and specialised logistics for energy infrastructure.",
+  },
+  {
+    icon: "office",
+    title: "Manufacturing",
+    body: "Light and heavy industrial facilities with ready-to-use factory shells.",
+  },
+  {
+    icon: "ship",
+    title: "Global Logistics",
+    body: "State-of-the-art warehousing and smart supply chain management systems.",
+  },
+];
+
+// ─── Incentives — icon keys match Icon.jsx's iconMap ──────────────────────────
+const incentives = [
+  {
+    icon: "receipt",
+    title: "Tax Exemptions",
+    body: "10-year corporate income tax holiday, followed by a flat rate of 15% for the subsequent decade.",
+  },
+  {
+    icon: "exchange",
+    title: "Capital Repatriation",
+    body: "100% foreign ownership allowed with guaranteed full repatriation of profits and capital dividends.",
+  },
+  {
+    icon: "leaf",
+    title: "Sustainability Credits",
+    body: "Additional carbon credit offsets for enterprises implementing green energy and waste management.",
+  },
+];
+
+// ─── Investment journey steps ──────────────────────────────────────────────────
+const journeySteps = [
+  {
+    num: "01",
+    title: "Expression of Interest",
+    body: "Submit your preliminary project proposal and facility requirements.",
+  },
+  {
+    num: "02",
+    title: "Review & Approval",
+    body: "Our technical committee evaluates the proposal for zone alignment within 14 days.",
+  },
+  {
+    num: "03",
+    title: "Licensing",
+    body: "Obtain your SEZ operator licence through our integrated single-window portal.",
+  },
+  {
+    num: "04",
+    title: "Development",
+    body: "Commence site construction or move into your pre-built factory shell.",
+  },
+];
+
+// ─── Resources — icon keys match Icon.jsx's iconMap ───────────────────────────
+const resources = [
+  { icon: "doc", label: "DSEZ Brochure 2024", size: "3.2 MB" },
+  { icon: "doc", label: "Tax Policy Docs", size: "1.4 MB" },
+  { icon: "map", label: "Site Map & Plots", size: "5.1 MB" },
+];
+
+// ─── News & Events for hompage section ────────────────────────────────────────────────────────────
 
 // ─── Scroll-reveal hook (same pattern used on AboutPage) ──────────────────────
 const useReveal = () => {
