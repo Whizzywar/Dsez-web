@@ -1,10 +1,5 @@
 import Icon from "../ui/Icon";
 
-/**
- * CTASection
- * Full-width dark navy call-to-action section with decorative rings,
- * headline, subtext, and primary + secondary buttons.
- */
 const CTASection = () => (
   <section className="bg-[#001e40] py-28 relative overflow-hidden">
     {/* Decorative background rings */}

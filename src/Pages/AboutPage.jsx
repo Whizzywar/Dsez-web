@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { RiLinkedinFill } from "react-icons/ri";
-import { HiShield, HiScale, HiDoc } from "react-icons/hi2";
+import { HiShield, HiScale, HiDoc } from "../components/ui/Icon";
 
 const iconMap = {
   linkedin: RiLinkedinFill,

@@ -2,11 +2,7 @@ import { useRef } from "react";
 import Icon from "../ui/Icon";
 
 /**
- * HeroSection
- * Full-screen video hero with gradient overlay, animated badge,
- * headline, subtext, and dual CTAs.
- *
- * Replace the <source> src with your own hosted .mp4 for production.
+
  * The `poster` attribute acts as a static fallback image.
  */
 const HeroSection = () => {
