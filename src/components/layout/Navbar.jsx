@@ -28,7 +28,7 @@ const accordionSections = [
     items: investmentItems,
   },
   {
-    key: "media",
+    key: "news",
     label: "Media",
     baseHref: "/media",
     icon: "photo",

@@ -5,7 +5,7 @@ import Footer from "./components/layout/Footer";
 import DSEZHomepage from "./pages/DSEZHomepage";
 import AboutPage from "./pages/AboutPage";
 import InvestmentPage from "./pages/InvestmentPage";
-import NewsPage from "./pages/NewsPage";
+import MediaPage from "./pages/MediaPage";
 import FaqPage from "./pages/FaqPage";
 import ContactPage from "./pages/ContactPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
@@ -37,8 +37,8 @@ const App = () => (
             }
           />
 
-          {/* ── News page ── */}
-          <Route path="/news" element={<NewsPage />} />
+          {/* ── Media page ── */}
+          <Route path="/media" element={<MediaPage />} />
           <Route
             path="/media/news"
             element={<PlaceholderPage title="News & Events" section="Media" />}

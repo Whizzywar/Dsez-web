@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 
-import { HiOutlineArrowRight, HiOutlineChevronRight, HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
+import {
+  HiOutlineArrowRight,
+  HiOutlineChevronRight,
+  HiOutlineArrowTopRightOnSquare,
+} from "react-icons/hi2";
 
 // ─── Data for media page ─────────────────────────────────────────────────────────────────────
 
@@ -228,7 +232,7 @@ const PressCard = ({ article, delay = 0 }) => (
   </Reveal>
 );
 
-const NewsPage = () => {
+const MediaPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(6);
 
@@ -448,4 +452,4 @@ const NewsPage = () => {
   );
 };
 
-export default NewsPage;
+export default MediaPage;
