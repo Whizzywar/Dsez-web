@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import DSEZHomepage from "./Pages/DSEZHomepage";
+import DsezHomepage from "./Pages/DsezHomepage";
 import AboutPage from "./Pages/AboutPage";
 import InvestmentPage from "./Pages/InvestmentPage";
 import MediaPage from "./Pages/MediaPage";
@@ -18,7 +18,7 @@ const App = () => (
       <main className="flex-1 pt-20">
         <Routes>
           {/* ── Home ── */}
-          <Route path="/" element={<DSEZHomepage />} />
+          <Route path="/" element={<DsezHomepage />} />
 
           {/* ── About ── */}
 

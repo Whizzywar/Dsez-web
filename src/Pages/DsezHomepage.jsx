@@ -8,7 +8,7 @@ import PartnersSection from "../components/sections/PartnersSection";
 import NewsSection from "../components/sections/NewsSection";
 import CTASection from "../components/sections/CTASection";
 
-const DSEZHomepage = () => (
+const DsezHomepage = () => (
   <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
     <Navbar />
 
@@ -22,4 +22,4 @@ const DSEZHomepage = () => (
   </div>
 );
 
-export default DSEZHomepage;
+export default DsezHomepage;
