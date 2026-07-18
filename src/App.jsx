@@ -2,13 +2,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import DSEZHomepage from "./pages/DSEZHomepage";
-import AboutPage from "./pages/AboutPage";
-import InvestmentPage from "./pages/InvestmentPage";
-import MediaPage from "./pages/MediaPage";
-import FaqPage from "./pages/FaqPage";
-import ContactPage from "./pages/ContactPage";
-import PlaceholderPage from "./pages/PlaceholderPage";
+import DSEZHomepage from "./Pages/DSEZHomepage";
+import AboutPage from "./Pages/AboutPage";
+import InvestmentPage from "./Pages/InvestmentPage";
+import MediaPage from "./Pages/MediaPage";
+import FaqPage from "./Pages/FaqPage";
+import ContactPage from "./Pages/ContactPage";
+import PlaceholderPage from "./Pages/PlaceholderPage";
 
 const App = () => (
   <BrowserRouter>
