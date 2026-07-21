@@ -1,8 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
-// Replace `icon` SVG paths and `bg`/`color` with real logo images:
-//   <img src={partner.logo} alt={partner.name} className="h-10 w-auto object-contain" />
-
 const partners = [
   {
     id: 1,

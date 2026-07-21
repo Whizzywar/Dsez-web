@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { SuccessStories } from "../components/sections/SuccessStories";
+import SuccessStories from "../components/sections/SuccessStories";
 
 import Icon from "../components/ui/Icon";
 
