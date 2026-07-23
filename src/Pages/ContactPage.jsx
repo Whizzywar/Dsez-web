@@ -291,7 +291,7 @@ export default function ContactPage() {
                     Priority Hotline
                   </p>
                   <p className="font-display text-2xl font-black mb-1">
-                    +1 (800) DSEZ-GOV
+                    +234 (802) (391) (9724)
                   </p>
                   <p className="text-white/55 text-xs leading-relaxed">
                     Direct line for registered investors and anchor tenants.
