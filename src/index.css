@@ -164,3 +164,20 @@ input:focus {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+/* Infinite marquee */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-roll 45s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+@keyframes ticker-roll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
