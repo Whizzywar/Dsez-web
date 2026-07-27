@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { HiOutlineArrowRight, HiOutlineArrowUpRight } from "react-icons/hi2";
+import { HiOutlineArrowRight } from "react-icons/hi2";
 
 // ─── Articles ─────────────────────────────────────────────────────────────────
 const articles = [
