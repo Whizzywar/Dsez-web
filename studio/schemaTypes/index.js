@@ -1,1 +1,5 @@
-export const schemaTypes = []
+import pressRelease from "./pressRelease";
+
+
+
+export const schemaTypes = [pressRelease]
