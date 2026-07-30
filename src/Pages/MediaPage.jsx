@@ -17,6 +17,8 @@ const TICKER = [
   "● Investment Summit 2026 Recap Available",
 ];
 
+const TICKER_DOUBLED = [...TICKER, ...TICKER];
+
 // tag → accent color mapping (DSEZ palette)
 const TAG_COLORS = {
   NEWS: "#FF5722",
@@ -33,15 +35,12 @@ const ArticleCard = ({ article }) => {
 
   return (
     <article
-      className="bg-white rounded-sm overflow-hidden shadow-sm
+      className="bg-white rounded-xl overflow-hidden shadow-sm
                         hover:shadow-xl transition-all duration-300
                         cursor-pointer group flex flex-col"
     >
       {/* Image + white date badge — exact Blue Origin placement */}
-      <div
-        className="relative overflow-hidden shrink-0"
-        style={{ aspectRatio: "16/10" }}
-      >
+      <div className="relative overflow-hidden shrink-0">
         <img
           src={article.img}
           alt={article.headline}
@@ -110,6 +109,7 @@ export default function NewsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Fetchs live articles from Sanity on mount
   useEffect(() => {
     sanityClient
       .fetch(PRESS_RELEASES_QUERY)
@@ -125,9 +125,6 @@ export default function NewsPage() {
 
   const visible = articles.slice(0, shown);
   const hasMore = shown < articles.length;
-
-  // Double for seamless loop
-  const tickerItems = [...TICKER, ...TICKER];
 
   // Paste this block JUST BEFORE your existing: return (
   if (loading)
@@ -218,8 +215,9 @@ export default function NewsPage() {
                                shrink-0"
               />
               <span className="text-white/50 text-xs font-medium">
-                Last updated: Jun 30, 2026 &nbsp;·&nbsp; 9 press releases this
-                quarter
+                {articles.length > 0
+                  ? `${articles.length} press releases available`
+                  : "Loading latest updates..."}
               </span>
             </div>
           </div>
@@ -239,12 +237,15 @@ export default function NewsPage() {
                           bg-linear-to-l from-[#001e40] to-transparent"
           />
 
-          <div className="ticker-track">
-            {tickerItems.map((item, i) => (
+          <div
+            className="flex w-max animate-[ticker-roll_45s_linear_infinite]
+                          hover:[animation-play-state:paused]"
+          >
+            {TICKER_DOUBLED.map((item, i) => (
               <span
                 key={i}
                 className="text-xs font-bold text-white/55 px-8
-                           whitespace-nowrap tracking-[0.18em]"
+                               whitespace-nowrap tracking-[0.18em]"
               >
                 {item}
               </span>
@@ -283,6 +284,15 @@ export default function NewsPage() {
               <ArticleCard key={article.id} article={article} />
             ))}
           </div>
+
+          {/* Empty state — no articles yet in Sanity */}
+          {articles.length === 0 && !loading && (
+            <div className="text-center py-20">
+              <p className="text-gray-400 text-sm">
+                No articles published yet. Add one in your Sanity Studio.
+              </p>
+            </div>
+          )}
 
           {/* Show More — plain centred, Blue Origin style */}
           {hasMore ? (

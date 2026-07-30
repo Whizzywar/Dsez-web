@@ -1,17 +1,54 @@
 <!doctype html>
 <html lang="en">
+  const TICKER_DOUBLED = [...TICKER, ...TICKER];
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    -->
     <link
       rel="icon"
-      type="image/svg+xml"
-      href="src\assets\DeltaSEZMC-300x177-1.png "
+      type="image/png"
+      href="/src/assets/DeltaSEZMC-300x177-1.png"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dsez-Web</title>
+
+    <!-- ── SEO meta tags ────────────────────────────────────────────────────
+                    -->
+    <title>DSEZ — Delta Special Economic Zone</title>
+    <meta
+      name="description"
+      content="The Delta Special Economic Zone (DSEZ) is Africa's premier digital trade and industrial hub. Invest, operate, and grow within a world-class free zone."
+    />
+    <meta
+      name="keywords"
+      content="DSEZ, Delta Special Economic Zone, Nigeria free zone, African investment, AfCFTA, industrial hub"
+    />
+    <meta name="author" content="DSEZ Management Company" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp previews) ───────────── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DSEZ — Delta Special Economic Zone" />
+    <meta
+      property="og:description"
+      content="Africa's premier digital trade and industrial hub. Invest, operate, and grow within a world-class free zone."
+    />
+    <meta property="og:image" content="/src/assets/DeltaSEZMC-300x177-1.png" />
+    <meta property="og:url" content="https://dsez-web-e7zg.vercel.app" />
+    <meta property="og:site_name" content="DSEZ" />
+
+    <!-- ── Twitter card ─────────────────────────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DSEZ — Delta Special Economic Zone" />
+    <meta
+      name="twitter:description"
+      content="Africa's premier digital trade and industrial hub."
+    />
+    <meta name="twitter:image" content="/src/assets/DeltaSEZMC-300x177-1.png" />
+
+    <!-- ── Theme colour (mobile browser chrome) ─────────────────────────── -->
+    <meta name="theme-color" content="#001e40" />
   </head>
   <body>
-    <h1 class="text-3xl text-blue-400 font-bold underline">Hello world!</h1>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
