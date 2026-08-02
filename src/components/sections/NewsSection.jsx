@@ -37,10 +37,10 @@ const NewsSection = () => (
       <div className="flex flex-col md:flex-row justify-between items-baseline mb-14 gap-4">
         <div className="max-w-xl">
           <h2 className="font-display text-3xl font-black text-[#FF4500]">
-            Latest News &amp; Events
+            Latest News
           </h2>
           <p className="text-[#4A4A4A] mt-2 text-base">
-            Stay updated with the latest progress and international partnerships
+            Stay updated with the latest progress and international updates
             within the zone.
           </p>
         </div>
