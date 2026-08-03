@@ -334,32 +334,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* ── Map embed placeholder ─────────────────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-4 md:px-16 pb-20">
-          <Reveal>
-            <div
-              className="rounded-2xl overflow-hidden border border-gray-200 h-64 bg-gray-100
-                            flex items-center justify-center relative"
-            >
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBgWZVO94131r5JY3tpSsAuS9O_WklwMkptYDBWzal-BC3E4ZoyUasOjxSUCQE-9HkhTbnq7Y9PZJy8Tr_tQHkcc5XeY1omoRQLH_sKbACbGz3sjncTKAxRKHY9eWNx5gx6kgbayux9a9ua6q-ip8S2P5suSSR47OvYIf6IgJCye_d0xPFLsjGON8yETUKdN4NrhVzgBQR8yLQfBaHiYc6ZGsxUNGIvDXvKvJStFlMNopx9LBZMXUVpzhkzY9TtlHsBXMha2nCblqS"
-                alt="DSEZ Headquarters location"
-                className="absolute inset-0 w-full h-full object-cover grayscale opacity-40"
-              />
-              <div
-                className="relative z-10 bg-white/90 backdrop-blur-sm px-6 py-4
-                              rounded-xl border border-gray-200 shadow-md text-center"
-              >
-                <p className="font-display font-bold text-[#001e40] text-sm">
-                  DSEZ Central Authority Center
-                </p>
-                <p className="text-xs text-gray-400 mt-1">
-                  400 Innovation Drive, Financial District
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        </section>
+        {/* ──  For Google Map API  ─────────────────────────────────────────── */}
       </div>
     </div>
   );

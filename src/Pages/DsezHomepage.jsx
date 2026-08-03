@@ -5,7 +5,6 @@ import StatsTicker from "../components/sections/StatsTicker";
 import OverviewSection from "../components/sections/OverviewSection";
 import SectorCards from "../components/sections/SectorCards";
 import PartnersSection from "../components/sections/PartnersSection";
-import NewsSection from "../components/sections/NewsSection";
 import CTASection from "../components/sections/CTASection";
 
 const DsezHomepage = () => (
@@ -17,7 +16,7 @@ const DsezHomepage = () => (
     <OverviewSection />
     <SectorCards />
     <PartnersSection />
-    <NewsSection />
+    {/*  */}
     <CTASection />
   </div>
 );
