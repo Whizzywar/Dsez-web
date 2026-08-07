@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./index.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -21,7 +21,6 @@ const App = () => (
           <Route path="/" element={<DsezHomepage />} />
 
           {/* ── About ── */}
-
           <Route path="/about" element={<AboutPage />} />
           <Route path="/about/vision" element={<AboutPage />} />
           <Route path="/about/leadership" element={<AboutPage />} />
@@ -36,14 +35,6 @@ const App = () => (
               <PlaceholderPage title="Smart Manufacturing" section="Invest" />
             }
           />
-
-          {/* ── Media page ── */}
-          <Route path="/media" element={<MediaPage />} />
-          <Route
-            path="/media/news"
-            element={<PlaceholderPage title="News & Events" section="Media" />}
-          />
-
           <Route
             path="/invest/logistics"
             element={
@@ -70,10 +61,22 @@ const App = () => (
             }
           />
 
-          {/* ── Faqs page ── */}
+          {/* ── Media ─────────────────────────────────────────────────────────
+           */}
+          <Route
+            path="/media"
+            element={<Navigate to="/media/news" replace />}
+          />
+          <Route path="/media/news" element={<MediaPage />} />
+          <Route
+            path="/media/gallery"
+            element={<PlaceholderPage title="Gallery" section="Media" />}
+          />
+
+          {/* ── FAQs ── */}
           <Route path="/faqs" element={<FaqPage />} />
 
-          {/* ── Contact page ── */}
+          {/* ── Contact ── */}
           <Route path="/contact" element={<ContactPage />} />
 
           {/* ── 404 ── */}

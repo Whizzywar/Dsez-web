@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
-import { aboutItems, investmentItems, mediaItems } from "../siteData";
+
 import Icon from "../ui/Icon";
 import DropdownMenu from "../ui/DropdownMenu";
 import useScrolled from "../../hooks/useScrolled";
 import useBodyScrollLock from "../../hooks/useBodyScrollLock";
+import { aboutItems, investmentItems, mediaItems } from "../../data/siteData";
 
 // ─── Route config for flat top-level links ────────────────────────────────────
 const flatNavItems = [
@@ -12,6 +13,9 @@ const flatNavItems = [
   { label: "Contact Us", to: "/contact", icon: "contact" },
 ];
 
+// ─── Section config for the three split-trigger accordions ────────────────────
+// Centralising this avoids the copy-paste bug where all 3 accordions ended up
+// sharing the same state, items, icon, and id.
 const accordionSections = [
   {
     key: "about",
@@ -28,9 +32,9 @@ const accordionSections = [
     items: investmentItems,
   },
   {
-    key: "news",
+    key: "media",
     label: "Media",
-    baseHref: "/media",
+    baseHref: null,
     icon: "photo",
     items: mediaItems,
   },
@@ -162,7 +166,7 @@ const Navbar = () => {
             />
             <DropdownMenu
               label="Media"
-              baseHref="/media"
+              inactive
               items={mediaItems}
               isScrolled={scrolled}
             />
@@ -267,15 +271,29 @@ const Navbar = () => {
                     isOpen ? "bg-orange-50" : "hover:bg-gray-50"
                   }`}
                 >
-                  {/* LABEL — navigates straight to the section's base page */}
-                  <NavLink
-                    to={section.baseHref}
-                    end
-                    className={() => accordionHeaderCls(section.items)}
-                  >
-                    <Icon name={section.icon} className="w-5 h-5 shrink-0" />
-                    <span className="flex-1 text-left">{section.label}</span>
-                  </NavLink>
+                  {/* LABEL
+                      media = plain span (inactive, like Blue Origin Space Systems)
+                      other = NavLink navigates to baseHref on tap              */}
+                  {section.key === "media" ? (
+                    <span
+                      className={
+                        accordionHeaderCls(section.items) +
+                        " cursor-default select-none"
+                      }
+                    >
+                      <Icon name={section.icon} className="w-5 h-5 shrink-0" />
+                      <span className="flex-1 text-left">{section.label}</span>
+                    </span>
+                  ) : (
+                    <NavLink
+                      to={section.baseHref}
+                      end
+                      className={() => accordionHeaderCls(section.items)}
+                    >
+                      <Icon name={section.icon} className="w-5 h-5 shrink-0" />
+                      <span className="flex-1 text-left">{section.label}</span>
+                    </NavLink>
+                  )}
 
                   {/* CHEVRON — only toggles the accordion, no navigation */}
                   <button
