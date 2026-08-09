@@ -8,7 +8,9 @@ import InvestmentPage from "./Pages/InvestmentPage";
 import MediaPage from "./Pages/MediaPage";
 import FaqPage from "./Pages/FaqPage";
 import ContactPage from "./Pages/ContactPage";
+import GalleryPage from "./Pages/GalleryPage";
 import PlaceholderPage from "./Pages/PlaceholderPage";
+
 
 const App = () => (
   <BrowserRouter>
@@ -70,7 +72,7 @@ const App = () => (
           <Route path="/media/news" element={<MediaPage />} />
           <Route
             path="/media/gallery"
-            element={<PlaceholderPage title="Gallery" section="Media" />}
+            element={<GalleryPage/>}
           />
 
           {/* ── FAQs ── */}
