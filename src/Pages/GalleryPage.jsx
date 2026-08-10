@@ -1,24 +1,3 @@
-/**
- * GalleryPage.jsx — DSEZ Media Gallery
- * ─────────────────────────────────────────────────────────────
- * Premium modern-classic Free Zone gallery
- *
- * Features:
- * 1. Cinematic hero banner
- * 2. Gallery heading + descriptive paragraph
- * 3. Photo / Video / All filters
- * 4. Category filters
- * 5. Responsive 3-column gallery
- * 6. Premium image hover effects
- * 7. Captions below every card
- * 8. Video play indicators
- * 9. Full-screen lightbox
- * 10. Keyboard navigation
- * 11. Previous / Next controls
- * 12. Responsive mobile navigation
- * 13. Premium CTA section
- * 14. Footer / social links
- */
 
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
@@ -31,20 +10,11 @@ import {
   HiOutlinePhoto,
   HiOutlineArrowUpRight,
   HiOutlineArrowDown,
-  HiOutlineBars3,
 } from "react-icons/hi2";
 
-import {
-  RiLinkedinFill,
-  RiTwitterXFill,
-  RiFacebookFill,
-  RiInstagramFill,
-  RiYoutubeFill,
-} from "react-icons/ri";
-
-/* ═══════════════════════════════════════════════════════════════
+/* ============================================================
    GALLERY DATA
-═══════════════════════════════════════════════════════════════ */
+============================================================ */
 
 const items = [
   {
@@ -54,10 +24,8 @@ const items = [
     title: "Aerial View — Zone Master Plan",
     caption:
       "Phase I land parcel at full operational capacity across 1,200 hectares of serviced industrial land.",
-    img:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAe0HJ02N6S_7UkF452R9ajOu2SoPuMHtCLxAm-ckAycMeZu4MsSDO34gqJGZvNj2e4kTGO4OId80VNWaBJYIrSljEaJnERerlezeV5NvKbmv6D-jJx99JnmZmY2cFbjQtsqexm5xFHOtjPg-Xj-2YdMr_cpIk0wKW9yzIF7RzwuyPmc4eRudwKLgwx3Coz3rbRZj7H99zSQqPZqyTuFoMqR1LOl7fMYiiy86aA34lXozdkgF7_CPsQzEWZ9en76wehEwNfjzkF5Lov",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAe0HJ02N6S_7UkF452R9ajOu2SoPuMHtCLxAm-ckAycMeZu4MsSDO34gqJGZvNj2e4kTGO4OId80VNWaBJYIrSljEaJnERerlezeV5NvKbmv6D-jJx99JnmZmY2cFbjQtsqexm5xFHOtjPg-Xj-2YdMr_cpIk0wKW9yzIF7RzwuyPmc4eRudwKLgwx3Coz3rbRZj7H99zSQqPZqyTuFoMqR1LOl7fMYiiy86aA34lXozdkgF7_CPsQzEWZ9en76wehEwNfjzkF5Lov",
   },
-
   {
     id: 2,
     type: "photo",
@@ -65,10 +33,8 @@ const items = [
     title: "Berth 7 — Maritime Gateway",
     caption:
       "12,000 TEU/month capacity. The highest-throughput inland digital port in the subregion.",
-    img:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA2rmKgH2pe3_wz_q5R75t21k30Uqwbc3B4SMtLNf8Cnt-ZSb4XInvpKr7o6_sypPsSQ6JeNMpb988Ree_5vBQA4WSbgn1_aAZjZUhAQfa_bkKy3Wk3eFosRgtMlkHYrdTpDbBPSkFiKReBzObqs58xycwbaJXatBYmDLs3pz7PoxJDvt1_uGc4D8jzXIwGmEIVC6ABjmGbkYv_NK9YfB0MaDwRkOszvfMTxrX0gC8nFcOkfkl2iw6mMeZi7xZMNc3Z-mnBXAZigTqH",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2rmKgH2pe3_wz_q5R75t21k30Uqwbc3B4SMtLNf8Cnt-ZSb4XInvpKr7o6_sypPsSQ6JeNMpb988Ree_5vBQA4WSbgn1_aAZjZUhAQfa_bkKy3Wk3eFosRgtMlkHYrdTpDbBPSkFiKReBzObqs58xycwbaJXatBYmDLs3pz7PoxJDvt1_uGc4D8jzXIwGmEIVC6ABjmGbkYv_NK9YfB0MaDwRkOszvfMTxrX0gC8nFcOkfkl2iw6mMeZi7xZMNc3Z-mnBXAZigTqH",
   },
-
   {
     id: 3,
     type: "photo",
@@ -76,10 +42,8 @@ const items = [
     title: "Investment Summit 2026",
     caption:
       "320 delegates from 42 nations attended DSEZ's flagship annual summit resulting in 17 letters of intent.",
-    img:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDlxpCrMl4bpiPRW0h9HLylNqQMWDxx49SfJMwZemZP2jEbl_jZwEkn-OZBpgu2iFwzwR-srtMYAcK13aUB4Xs46OhUrz2Vf41BYNWv5D2gkaKhBISWvLY2Ysg-qWYbyoHtFnyuRr2tx0_DDqVgsO3SshW34hmFnckeSVZGMXrex-beYHpXmCrBYWIGEIszCSSbl2uFsY4gX2dDrEfF3g2dcKA6XD8li2xKqczqOHqnIqFjeF6UL7A7Hz0JcXvctxgSgrWkdQPsyCeZ",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDlxpCrMl4bpiPRW0h9HLylNqQMWDxx49SfJMwZemZP2jEbl_jZwEkn-OZBpgu2iFwzwR-srtMYAcK13aUB4Xs46OhUrz2Vf41BYNWv5D2gkaKhBISWvLY2Ysg-qWYbyoHtFnyuRr2tx0_DqVgsO3SshW34hmFnckeSVZGMXrex-beYHpXmCrBYWIGEIszCSSbl2uFsY4gX2dDrEfF3g2dcKA6XD8li2xKqczqOHqnIqFjeF6UL7A7Hz0JcXvctxgSgrWkdQPsyCeZ",
   },
-
   {
     id: 4,
     type: "photo",
@@ -87,10 +51,8 @@ const items = [
     title: "Central Authority Centre",
     caption:
       "DSEZ Headquarters — 400 Innovation Drive, Financial District. The zone's administrative nerve centre.",
-    img:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBBgWZVO94131r5JY3tpSsAuS9O_WklwMkptYDBWzal-BC3E4ZoyUasOjxSUCQE-9HkhTbnq7Y9PZJy8Tr_tQHkcc5XeY1omoRQLH_sKbACbGz3sjncTKAxRKHY9eWNx5gx6kgbayux9a9ua6q-ip8S2P5suSSR47OvYIf6IgJCye_d0xPFLsjGON8yETUKdN4NrhVzgBQR8yLQfBaHiYc6ZGsxUNGIvDXvKvJStFlMNopx9LBZMXUVpzhkzY9TtlHsBXMha2nCblqS",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBgWZVO94131r5JY3tpSsAuS9O_WklwMkptYDBWzal-BC3E4ZoyUasOjxSUCQE-9HkhTbnq7Y9PZJy8Tr_tQHkcc5XeY1omoRQLH_sKbACbGz3sjncTKAxRKHY9eWNx5gx6kgbayux9a9ua6q-ip8S2P5suSSR47OvYIf6IgJCye_d0xPFLsjGON8yETUKdN4NrhVzgBQR8yLQfBaHiYc6ZGsxUNGIvDXvKvJStFlMNopx9LBZMXUVpzhkzY9TtlHsBXMha2nCblqS",
   },
-
   {
     id: 5,
     type: "photo",
@@ -98,10 +60,8 @@ const items = [
     title: "Factory Shell — Type A",
     caption:
       "Ready-to-occupy 5,000 sqm industrial factory shell available for immediate operator setup.",
-    img:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD5bsZBcipXkW9QL-RWdAKlDXmDjLGJkcBj7gyGpR4HobtijtMBI9PJkHZXC_y1i_2qQpZLG03EYEFmnpMPZT4pZMfKJ5vwSfjkriN3_cXHWecWkTvVnA0kKMnwwaQzohL7nC3zr0HbMO4q9T4mYi76ut8ZeQbDJfchwHgex-2I83UkeFPKmU0bkR81DQbhzlpiOKnMcJ0jfiwdsRO-EIkjs8EV4iNITNw-7WhMHYmh_RodgFZHqeSw0CLYa0fwxzpXxm6Mv90Ea0qS",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD5bsZBcipXkW9QL-RWdAKlDXmDjLGJkcBj7gyGpR4HobtijtMBI9PJkHZXC_y1i_2qQpZLG03EYEFmnpMPZT4pZMfKJ5vwSfjkriN3_cXHWecWkTvVnA0kKMnwwaQzohL7nC3zr0HbMO4q9T4mYi76ut8ZeQbDJfchwHgex-2I83UkeFPKmU0bkR81DQbhzlpiOKnMcJ0jfiwdsRO-EIkjs8EV4iNITNw-7WhMHYmh_RodgFZHqeSw0CLYa0fwxzpXxm6Mv90Ea0qS",
   },
-
   {
     id: 6,
     type: "photo",
@@ -109,10 +69,8 @@ const items = [
     title: "Smart Grid Control Room",
     caption:
       "AI-driven Phase II energy grid delivering 99.9% uptime and cutting operator energy costs by 22%.",
-    img:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBWGInBh8G-7Wr7K0bcFu6IiUSYb2zS1C1LvHLDG4pXy2-8tB0kgUeXBluqolE4gjZ557cEw4gUWbAtbUIKquku9t-sDAhBjj2n7-QNdtYCX3-CIGBt7WlvzmwSKjpezEhbUaHO9IH43xXQ1FivCEehEodI0RHJOMTKaC1Y5p1jYgNrxaqKytJ9EiBeCuc3WuMwTdzT7Qn1PWOAlb4XJmbxocEa_fFWMnXNRYaAS-UKBTsR1NQ60GC-9eLTpWvRPGsMtTomtEfhttd0",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBWGInBh8G-7Wr7K0bcFu6IiUSYb2zS1C1LvHLDG4pXy2-8tB0kgUeXBluqolE4gjZ557cEw4gUWbAtbUIKquku9t-sDAhBjj2n7-QNdtYCX3-CIGBt7WlvzmwSKjpezEhbUaHO9IH43xXQ1FivCEehEodI0RHJOMTKaC1Y5p1jYgNrxaqKytJ9EiBeCuc3WuMwTdzT7Qn1PWOAlb4XJmbxocEa_fFWMnXNRYaAS-UKBTsR1NQ60GC-9eLTpWvRPGsMtTomtEfhttd0",
   },
-
   {
     id: 7,
     type: "photo",
@@ -120,10 +78,8 @@ const items = [
     title: "AfDB Partnership Signing",
     caption:
       "The $220M AfDB co-financing agreement for Phase III infrastructure development — roads, water, and broadband.",
-    img:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCbhruhFdWA4dZdtwy21d3iI6lFKovTgwPze0C_dvQspRPJ84aGmgy824Ly7beIKJhqDCUQRfj1SQPhJ2H06AbBzva01iJgiA-0rM2g-kQl4oRzgjptmCKj63cmKXg63__ziQTVSYjZsPseZKH9Ew6fXvXrYjSMqJBJjd0wdShMArIUxl9GhekJqjuMzrJKLOAE6Ht2DjUue9qiJn8MhBKzuWRHA-FDn80-bmzqHyU4HEiMXL3rHtqmyhvByP7csta3zGlnHw9bALZF",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCbhruhFdWA4dZdtwy21d3iI6lFKovTgwPze0C_dvQspRPJ84aGmgy824Ly7beIKJhqDCUQRfj1SQPhJ2H06AbBzva01iJgiA-0rM2g-kQl4oRzgjptmCKj63cmKXg63__ziQTVSYjZsPseZKH9Ew6fXvXrYjSMqJBJjd0wdShMArIUxl9GhekJqjuMzrJKLOAE6Ht2DjUue9qiJn8MhBKzuWRHA-FDn80-bmzqHyU4HEiMXL3rHtqmyhvByP7csta3zGlnHw9bALZF",
   },
-
   {
     id: 8,
     type: "photo",
@@ -131,10 +87,8 @@ const items = [
     title: "Zone Boundary — Phase I",
     caption:
       "1,200 hectares of fully serviced industrial land ready for immediate occupation by international operators.",
-    img:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAlNrRV7BzY8qVscTLGrJUR57sufDr_YUUh9Q6T8aLYYPqObvQs2z3BTMrzGBYDV7T6vdy07n8FQI8Qu07pxHv6Un6k_v1rQrhqua7Sz_VnFih2_EX1XNMGqgjGgIMyypbLaT0NWTU_P8pfc9_dS8wdD_J8-TWUt7-3Z3C_zaxTm89gD4XFcYdeGy8CkyHJvThl2euIB3u6HGMvVFAgLGVpbwjus_OvOQHeYTvZ4dTJ1mr2JPbhB4w_XQ172iMzGlqa7z8OaEinYjVi",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAlNrRV7BzY8qVscTLGrJUR57sufDr_YUUh9Q6T8aLYYPqObvQs2z3BTMrzGBYDV7T6vdy07n8FQI8Qu07pxHv6Un6k_v1rQrhqua7Sz_VnFih2_EX1XNMGqgjGgIMyypbLaT0NWTU_P8pfc9_dS8wdD_J8-TWUt7-3Z3C_zaxTm89gD4XFcYdeGy8CkyHJvThl2euIB3u6HGMvVFAgLGVpbwjus_OvOQHeYTvZ4dTJ1mr2JPbhB4w_XQ172iMzGlqa7z8OaEinYjVi",
   },
-
   {
     id: 9,
     type: "photo",
@@ -142,12 +96,8 @@ const items = [
     title: "Digital Customs Portal",
     caption:
       "DSEZ-ONE single-window portal reducing average customs clearance time to under 4 hours.",
-    img:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB8Qi2sHfPHAm1Aac7yQKuR7Yks0QZ3KGf-UlMAMhgbtap-_oMdXXVYZXrA6PC_TqCgzo1iNWN0-s5M4QhLH9e3cxKVrJFN8i_kJ7FP4NQaTHlJHAqWl9S0Y5c2YV1vLAnS0n8UMbLHh0ggN1uTwC4Y8_nxcNiGFKBzAW3-hx8FdKhYGRj8E7fIbgETLCUKIh_2l9mVADXSf5B6Kc6I-t7gQNxvGEHMqPqBw8F08YR3xfXk2uCxkzxYiNf76pWy39gCQyVQfh7o",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB8Qi2sHfPHAm1Aac7yQKuR7Yks0QZ3KGf-UlMAMhgbtap-_oMdXXVYZXrA6PC_TqCgzo1iNWN0-s5M4QhLH9e3cxKVrJFN8i_kJ7FP4NQaTHlJHAqWl9S0Y5c2YV1vLAnS0n8UMbLHh0ggN1uTwC4Y8_nxcNiGFKBzAW3-hx8FdKhYGRj8E7fIbgETLCUKIh_2l9mVADXSf5B6Kc6I-t7gQNxvGEHMqPqBw8F08YR3xfXk2uCxkzxYiNf76pWy39gCQyVQfh7o",
   },
-
-  /* Videos */
-
   {
     id: 10,
     type: "video",
@@ -161,7 +111,6 @@ const items = [
       "https://www.w3schools.com/html/mov_bbb.mp4",
     duration: "3:42",
   },
-
   {
     id: 11,
     type: "video",
@@ -175,73 +124,24 @@ const items = [
       "https://www.w3schools.com/html/mov_bbb.mp4",
     duration: "2:18",
   },
-
   {
     id: 12,
     type: "video",
     category: "Events",
-    title:
-      "Regional Investment Summit 2026 — Highlights",
+    title: "Regional Investment Summit 2026 — Highlights",
     caption:
       "Key moments, keynote addresses, and signing ceremonies from the DSEZ flagship investment conference.",
     thumb:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDlxpCrMl4bpiPRW0h9HLylNqQMWDxx49SfJMwZemZP2jEbl_jZwEkn-OZBpgu2iFwzwR-srtMYAcK13aUB4Xs46OhUrz2Vf41BYNWv5D2gkaKhBISWvLY2Ysg-qWYbyoHtFnyuRr2tx0_DDqVgsO3SshW34hmFnckeSVZGMXrex-beYHpXmCrBYWIGEIszCSSbl2uFsY4gX2dDrEfF3g2dcKA6XD8li2xKqczqOHqnIqFjeF6UL7A7Hz0JcXvctxgSgrWkdQPsyCeZ",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDlxpCrMl4bpiPRW0h9HLylNqQMWDxx49SfJMwZemZP2jEbl_jZwEkn-OZBpgu2iFwzwR-srtMYAcK13aUB4Xs46OhUrz2Vf41BYNWv5D2gkaKhBISWvLY2Ysg-qWYbyoHtFnyuRr2tx0_DqVgsO3SshW34hmFnckeSVZGMXrex-beYHpXmCrBYWIGEIszCSSbl2uFsY4gX2dDrEfF3g2dcKA6XD8li2xKqczqOHqnIqFjeF6UL7A7Hz0JcXvctxgSgrWkdQPsyZ",
     videoUrl:
       "https://www.w3schools.com/html/mov_bbb.mp4",
     duration: "5:07",
   },
 ];
 
-/* ═══════════════════════════════════════════════════════════════
-   FILTER DATA
-═══════════════════════════════════════════════════════════════ */
-
-const TYPE_FILTERS = [
-  "All",
-  "Photos",
-  "Videos",
-];
-
-const CATEGORIES = [
-  "All",
-  "Infrastructure",
-  "Operations",
-  "Events",
-  "Manufacturing",
-  "Zone Overview",
-];
-
-const SOCIALS = [
-  {
-    Icon: RiTwitterXFill,
-    label: "X",
-    href: "#",
-  },
-  {
-    Icon: RiFacebookFill,
-    label: "Facebook",
-    href: "#",
-  },
-  {
-    Icon: RiInstagramFill,
-    label: "Instagram",
-    href: "#",
-  },
-  {
-    Icon: RiYoutubeFill,
-    label: "YouTube",
-    href: "#",
-  },
-  {
-    Icon: RiLinkedinFill,
-    label: "LinkedIn",
-    href: "#",
-  },
-];
-
-/* ═══════════════════════════════════════════════════════════════
+/* ============================================================
    LIGHTBOX
-═══════════════════════════════════════════════════════════════ */
+============================================================ */
 
 const Lightbox = ({
   item,
@@ -253,44 +153,19 @@ const Lightbox = ({
 }) => {
   useEffect(() => {
     const handleKeyboard = (event) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-
-      if (event.key === "ArrowLeft") {
-        onPrev();
-      }
-
-      if (event.key === "ArrowRight") {
-        onNext();
-      }
+      if (event.key === "Escape") onClose();
+      if (event.key === "ArrowLeft") onPrev();
+      if (event.key === "ArrowRight") onNext();
     };
 
-    window.addEventListener(
-      "keydown",
-      handleKeyboard
-    );
-
+    window.addEventListener("keydown", handleKeyboard);
     document.body.style.overflow = "hidden";
 
     return () => {
-      window.removeEventListener(
-        "keydown",
-        handleKeyboard
-      );
-
+      window.removeEventListener("keydown", handleKeyboard);
       document.body.style.overflow = "";
     };
-  }, [
-    onClose,
-    onPrev,
-    onNext,
-  ]);
-
-  const src =
-    item.type === "video"
-      ? item.thumb
-      : item.img;
+  }, [onClose, onPrev, onNext]);
 
   return (
     <div
@@ -303,7 +178,6 @@ const Lightbox = ({
       "
       onClick={onClose}
     >
-      {/* Close */}
       <button
         onClick={onClose}
         aria-label="Close gallery"
@@ -312,11 +186,10 @@ const Lightbox = ({
           flex h-11 w-11
           items-center justify-center
           rounded-full
-          border border-white/10
           bg-white/10
           text-white
           backdrop-blur-md
-          transition-all
+          transition
           hover:bg-white
           hover:text-slate-900
         "
@@ -324,7 +197,6 @@ const Lightbox = ({
         <HiOutlineXMark className="h-5 w-5" />
       </button>
 
-      {/* Counter */}
       <div
         className="
           absolute left-1/2 top-6
@@ -338,22 +210,19 @@ const Lightbox = ({
         {String(total).padStart(2, "0")}
       </div>
 
-      {/* Previous */}
       <button
         onClick={(event) => {
           event.stopPropagation();
           onPrev();
         }}
-        aria-label="Previous image"
+        aria-label="Previous item"
         className="
           absolute left-3 sm:left-7
-          top-1/2
-          z-20
+          top-1/2 z-20
           flex h-12 w-12
           -translate-y-1/2
           items-center justify-center
           rounded-full
-          border border-white/10
           bg-white/10
           text-white
           backdrop-blur-md
@@ -365,22 +234,19 @@ const Lightbox = ({
         <HiOutlineArrowLeft className="h-5 w-5" />
       </button>
 
-      {/* Next */}
       <button
         onClick={(event) => {
           event.stopPropagation();
           onNext();
         }}
-        aria-label="Next image"
+        aria-label="Next item"
         className="
           absolute right-3 sm:right-7
-          top-1/2
-          z-20
+          top-1/2 z-20
           flex h-12 w-12
           -translate-y-1/2
           items-center justify-center
           rounded-full
-          border border-white/10
           bg-white/10
           text-white
           backdrop-blur-md
@@ -392,19 +258,14 @@ const Lightbox = ({
         <HiOutlineArrowRight className="h-5 w-5" />
       </button>
 
-      {/* Main content */}
       <div
         className="
           flex w-full max-w-6xl
           flex-col items-center
-          gap-6
-          px-12
+          gap-6 px-12
         "
-        onClick={(event) =>
-          event.stopPropagation()
-        }
+        onClick={(event) => event.stopPropagation()}
       >
-        {/* Media */}
         {item.type === "video" ? (
           <video
             src={item.videoUrl}
@@ -421,7 +282,7 @@ const Lightbox = ({
           />
         ) : (
           <img
-            src={src}
+            src={item.img}
             alt={item.title}
             className="
               max-h-[65vh]
@@ -433,14 +294,12 @@ const Lightbox = ({
           />
         )}
 
-        {/* Caption */}
         <div className="max-w-2xl px-4 text-center">
           <span
             className="
               mb-2 block
               text-[10px]
-              font-bold
-              uppercase
+              font-bold uppercase
               tracking-[0.25em]
               text-[#ff5722]
             "
@@ -448,26 +307,11 @@ const Lightbox = ({
             {item.category}
           </span>
 
-          <h3
-            className="
-              text-xl
-              font-black
-              tracking-tight
-              text-white
-              sm:text-2xl
-            "
-          >
+          <h3 className="text-xl font-black text-white sm:text-2xl">
             {item.title}
           </h3>
 
-          <p
-            className="
-              mt-2
-              text-sm
-              leading-relaxed
-              text-white/55
-            "
-          >
+          <p className="mt-2 text-sm leading-relaxed text-white/55">
             {item.caption}
           </p>
         </div>
@@ -476,9 +320,9 @@ const Lightbox = ({
   );
 };
 
-/* ═══════════════════════════════════════════════════════════════
+/* ============================================================
    GALLERY CARD
-═══════════════════════════════════════════════════════════════ */
+============================================================ */
 
 const GalleryCard = ({
   item,
@@ -486,44 +330,29 @@ const GalleryCard = ({
   featured = false,
 }) => {
   const isVideo = item.type === "video";
-
-  const src =
-    isVideo
-      ? item.thumb
-      : item.img;
+  const src = isVideo ? item.thumb : item.img;
 
   return (
     <article
       onClick={() => onClick(item)}
-      className={`
-        group
-        cursor-pointer
+      className="
+        group cursor-pointer
         overflow-hidden
         rounded-[1.5rem]
         bg-white
         shadow-sm
-        transition-all
-        duration-500
+        transition-all duration-500
         hover:-translate-y-1
         hover:shadow-2xl
-        ${
-          featured
-            ? "lg:row-span-2"
-            : ""
-        }
-      `}
+      "
     >
-      {/* Image */}
       <div
         className="
-          relative
-          overflow-hidden
+          relative overflow-hidden
           bg-slate-200
         "
         style={{
-          aspectRatio: featured
-            ? "16/11"
-            : "16/10",
+          aspectRatio: featured ? "16/11" : "16/10",
         }}
       >
         <img
@@ -540,7 +369,6 @@ const GalleryCard = ({
           "
         />
 
-        {/* Image gradient */}
         <div
           className="
             absolute inset-0
@@ -548,28 +376,22 @@ const GalleryCard = ({
             from-black/65
             via-black/5
             to-transparent
-            opacity-80
-            transition
-            duration-500
-            group-hover:opacity-100
           "
         />
 
-        {/* Category */}
         <span
           className={`
             absolute left-4 top-4
             rounded-full
             px-3 py-1.5
             text-[9px]
-            font-bold
-            uppercase
+            font-bold uppercase
             tracking-[0.18em]
             backdrop-blur-md
             ${
               isVideo
                 ? "bg-[#ff5722] text-white"
-                : "border border-white/20 bg-[#001e40]/80 text-white"
+                : "bg-[#001e40]/80 text-white"
             }
           `}
         >
@@ -578,16 +400,12 @@ const GalleryCard = ({
             : item.category}
         </span>
 
-        {/* Video */}
         {isVideo && (
           <>
             <div
               className="
                 absolute inset-0
                 flex items-center justify-center
-                bg-black/10
-                transition
-                group-hover:bg-black/20
               "
             >
               <div
@@ -595,7 +413,6 @@ const GalleryCard = ({
                   flex h-16 w-16
                   items-center justify-center
                   rounded-full
-                  border border-white/50
                   bg-white/20
                   text-white
                   backdrop-blur-md
@@ -603,7 +420,6 @@ const GalleryCard = ({
                   duration-300
                   group-hover:scale-110
                   group-hover:bg-[#ff5722]
-                  group-hover:border-[#ff5722]
                 "
               >
                 <HiOutlinePlayCircle className="h-8 w-8" />
@@ -617,9 +433,7 @@ const GalleryCard = ({
                 bg-black/70
                 px-2.5 py-1
                 text-[10px]
-                font-bold
-                text-white
-                backdrop-blur-sm
+                font-bold text-white
               "
             >
               {item.duration}
@@ -627,20 +441,17 @@ const GalleryCard = ({
           </>
         )}
 
-        {/* Open icon */}
         <div
           className="
             absolute right-4 top-4
             flex h-10 w-10
             items-center justify-center
             rounded-full
-            border border-white/20
             bg-white/10
             text-white
             opacity-0
             backdrop-blur-md
-            transition-all
-            duration-300
+            transition
             group-hover:opacity-100
           "
         >
@@ -648,21 +459,11 @@ const GalleryCard = ({
         </div>
       </div>
 
-      {/* Caption */}
-      <div
-        className="
-          flex flex-1
-          flex-col
-          gap-2
-          px-5 py-5
-        "
-      >
-        {/* Number */}
+      <div className="px-5 py-5">
         <div
           className="
             text-[9px]
-            font-bold
-            uppercase
+            font-bold uppercase
             tracking-[0.25em]
             text-slate-300
           "
@@ -670,25 +471,23 @@ const GalleryCard = ({
           {String(item.id).padStart(2, "0")}
         </div>
 
-        {/* Title */}
         <h3
           className="
-            text-base
-            font-black
+            mt-2
+            text-base font-black
             leading-snug
             tracking-tight
             text-[#001e40]
             transition-colors
-            duration-200
             group-hover:text-[#ff5722]
           "
         >
           {item.title}
         </h3>
 
-        {/* Description */}
         <p
           className="
+            mt-2
             text-sm
             leading-6
             text-[#4a4a4a]
@@ -697,22 +496,20 @@ const GalleryCard = ({
           {item.caption}
         </p>
 
-        {/* View */}
         <div
           className="
-            mt-2
-            flex items-center
-            gap-2
+            mt-4
+            flex items-center gap-2
             text-[10px]
-            font-bold
-            uppercase
+            font-bold uppercase
             tracking-[0.18em]
             text-slate-400
-            transition-colors
+            transition
             group-hover:text-[#ff5722]
           "
         >
-          View image
+          View {isVideo ? "video" : "image"}
+
           <HiOutlineArrowUpRight className="h-3.5 w-3.5" />
         </div>
       </div>
@@ -720,9 +517,9 @@ const GalleryCard = ({
   );
 };
 
-/* ═══════════════════════════════════════════════════════════════
+/* ============================================================
    HERO
-═══════════════════════════════════════════════════════════════ */
+============================================================ */
 
 const Hero = ({
   photoCount,
@@ -731,8 +528,7 @@ const Hero = ({
   return (
     <section
       className="
-        relative
-        -mt-20
+        relative -mt-20
         h-[70vh]
         min-h-[580px]
         max-h-[780px]
@@ -740,10 +536,9 @@ const Hero = ({
         bg-[#001e40]
       "
     >
-      {/* Background */}
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQiHThBhrofGhpCVxoqDUO1JcBOqhkhda1aTzu-OMF8oDKLf6yb6BUbyd_PANOIi5Y0LushuKJXsBAhTGjRmVw07ZbgHJsnrhhXGwcRDWivLsbJm3sny1UWlEvhAeXC-mcKe90hpyWGPBVQNQf83RUl1mPjMnQskH91gVnQiyOUrEaEPQw26gzmucqRf03SD4oYocGjAVt5-zdmYswsrhTFrFUkng_jkLqGhDlVQ61N2AO4Hh9cb0W2l60RbAVs5XgMDyQ_UW1glZU"
-        alt="DSEZ Free Zone Trade Hub"
+        alt="DSEZ Free Zone"
         className="
           absolute inset-0
           h-full w-full
@@ -754,15 +549,8 @@ const Hero = ({
         "
       />
 
-      {/* Main overlay */}
-      <div
-        className="
-          absolute inset-0
-          bg-black/35
-        "
-      />
+      <div className="absolute inset-0 bg-black/35" />
 
-      {/* Cinematic gradient */}
       <div
         className="
           absolute inset-0
@@ -773,7 +561,6 @@ const Hero = ({
         "
       />
 
-      {/* Side gradient */}
       <div
         className="
           absolute inset-0
@@ -784,83 +571,24 @@ const Hero = ({
         "
       />
 
-      {/* Decorative ring */}
       <div
         className="
-          pointer-events-none
-          absolute right-0 top-0
-          hidden h-full w-1/2
-          overflow-hidden
-          lg:block
-        "
-      >
-        <div
-          className="
-            absolute
-            -right-40
-            top-1/2
-            h-[650px]
-            w-[650px]
-            -translate-y-1/2
-            rounded-full
-            border
-            border-white/10
-          "
-        />
-
-        <div
-          className="
-            absolute
-            -right-24
-            top-1/2
-            h-[500px]
-            w-[500px]
-            -translate-y-1/2
-            rounded-full
-            border
-            border-white/10
-          "
-        />
-      </div>
-
-      {/* Hero content */}
-      <div
-        className="
-          absolute
-          bottom-0
-          left-0
+          absolute bottom-0 left-0
           w-full
-          px-5
-          pb-12
-          pt-24
+          px-5 pb-12 pt-24
           sm:px-10
           md:px-16
           lg:pb-16
         "
       >
         <div className="mx-auto max-w-7xl">
-
-          {/* Eyebrow */}
-          <div
-            className="
-              mb-5
-              flex items-center
-              gap-3
-            "
-          >
-            <span
-              className="
-                h-px
-                w-10
-                bg-[#66dd8b]
-              "
-            />
+          <div className="mb-5 flex items-center gap-3">
+            <span className="h-px w-10 bg-[#66dd8b]" />
 
             <span
               className="
                 text-[10px]
-                font-bold
-                uppercase
+                font-bold uppercase
                 tracking-[0.3em]
                 text-[#66dd8b]
               "
@@ -869,12 +597,10 @@ const Hero = ({
             </span>
           </div>
 
-          {/* Heading */}
           <h1
             className="
               mb-5
-              text-6xl
-              font-black
+              text-6xl font-black
               leading-[0.9]
               tracking-[-0.05em]
               text-white
@@ -886,13 +612,10 @@ const Hero = ({
             Gallery
           </h1>
 
-          {/* Description */}
           <p
             className="
-              mb-7
-              max-w-2xl
-              text-base
-              leading-7
+              mb-7 max-w-2xl
+              text-base leading-7
               text-white/70
               sm:text-lg
               sm:leading-8
@@ -904,23 +627,8 @@ const Hero = ({
             innovation, and sustainable economic development.
           </p>
 
-          {/* Stats */}
-          <div
-            className="
-              flex
-              items-center
-              gap-6
-            "
-          >
-            <div
-              className="
-                flex
-                items-center
-                gap-2
-                text-sm
-                text-white/55
-              "
-            >
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 text-sm text-white/55">
               <HiOutlinePhoto className="h-4 w-4" />
 
               <span>
@@ -931,22 +639,9 @@ const Hero = ({
               </span>
             </div>
 
-            <div
-              className="
-                h-4 w-px
-                bg-white/20
-              "
-            />
+            <div className="h-4 w-px bg-white/20" />
 
-            <div
-              className="
-                flex
-                items-center
-                gap-2
-                text-sm
-                text-white/55
-              "
-            >
+            <div className="flex items-center gap-2 text-sm text-white/55">
               <HiOutlinePlayCircle className="h-4 w-4" />
 
               <span>
@@ -960,19 +655,16 @@ const Hero = ({
             <a
               href="#gallery"
               className="
-                ml-2
-                hidden
-                items-center
-                gap-2
-                text-xs
-                font-bold
-                uppercase
+                ml-2 hidden
+                items-center gap-2
+                text-xs font-bold uppercase
                 tracking-[0.18em]
                 text-white
                 sm:flex
               "
             >
               Explore
+
               <HiOutlineArrowDown className="h-4 w-4" />
             </a>
           </div>
@@ -982,17 +674,16 @@ const Hero = ({
   );
 };
 
-/* ═══════════════════════════════════════════════════════════════
-   INTRODUCTION
-═══════════════════════════════════════════════════════════════ */
+/* ============================================================
+   INTRO
+============================================================ */
 
 const GalleryIntro = () => {
   return (
     <section
       className="
         bg-[#f2f2f2]
-        px-5
-        py-20
+        px-5 py-20
         sm:px-10
         md:px-16
         lg:py-28
@@ -1000,36 +691,20 @@ const GalleryIntro = () => {
     >
       <div
         className="
-          mx-auto
-          grid
-          max-w-7xl
-          gap-12
+          mx-auto max-w-7xl
+          grid gap-12
           lg:grid-cols-[0.65fr_1.35fr]
           lg:items-end
         "
       >
-        {/* Label */}
         <div>
-          <div
-            className="
-              flex
-              items-center
-              gap-3
-            "
-          >
-            <span
-              className="
-                h-px
-                w-10
-                bg-slate-400
-              "
-            />
+          <div className="flex items-center gap-3">
+            <span className="h-px w-10 bg-slate-400" />
 
             <span
               className="
                 text-[10px]
-                font-bold
-                uppercase
+                font-bold uppercase
                 tracking-[0.3em]
                 text-slate-400
               "
@@ -1041,8 +716,7 @@ const GalleryIntro = () => {
           <div
             className="
               mt-10
-              text-xs
-              font-semibold
+              text-xs font-semibold
               uppercase
               tracking-[0.2em]
               text-slate-300
@@ -1052,13 +726,11 @@ const GalleryIntro = () => {
           </div>
         </div>
 
-        {/* Content */}
         <div>
           <h2
             className="
               max-w-4xl
-              text-4xl
-              font-medium
+              text-4xl font-medium
               leading-[1.08]
               tracking-[-0.04em]
               text-[#001e40]
@@ -1066,19 +738,17 @@ const GalleryIntro = () => {
               lg:text-6xl
             "
           >
-            A destination built for
+            A destination built for{" "}
             <span className="text-slate-400">
-              {" "}investment, innovation
+              investment, innovation
             </span>{" "}
             and sustainable growth.
           </h2>
 
           <p
             className="
-              mt-7
-              max-w-3xl
-              text-base
-              leading-8
+              mt-7 max-w-3xl
+              text-base leading-8
               text-slate-500
             "
           >
@@ -1094,171 +764,99 @@ const GalleryIntro = () => {
   );
 };
 
-/* ═══════════════════════════════════════════════════════════════
+/* ============================================================
    FILTER BAR
-═══════════════════════════════════════════════════════════════ */
+   CENTERED
+   ONLY PHOTOS + VIDEOS
+   NO BORDER
+   NO STICKY
+============================================================ */
 
 const FilterBar = ({
   typeFilter,
   setTypeFilter,
-  categoryFilter,
-  setCategoryFilter,
-  filteredCount,
 }) => {
   return (
     <div
       className="
-        sticky
-        top-20
-        z-40
-        border-b
-        border-gray-200
-        bg-white/95
-        backdrop-blur-xl
+        mb-12
+        flex w-full
+        items-center
+        justify-center
       "
     >
       <div
         className="
-          mx-auto
           flex
-          max-w-7xl
-          flex-wrap
           items-center
-          gap-3
-          px-4
-          py-4
-          sm:px-8
-          md:px-16
+          justify-center
+          gap-2
         "
       >
-        {/* Type filters */}
-        <div
-          className="
-            flex
-            shrink-0
-            gap-2
-          "
-        >
-          {TYPE_FILTERS.map((filter) => {
-            const active =
-              typeFilter === filter;
-
-            return (
-              <button
-                key={filter}
-                onClick={() =>
-                  setTypeFilter(filter)
-                }
-                className={`
-                  rounded-full
-                  border
-                  px-4
-                  py-2
-                  text-xs
-                  font-bold
-                  transition-all
-                  ${
-                    active
-                      ? "border-[#001e40] bg-[#001e40] text-white"
-                      : "border-gray-200 bg-white text-[#4a4a4a] hover:border-[#001e40]/40"
-                  }
-                `}
-              >
-                {filter}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Divider */}
-        <div
-          className="
-            hidden
-            h-5
-            w-px
-            bg-gray-200
-            sm:block
-          "
-        />
-
-        {/* Categories */}
-        <div
-          className="
-            flex
-            gap-2
-            overflow-x-auto
-            pb-1
-          "
-        >
-          {CATEGORIES.map((category) => {
-            const active =
-              categoryFilter === category;
-
-            return (
-              <button
-                key={category}
-                onClick={() =>
-                  setCategoryFilter(category)
-                }
-                className={`
-                  shrink-0
-                  rounded-full
-                  border
-                  px-3
-                  py-2
-                  text-xs
-                  font-bold
-                  transition-all
-                  ${
-                    active
-                      ? "border-[#ff5722] bg-[#ff5722] text-white"
-                      : "border-gray-200 bg-white text-[#4a4a4a] hover:border-[#ff5722]/40"
-                  }
-                `}
-              >
-                {category}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Count */}
-        <span
-          className="
-            ml-auto
-            hidden
+        <button
+          type="button"
+          onClick={() => setTypeFilter("Photos")}
+          className={`
+            rounded-full
+            border-0
+            px-8 py-3
             text-xs
-            font-medium
-            text-gray-400
-            sm:block
-          "
+            font-bold
+            outline-none
+            transition-all
+            duration-300
+            ${
+              typeFilter === "Photos"
+                ? "bg-[#001e40] text-white shadow-md"
+                : "bg-transparent text-slate-500 hover:bg-slate-100 hover:text-[#001e40]"
+            }
+          `}
         >
-          {filteredCount}{" "}
-          {filteredCount === 1
-            ? "item"
-            : "items"}
-        </span>
+          Photos
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setTypeFilter("Videos")}
+          className={`
+            rounded-full
+            border-0
+            px-8 py-3
+            text-xs
+            font-bold
+            outline-none
+            transition-all
+            duration-300
+            ${
+              typeFilter === "Videos"
+                ? "bg-[#001e40] text-white shadow-md"
+                : "bg-transparent text-slate-500 hover:bg-slate-100 hover:text-[#001e40]"
+            }
+          `}
+        >
+          Videos
+        </button>
       </div>
     </div>
   );
 };
 
-/* ═══════════════════════════════════════════════════════════════
+/* ============================================================
    GALLERY SECTION
-═══════════════════════════════════════════════════════════════ */
+============================================================ */
 
 const GallerySection = ({
   filtered,
   openLightbox,
-  resetFilters,
+  typeFilter,
+  setTypeFilter,
 }) => {
   return (
     <main
       id="gallery"
       className="
         bg-[#f2f2f2]
-        px-4
-        py-16
+        px-4 py-16
         sm:px-8
         md:px-16
         lg:py-24
@@ -1266,39 +864,32 @@ const GallerySection = ({
     >
       <div className="mx-auto max-w-7xl">
 
-        {/* Section heading */}
+        {/* FILTER IS CENTERED HERE */}
+
+        <FilterBar
+          typeFilter={typeFilter}
+          setTypeFilter={setTypeFilter}
+        />
+
+        {/* EXPLORE ZONE */}
+
         <div
           className="
             mb-10
-            flex
-            flex-col
-            gap-6
+            flex flex-col gap-6
             lg:flex-row
             lg:items-end
             lg:justify-between
           "
         >
           <div>
-            <div
-              className="
-                flex
-                items-center
-                gap-3
-              "
-            >
-              <span
-                className="
-                  h-px
-                  w-10
-                  bg-[#ff5722]
-                "
-              />
+            <div className="flex items-center gap-3">
+              <span className="h-px w-10 bg-[#ff5722]" />
 
               <span
                 className="
                   text-[10px]
-                  font-bold
-                  uppercase
+                  font-bold uppercase
                   tracking-[0.3em]
                   text-[#ff5722]
                 "
@@ -1310,8 +901,7 @@ const GallerySection = ({
             <h2
               className="
                 mt-4
-                text-4xl
-                font-black
+                text-4xl font-black
                 tracking-[-0.04em]
                 text-[#001e40]
                 sm:text-5xl
@@ -1324,8 +914,7 @@ const GallerySection = ({
           <p
             className="
               max-w-md
-              text-sm
-              leading-7
+              text-sm leading-7
               text-slate-500
             "
           >
@@ -1334,75 +923,66 @@ const GallerySection = ({
           </p>
         </div>
 
-        {/* Empty state */}
+        {/* GALLERY */}
+
         {filtered.length === 0 ? (
           <div
             className="
-              flex
-              flex-col
+              flex flex-col
               items-center
               justify-center
               rounded-3xl
               bg-white
-              px-6
-              py-32
+              px-6 py-32
               text-center
+              shadow-sm
             "
           >
             <HiOutlinePhoto
               className="
-                mb-5
-                h-10
-                w-10
+                mb-5 h-10 w-10
                 text-slate-300
               "
             />
 
-            <p
+            <h3
               className="
-                text-xl
-                font-black
+                text-xl font-black
                 text-[#001e40]
               "
             >
-              No items match this filter
-            </p>
+              No items available
+            </h3>
 
-            <button
-              onClick={resetFilters}
+            <p
               className="
-                mt-4
-                text-sm
-                font-bold
-                text-[#ff5722]
-                hover:underline
+                mt-2 max-w-sm
+                text-sm leading-6
+                text-slate-400
               "
             >
-              Reset filters
-            </button>
+              There are currently no{" "}
+              {typeFilter.toLowerCase()} available
+              in the gallery.
+            </p>
           </div>
         ) : (
           <div
             className="
-              grid
-              grid-cols-1
+              grid grid-cols-1
               gap-6
               md:grid-cols-2
               lg:grid-cols-3
             "
           >
-            {filtered.map(
-              (item, index) => (
-                <GalleryCard
-                  key={item.id}
-                  item={item}
-                  onClick={openLightbox}
-                  featured={
-                    index === 0
-                  }
-                />
-              )
-            )}
+            {filtered.map((item, index) => (
+              <GalleryCard
+                key={item.id}
+                item={item}
+                onClick={openLightbox}
+                featured={index === 0}
+              />
+            ))}
           </div>
         )}
       </div>
@@ -1410,19 +990,16 @@ const GallerySection = ({
   );
 };
 
-/* ═══════════════════════════════════════════════════════════════
+/* ============================================================
    CTA
-═══════════════════════════════════════════════════════════════ */
+============================================================ */
 
 const CTA = () => {
   return (
     <section
       className="
-        border-t
-        border-slate-200
         bg-white
-        px-6
-        py-24
+        px-6 py-24
         sm:px-10
         md:px-16
         lg:py-32
@@ -1430,37 +1007,21 @@ const CTA = () => {
     >
       <div
         className="
-          mx-auto
-          flex
-          max-w-7xl
-          flex-col
-          gap-12
+          mx-auto max-w-7xl
+          flex flex-col gap-12
           lg:flex-row
           lg:items-end
           lg:justify-between
         "
       >
         <div>
-          <div
-            className="
-              flex
-              items-center
-              gap-3
-            "
-          >
-            <span
-              className="
-                h-px
-                w-10
-                bg-[#ff5722]
-              "
-            />
+          <div className="flex items-center gap-3">
+            <span className="h-px w-10 bg-[#ff5722]" />
 
             <span
               className="
                 text-[10px]
-                font-bold
-                uppercase
+                font-bold uppercase
                 tracking-[0.3em]
                 text-[#ff5722]
               "
@@ -1471,10 +1032,8 @@ const CTA = () => {
 
           <h2
             className="
-              mt-5
-              max-w-3xl
-              text-4xl
-              font-black
+              mt-5 max-w-3xl
+              text-4xl font-black
               leading-tight
               tracking-[-0.04em]
               text-[#001e40]
@@ -1482,24 +1041,22 @@ const CTA = () => {
               lg:text-6xl
             "
           >
-            See the Free Zone
+            See the Free Zone{" "}
             <span className="text-slate-400">
-              {" "}in motion.
+              in motion.
             </span>
           </h2>
 
           <p
             className="
-              mt-6
-              max-w-xl
-              text-base
-              leading-7
+              mt-6 max-w-xl
+              text-base leading-7
               text-slate-500
             "
           >
-            Discover the environment, infrastructure
-            and opportunities that make DSEZ a destination
-            for businesses ready to grow.
+            Discover the environment, infrastructure and
+            opportunities that make DSEZ a destination for
+            businesses ready to grow.
           </p>
         </div>
 
@@ -1507,29 +1064,23 @@ const CTA = () => {
           href="#gallery"
           className="
             group
-            flex
-            w-fit
-            items-center
-            gap-4
+            flex w-fit
+            items-center gap-4
             rounded-full
             bg-[#001e40]
-            px-7
-            py-4
-            text-sm
-            font-bold
+            px-7 py-4
+            text-sm font-bold
             text-white
             transition-all
             duration-300
             hover:bg-[#ff5722]
-            hover:px-8
           "
         >
           Explore Gallery
 
           <HiOutlineArrowUpRight
             className="
-              h-5
-              w-5
+              h-5 w-5
               transition-transform
               duration-300
               group-hover:translate-x-1
@@ -1542,407 +1093,113 @@ const CTA = () => {
   );
 };
 
-/* ═══════════════════════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════════════════════ */
 
-const Footer = () => {
-  return (
-    <footer
-      className="
-        bg-[#001329]
-        text-white
-      "
-    >
-      <div
-        className="
-          mx-auto
-          max-w-7xl
-          px-6
-          py-16
-          sm:px-10
-          md:px-16
-        "
-      >
-        <div
-          className="
-            grid
-            gap-12
-            md:grid-cols-2
-            lg:grid-cols-4
-          "
-        >
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <div
-              className="
-                flex
-                items-center
-                gap-3
-              "
-            >
-              <div
-                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-white
-                  text-sm
-                  font-black
-                  text-[#001e40]
-                "
-              >
-                DZ
-              </div>
-
-              <div>
-                <div
-                  className="
-                    text-sm
-                    font-black
-                    tracking-wide
-                  "
-                >
-                  DSEZ
-                </div>
-
-                <div
-                  className="
-                    text-[8px]
-                    uppercase
-                    tracking-[0.3em]
-                    text-white/30
-                  "
-                >
-                  Free Zone
-                </div>
-              </div>
-            </div>
-
-            <p
-              className="
-                mt-6
-                max-w-md
-                text-sm
-                leading-7
-                text-white/45
-              "
-            >
-              A destination built for investment,
-              innovation, industry and sustainable
-              economic development.
-            </p>
-          </div>
-
-          {/* Navigation */}
-          <div>
-            <p
-              className="
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-[0.25em]
-                text-white/30
-              "
-            >
-              Explore
-            </p>
-
-            <div
-              className="
-                mt-5
-                flex
-                flex-col
-                gap-3
-              "
-            >
-              <Link
-                to="/"
-                className="
-                  text-sm
-                  text-white/55
-                  transition
-                  hover:text-white
-                "
-              >
-                Home
-              </Link>
-
-              <Link
-                to="/about"
-                className="
-                  text-sm
-                  text-white/55
-                  transition
-                  hover:text-white
-                "
-              >
-                About
-              </Link>
-
-              <Link
-                to="/infrastructure"
-                className="
-                  text-sm
-                  text-white/55
-                  transition
-                  hover:text-white
-                "
-              >
-                Infrastructure
-              </Link>
-
-              <Link
-                to="/gallery"
-                className="
-                  text-sm
-                  text-white
-                "
-              >
-                Gallery
-              </Link>
-            </div>
-          </div>
-
-          {/* Social */}
-          <div>
-            <p
-              className="
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-[0.25em]
-                text-white/30
-              "
-            >
-              Follow us
-            </p>
-
-            <div
-              className="
-                mt-5
-                flex
-                gap-2
-              "
-            >
-              {SOCIALS.map(
-                ({
-                  Icon,
-                  label,
-                  href,
-                }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    className="
-                      flex
-                      h-10
-                      w-10
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-white/10
-                      bg-white/5
-                      text-white/50
-                      transition
-                      hover:bg-white
-                      hover:text-[#001e40]
-                    "
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                )
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom */}
-        <div
-          className="
-            mt-14
-            flex
-            flex-col
-            gap-4
-            border-t
-            border-white/10
-            pt-7
-            sm:flex-row
-            sm:items-center
-            sm:justify-between
-          "
-        >
-          <p
-            className="
-              text-xs
-              text-white/25
-            "
-          >
-            © {new Date().getFullYear()} DSEZ.
-            All rights reserved.
-          </p>
-
-          <div
-            className="
-              flex
-              gap-5
-              text-xs
-              text-white/25
-            "
-          >
-            <a
-              href="#"
-              className="hover:text-white"
-            >
-              Privacy Policy
-            </a>
-
-            <a
-              href="#"
-              className="hover:text-white"
-            >
-              Terms
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
-/* ═══════════════════════════════════════════════════════════════
-   MAIN PAGE
-═══════════════════════════════════════════════════════════════ */
+/* ============================================================
+   MAIN GALLERY PAGE
+============================================================ */
 
 export default function GalleryPage() {
   const [typeFilter, setTypeFilter] =
-    useState("All");
-
-  const [categoryFilter, setCategoryFilter] =
-    useState("All");
+    useState("Photos");
 
   const [lightboxIndex, setLightboxIndex] =
     useState(null);
 
-  /* ─────────────────────────────────────────
-     Filtering
-  ───────────────────────────────────────── */
+  /* ----------------------------------------------------------
+     FILTER ITEMS
+  ---------------------------------------------------------- */
 
-  const filtered = items.filter(
-    (item) => {
-      const matchesType =
-        typeFilter === "All" ||
-        (typeFilter === "Photos" &&
-          item.type === "photo") ||
-        (typeFilter === "Videos" &&
-          item.type === "video");
-
-      const matchesCategory =
-        categoryFilter === "All" ||
-        item.category === categoryFilter;
-
-      return (
-        matchesType &&
-        matchesCategory
-      );
+  const filtered = items.filter((item) => {
+    if (typeFilter === "Photos") {
+      return item.type === "photo";
     }
-  );
 
-  /* ─────────────────────────────────────────
-     Lightbox
-  ───────────────────────────────────────── */
+    if (typeFilter === "Videos") {
+      return item.type === "video";
+    }
+
+    return true;
+  });
+
+  /* ----------------------------------------------------------
+     OPEN LIGHTBOX
+  ---------------------------------------------------------- */
 
   const openLightbox = useCallback(
     (item) => {
-      const index =
-        filtered.findIndex(
-          (galleryItem) =>
-            galleryItem.id === item.id
-        );
+      const index = filtered.findIndex(
+        (galleryItem) =>
+          galleryItem.id === item.id
+      );
 
       setLightboxIndex(index);
     },
     [filtered]
   );
 
-  const closeLightbox =
-    useCallback(() => {
-      setLightboxIndex(null);
-    }, []);
+  /* ----------------------------------------------------------
+     CLOSE LIGHTBOX
+  ---------------------------------------------------------- */
 
-  const previousItem =
-    useCallback(() => {
-      setLightboxIndex(
-        (currentIndex) => {
-          if (
-            currentIndex === null ||
-            filtered.length === 0
-          ) {
-            return currentIndex;
-          }
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null);
+  }, []);
 
-          return (
-            (currentIndex -
-              1 +
-              filtered.length) %
-            filtered.length
-          );
-        }
+  /* ----------------------------------------------------------
+     PREVIOUS
+  ---------------------------------------------------------- */
+
+  const previousItem = useCallback(() => {
+    setLightboxIndex((currentIndex) => {
+      if (
+        currentIndex === null ||
+        filtered.length === 0
+      ) {
+        return currentIndex;
+      }
+
+      return (
+        (currentIndex - 1 + filtered.length) %
+        filtered.length
       );
-    }, [filtered.length]);
+    });
+  }, [filtered.length]);
 
-  const nextItem =
-    useCallback(() => {
-      setLightboxIndex(
-        (currentIndex) => {
-          if (
-            currentIndex === null ||
-            filtered.length === 0
-          ) {
-            return currentIndex;
-          }
+  /* ----------------------------------------------------------
+     NEXT
+  ---------------------------------------------------------- */
 
-          return (
-            (currentIndex + 1) %
-            filtered.length
-          );
-        }
+  const nextItem = useCallback(() => {
+    setLightboxIndex((currentIndex) => {
+      if (
+        currentIndex === null ||
+        filtered.length === 0
+      ) {
+        return currentIndex;
+      }
+
+      return (
+        (currentIndex + 1) %
+        filtered.length
       );
-    }, [filtered.length]);
+    });
+  }, [filtered.length]);
 
-  /* ─────────────────────────────────────────
-     Counts
-  ───────────────────────────────────────── */
+  /* ----------------------------------------------------------
+     COUNTS
+  ---------------------------------------------------------- */
 
-  const photoCount =
-    items.filter(
-      (item) =>
-        item.type === "photo"
-    ).length;
+  const photoCount = items.filter(
+    (item) => item.type === "photo"
+  ).length;
 
-  const videoCount =
-    items.filter(
-      (item) =>
-        item.type === "video"
-    ).length;
+  const videoCount = items.filter(
+    (item) => item.type === "video"
+  ).length;
 
-  /* ─────────────────────────────────────────
-     Reset
-  ───────────────────────────────────────── */
-
-  const resetFilters = () => {
-    setTypeFilter("All");
-    setCategoryFilter("All");
-  };
-
-  /* ═════════════════════════════════════════
+  /* ----------------------------------------------------------
      RENDER
-  ═════════════════════════════════════════ */
+  ---------------------------------------------------------- */
 
   return (
     <div
@@ -1952,68 +1209,28 @@ export default function GalleryPage() {
         text-[#001e40]
       "
     >
-
-      {/* ═══════════════════════════════════
-          HERO
-      ═══════════════════════════════════ */}
-
       <Hero
         photoCount={photoCount}
         videoCount={videoCount}
       />
 
-      {/* ═══════════════════════════════════
-          INTRO
-      ═══════════════════════════════════ */}
-
       <GalleryIntro />
-
-      {/* ═══════════════════════════════════
-          FILTER BAR
-      ═══════════════════════════════════ */}
-
-      <FilterBar
-        typeFilter={typeFilter}
-        setTypeFilter={setTypeFilter}
-        categoryFilter={categoryFilter}
-        setCategoryFilter={
-          setCategoryFilter
-        }
-        filteredCount={filtered.length}
-      />
-
-      {/* ═══════════════════════════════════
-          GALLERY
-      ═══════════════════════════════════ */}
 
       <GallerySection
         filtered={filtered}
         openLightbox={openLightbox}
-        resetFilters={resetFilters}
+        typeFilter={typeFilter}
+        setTypeFilter={setTypeFilter}
       />
-
-      {/* ═══════════════════════════════════
-          CTA
-      ═══════════════════════════════════ */}
 
       <CTA />
 
-      {/* ═══════════════════════════════════
-          FOOTER
-      ═══════════════════════════════════ */}
-
-      <Footer />
-
-      {/* ═══════════════════════════════════
-          LIGHTBOX
-      ═══════════════════════════════════ */}
+     
 
       {lightboxIndex !== null &&
         filtered[lightboxIndex] && (
           <Lightbox
-            item={
-              filtered[lightboxIndex]
-            }
+            item={filtered[lightboxIndex]}
             index={lightboxIndex}
             total={filtered.length}
             onClose={closeLightbox}
