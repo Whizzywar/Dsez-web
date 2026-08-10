@@ -911,16 +911,7 @@ const GallerySection = ({
             </h2>
           </div>
 
-          <p
-            className="
-              max-w-md
-              text-sm leading-7
-              text-slate-500
-            "
-          >
-            A visual journey through our infrastructure,
-            businesses, development, events and community.
-          </p>
+       
         </div>
 
         {/* GALLERY */}
@@ -990,108 +981,7 @@ const GallerySection = ({
   );
 };
 
-/* ============================================================
-   CTA
-============================================================ */
 
-const CTA = () => {
-  return (
-    <section
-      className="
-        bg-white
-        px-6 py-24
-        sm:px-10
-        md:px-16
-        lg:py-32
-      "
-    >
-      <div
-        className="
-          mx-auto max-w-7xl
-          flex flex-col gap-12
-          lg:flex-row
-          lg:items-end
-          lg:justify-between
-        "
-      >
-        <div>
-          <div className="flex items-center gap-3">
-            <span className="h-px w-10 bg-[#ff5722]" />
-
-            <span
-              className="
-                text-[10px]
-                font-bold uppercase
-                tracking-[0.3em]
-                text-[#ff5722]
-              "
-            >
-              Discover more
-            </span>
-          </div>
-
-          <h2
-            className="
-              mt-5 max-w-3xl
-              text-4xl font-black
-              leading-tight
-              tracking-[-0.04em]
-              text-[#001e40]
-              sm:text-5xl
-              lg:text-6xl
-            "
-          >
-            See the Free Zone{" "}
-            <span className="text-slate-400">
-              in motion.
-            </span>
-          </h2>
-
-          <p
-            className="
-              mt-6 max-w-xl
-              text-base leading-7
-              text-slate-500
-            "
-          >
-            Discover the environment, infrastructure and
-            opportunities that make DSEZ a destination for
-            businesses ready to grow.
-          </p>
-        </div>
-
-        <a
-          href="#gallery"
-          className="
-            group
-            flex w-fit
-            items-center gap-4
-            rounded-full
-            bg-[#001e40]
-            px-7 py-4
-            text-sm font-bold
-            text-white
-            transition-all
-            duration-300
-            hover:bg-[#ff5722]
-          "
-        >
-          Explore Gallery
-
-          <HiOutlineArrowUpRight
-            className="
-              h-5 w-5
-              transition-transform
-              duration-300
-              group-hover:translate-x-1
-              group-hover:-translate-y-1
-            "
-          />
-        </a>
-      </div>
-    </section>
-  );
-};
 
 
 /* ============================================================
@@ -1223,7 +1113,7 @@ export default function GalleryPage() {
         setTypeFilter={setTypeFilter}
       />
 
-      <CTA />
+      
 
      
 
