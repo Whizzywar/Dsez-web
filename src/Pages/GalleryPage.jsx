@@ -1,7 +1,5 @@
-
 import { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
-
+import { sanityClient, GALLERY_QUERY } from "../lib/sanity";
 import {
   HiOutlineArrowLeft,
   HiOutlineArrowRight,
@@ -16,141 +14,11 @@ import {
    GALLERY DATA
 ============================================================ */
 
-const items = [
-  {
-    id: 1,
-    type: "photo",
-    category: "Infrastructure",
-    title: "Aerial View — Zone Master Plan",
-    caption:
-      "Phase I land parcel at full operational capacity across 1,200 hectares of serviced industrial land.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAe0HJ02N6S_7UkF452R9ajOu2SoPuMHtCLxAm-ckAycMeZu4MsSDO34gqJGZvNj2e4kTGO4OId80VNWaBJYIrSljEaJnERerlezeV5NvKbmv6D-jJx99JnmZmY2cFbjQtsqexm5xFHOtjPg-Xj-2YdMr_cpIk0wKW9yzIF7RzwuyPmc4eRudwKLgwx3Coz3rbRZj7H99zSQqPZqyTuFoMqR1LOl7fMYiiy86aA34lXozdkgF7_CPsQzEWZ9en76wehEwNfjzkF5Lov",
-  },
-  {
-    id: 2,
-    type: "photo",
-    category: "Operations",
-    title: "Berth 7 — Maritime Gateway",
-    caption:
-      "12,000 TEU/month capacity. The highest-throughput inland digital port in the subregion.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2rmKgH2pe3_wz_q5R75t21k30Uqwbc3B4SMtLNf8Cnt-ZSb4XInvpKr7o6_sypPsSQ6JeNMpb988Ree_5vBQA4WSbgn1_aAZjZUhAQfa_bkKy3Wk3eFosRgtMlkHYrdTpDbBPSkFiKReBzObqs58xycwbaJXatBYmDLs3pz7PoxJDvt1_uGc4D8jzXIwGmEIVC6ABjmGbkYv_NK9YfB0MaDwRkOszvfMTxrX0gC8nFcOkfkl2iw6mMeZi7xZMNc3Z-mnBXAZigTqH",
-  },
-  {
-    id: 3,
-    type: "photo",
-    category: "Events",
-    title: "Investment Summit 2026",
-    caption:
-      "320 delegates from 42 nations attended DSEZ's flagship annual summit resulting in 17 letters of intent.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDlxpCrMl4bpiPRW0h9HLylNqQMWDxx49SfJMwZemZP2jEbl_jZwEkn-OZBpgu2iFwzwR-srtMYAcK13aUB4Xs46OhUrz2Vf41BYNWv5D2gkaKhBISWvLY2Ysg-qWYbyoHtFnyuRr2tx0_DqVgsO3SshW34hmFnckeSVZGMXrex-beYHpXmCrBYWIGEIszCSSbl2uFsY4gX2dDrEfF3g2dcKA6XD8li2xKqczqOHqnIqFjeF6UL7A7Hz0JcXvctxgSgrWkdQPsyCeZ",
-  },
-  {
-    id: 4,
-    type: "photo",
-    category: "Infrastructure",
-    title: "Central Authority Centre",
-    caption:
-      "DSEZ Headquarters — 400 Innovation Drive, Financial District. The zone's administrative nerve centre.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBgWZVO94131r5JY3tpSsAuS9O_WklwMkptYDBWzal-BC3E4ZoyUasOjxSUCQE-9HkhTbnq7Y9PZJy8Tr_tQHkcc5XeY1omoRQLH_sKbACbGz3sjncTKAxRKHY9eWNx5gx6kgbayux9a9ua6q-ip8S2P5suSSR47OvYIf6IgJCye_d0xPFLsjGON8yETUKdN4NrhVzgBQR8yLQfBaHiYc6ZGsxUNGIvDXvKvJStFlMNopx9LBZMXUVpzhkzY9TtlHsBXMha2nCblqS",
-  },
-  {
-    id: 5,
-    type: "photo",
-    category: "Manufacturing",
-    title: "Factory Shell — Type A",
-    caption:
-      "Ready-to-occupy 5,000 sqm industrial factory shell available for immediate operator setup.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD5bsZBcipXkW9QL-RWdAKlDXmDjLGJkcBj7gyGpR4HobtijtMBI9PJkHZXC_y1i_2qQpZLG03EYEFmnpMPZT4pZMfKJ5vwSfjkriN3_cXHWecWkTvVnA0kKMnwwaQzohL7nC3zr0HbMO4q9T4mYi76ut8ZeQbDJfchwHgex-2I83UkeFPKmU0bkR81DQbhzlpiOKnMcJ0jfiwdsRO-EIkjs8EV4iNITNw-7WhMHYmh_RodgFZHqeSw0CLYa0fwxzpXxm6Mv90Ea0qS",
-  },
-  {
-    id: 6,
-    type: "photo",
-    category: "Operations",
-    title: "Smart Grid Control Room",
-    caption:
-      "AI-driven Phase II energy grid delivering 99.9% uptime and cutting operator energy costs by 22%.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBWGInBh8G-7Wr7K0bcFu6IiUSYb2zS1C1LvHLDG4pXy2-8tB0kgUeXBluqolE4gjZ557cEw4gUWbAtbUIKquku9t-sDAhBjj2n7-QNdtYCX3-CIGBt7WlvzmwSKjpezEhbUaHO9IH43xXQ1FivCEehEodI0RHJOMTKaC1Y5p1jYgNrxaqKytJ9EiBeCuc3WuMwTdzT7Qn1PWOAlb4XJmbxocEa_fFWMnXNRYaAS-UKBTsR1NQ60GC-9eLTpWvRPGsMtTomtEfhttd0",
-  },
-  {
-    id: 7,
-    type: "photo",
-    category: "Events",
-    title: "AfDB Partnership Signing",
-    caption:
-      "The $220M AfDB co-financing agreement for Phase III infrastructure development — roads, water, and broadband.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCbhruhFdWA4dZdtwy21d3iI6lFKovTgwPze0C_dvQspRPJ84aGmgy824Ly7beIKJhqDCUQRfj1SQPhJ2H06AbBzva01iJgiA-0rM2g-kQl4oRzgjptmCKj63cmKXg63__ziQTVSYjZsPseZKH9Ew6fXvXrYjSMqJBJjd0wdShMArIUxl9GhekJqjuMzrJKLOAE6Ht2DjUue9qiJn8MhBKzuWRHA-FDn80-bmzqHyU4HEiMXL3rHtqmyhvByP7csta3zGlnHw9bALZF",
-  },
-  {
-    id: 8,
-    type: "photo",
-    category: "Infrastructure",
-    title: "Zone Boundary — Phase I",
-    caption:
-      "1,200 hectares of fully serviced industrial land ready for immediate occupation by international operators.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAlNrRV7BzY8qVscTLGrJUR57sufDr_YUUh9Q6T8aLYYPqObvQs2z3BTMrzGBYDV7T6vdy07n8FQI8Qu07pxHv6Un6k_v1rQrhqua7Sz_VnFih2_EX1XNMGqgjGgIMyypbLaT0NWTU_P8pfc9_dS8wdD_J8-TWUt7-3Z3C_zaxTm89gD4XFcYdeGy8CkyHJvThl2euIB3u6HGMvVFAgLGVpbwjus_OvOQHeYTvZ4dTJ1mr2JPbhB4w_XQ172iMzGlqa7z8OaEinYjVi",
-  },
-  {
-    id: 9,
-    type: "photo",
-    category: "Operations",
-    title: "Digital Customs Portal",
-    caption:
-      "DSEZ-ONE single-window portal reducing average customs clearance time to under 4 hours.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB8Qi2sHfPHAm1Aac7yQKuR7Yks0QZ3KGf-UlMAMhgbtap-_oMdXXVYZXrA6PC_TqCgzo1iNWN0-s5M4QhLH9e3cxKVrJFN8i_kJ7FP4NQaTHlJHAqWl9S0Y5c2YV1vLAnS0n8UMbLHh0ggN1uTwC4Y8_nxcNiGFKBzAW3-hx8FdKhYGRj8E7fIbgETLCUKIh_2l9mVADXSf5B6Kc6I-t7gQNxvGEHMqPqBw8F08YR3xfXk2uCxkzxYiNf76pWy39gCQyVQfh7o",
-  },
-  {
-    id: 10,
-    type: "video",
-    category: "Zone Overview",
-    title: "DSEZ — Africa's Industrial Frontier",
-    caption:
-      "Official zone overview: world-class infrastructure, investor incentives, and the AfCFTA opportunity.",
-    thumb:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCfCWZtkbi3hu_TSrrxOAXSNeTWT1b2_wfhTBuG4Rm1TQ71eFv7X7m1k8bDAmJEW6ibqgIhQHIcGv1nynAswrSl4M7-4_pXpJuLrThdZffvwbbhzthQkMQpRxaxTL5YtqflstyE5NdCwlHUatZmwuGaUp_lNLpkb2vCElKiu9o5G3pJIGwGOnjshuCmWGq2tIQ1jHRJpDq87ETIsUN051K9TjSgbNfBc4HsfBzYtH4YHTN7vfr-KFcLoH9f4teRtV05vh6QR5xUITQZ",
-    videoUrl:
-      "https://www.w3schools.com/html/mov_bbb.mp4",
-    duration: "3:42",
-  },
-  {
-    id: 11,
-    type: "video",
-    category: "Infrastructure",
-    title: "Berth 7 — Port Integration Timelapse",
-    caption:
-      "From groundbreaking to commissioning — the complete construction journey of Berth 7.",
-    thumb:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA2rmKgH2pe3_wz_q5R75t21k30Uqwbc3B4SMtLNf8Cnt-ZSb4XInvpKr7o6_sypPsSQ6JeNMpb988Ree_5vBQA4WSbgn1_aAZjZUhAQfa_bkKy3Wk3eFosRgtMlkHYrdTpDbBPSkFiKReBzObqs58xycwbaJXatBYmDLs3pz7PoxJDvt1_uGc4D8jzXIwGmEIVC6ABjmGbkYv_NK9YfB0MaDwRkOszvfMTxrX0gC8nFcOkfkl2iw6mMeZi7xZMNc3Z-mnBXAZigTqH",
-    videoUrl:
-      "https://www.w3schools.com/html/mov_bbb.mp4",
-    duration: "2:18",
-  },
-  {
-    id: 12,
-    type: "video",
-    category: "Events",
-    title: "Regional Investment Summit 2026 — Highlights",
-    caption:
-      "Key moments, keynote addresses, and signing ceremonies from the DSEZ flagship investment conference.",
-    thumb:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDlxpCrMl4bpiPRW0h9HLylNqQMWDxx49SfJMwZemZP2jEbl_jZwEkn-OZBpgu2iFwzwR-srtMYAcK13aUB4Xs46OhUrz2Vf41BYNWv5D2gkaKhBISWvLY2Ysg-qWYbyoHtFnyuRr2tx0_DqVgsO3SshW34hmFnckeSVZGMXrex-beYHpXmCrBYWIGEIszCSSbl2uFsY4gX2dDrEfF3g2dcKA6XD8li2xKqczqOHqnIqFjeF6UL7A7Hz0JcXvctxgSgrWkdQPsyZ",
-    videoUrl:
-      "https://www.w3schools.com/html/mov_bbb.mp4",
-    duration: "5:07",
-  },
-];
-
 /* ============================================================
    LIGHTBOX
 ============================================================ */
 
-const Lightbox = ({
-  item,
-  onClose,
-  onPrev,
-  onNext,
-  index,
-  total,
-}) => {
+const Lightbox = ({ item, onClose, onPrev, onNext, index, total }) => {
   useEffect(() => {
     const handleKeyboard = (event) => {
       if (event.key === "Escape") onClose();
@@ -206,8 +74,7 @@ const Lightbox = ({
           text-white/40
         "
       >
-        {String(index + 1).padStart(2, "0")} /{" "}
-        {String(total).padStart(2, "0")}
+        {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
       </div>
 
       <button
@@ -295,18 +162,6 @@ const Lightbox = ({
         )}
 
         <div className="max-w-2xl px-4 text-center">
-          <span
-            className="
-              mb-2 block
-              text-[10px]
-              font-bold uppercase
-              tracking-[0.25em]
-              text-[#ff5722]
-            "
-          >
-            {item.category}
-          </span>
-
           <h3 className="text-xl font-black text-white sm:text-2xl">
             {item.title}
           </h3>
@@ -324,11 +179,7 @@ const Lightbox = ({
    GALLERY CARD
 ============================================================ */
 
-const GalleryCard = ({
-  item,
-  onClick,
-  featured = false,
-}) => {
+const GalleryCard = ({ item, onClick, featured = false }) => {
   const isVideo = item.type === "video";
   const src = isVideo ? item.thumb : item.img;
 
@@ -378,27 +229,6 @@ const GalleryCard = ({
             to-transparent
           "
         />
-
-        <span
-          className={`
-            absolute left-4 top-4
-            rounded-full
-            px-3 py-1.5
-            text-[9px]
-            font-bold uppercase
-            tracking-[0.18em]
-            backdrop-blur-md
-            ${
-              isVideo
-                ? "bg-[#ff5722] text-white"
-                : "bg-[#001e40]/80 text-white"
-            }
-          `}
-        >
-          {isVideo
-            ? `▶ ${item.category}`
-            : item.category}
-        </span>
 
         {isVideo && (
           <>
@@ -509,7 +339,6 @@ const GalleryCard = ({
           "
         >
           View {isVideo ? "video" : "image"}
-
           <HiOutlineArrowUpRight className="h-3.5 w-3.5" />
         </div>
       </div>
@@ -521,10 +350,7 @@ const GalleryCard = ({
    HERO
 ============================================================ */
 
-const Hero = ({
-  photoCount,
-  videoCount,
-}) => {
+const Hero = ({ photoCount, videoCount }) => {
   return (
     <section
       className="
@@ -621,10 +447,9 @@ const Hero = ({
               sm:leading-8
             "
           >
-            See the vision. Experience the development.
-            Discover the opportunity. Our gallery captures
-            the energy of a destination built for investment,
-            innovation, and sustainable economic development.
+            See the vision. Experience the development. Discover the
+            opportunity. Our gallery captures the energy of a destination built
+            for investment, innovation, and sustainable economic development.
           </p>
 
           <div className="flex items-center gap-6">
@@ -632,10 +457,7 @@ const Hero = ({
               <HiOutlinePhoto className="h-4 w-4" />
 
               <span>
-                <strong className="text-white">
-                  {photoCount}
-                </strong>{" "}
-                Photos
+                <strong className="text-white">{photoCount}</strong> Photos
               </span>
             </div>
 
@@ -645,10 +467,7 @@ const Hero = ({
               <HiOutlinePlayCircle className="h-4 w-4" />
 
               <span>
-                <strong className="text-white">
-                  {videoCount}
-                </strong>{" "}
-                Videos
+                <strong className="text-white">{videoCount}</strong> Videos
               </span>
             </div>
 
@@ -664,7 +483,6 @@ const Hero = ({
               "
             >
               Explore
-
               <HiOutlineArrowDown className="h-4 w-4" />
             </a>
           </div>
@@ -739,10 +557,8 @@ const GalleryIntro = () => {
             "
           >
             A destination built for{" "}
-            <span className="text-slate-400">
-              investment, innovation
-            </span>{" "}
-            and sustainable growth.
+            <span className="text-slate-400">investment, innovation</span> and
+            sustainable growth.
           </h2>
 
           <p
@@ -752,10 +568,9 @@ const GalleryIntro = () => {
               text-slate-500
             "
           >
-            Explore the places, infrastructure, people and
-            opportunities shaping our Free Zone. From expansive
-            industrial developments and modern facilities to
-            logistics infrastructure and thriving businesses,
+            Explore the places, infrastructure, people and opportunities shaping
+            our Free Zone. From expansive industrial developments and modern
+            facilities to logistics infrastructure and thriving businesses,
             every image tells part of our story.
           </p>
         </div>
@@ -766,16 +581,12 @@ const GalleryIntro = () => {
 
 /* ============================================================
    FILTER BAR
-   CENTERED
    ONLY PHOTOS + VIDEOS
+   CENTERED
    NO BORDER
-   NO STICKY
 ============================================================ */
 
-const FilterBar = ({
-  typeFilter,
-  setTypeFilter,
-}) => {
+const FilterBar = ({ typeFilter, setTypeFilter }) => {
   return (
     <div
       className="
@@ -863,15 +674,7 @@ const GallerySection = ({
       "
     >
       <div className="mx-auto max-w-7xl">
-
-        {/* FILTER IS CENTERED HERE */}
-
-        <FilterBar
-          typeFilter={typeFilter}
-          setTypeFilter={setTypeFilter}
-        />
-
-        {/* EXPLORE ZONE */}
+        <FilterBar typeFilter={typeFilter} setTypeFilter={setTypeFilter} />
 
         <div
           className="
@@ -910,11 +713,7 @@ const GallerySection = ({
               Explore the Zone
             </h2>
           </div>
-
-       
         </div>
-
-        {/* GALLERY */}
 
         {filtered.length === 0 ? (
           <div
@@ -952,9 +751,8 @@ const GallerySection = ({
                 text-slate-400
               "
             >
-              There are currently no{" "}
-              {typeFilter.toLowerCase()} available
-              in the gallery.
+              There are currently no {typeFilter.toLowerCase()} available in the
+              gallery.
             </p>
           </div>
         ) : (
@@ -981,115 +779,84 @@ const GallerySection = ({
   );
 };
 
-
-
-
 /* ============================================================
    MAIN GALLERY PAGE
 ============================================================ */
-
 export default function GalleryPage() {
-  const [typeFilter, setTypeFilter] =
-    useState("Photos");
+  // 1. ALL useState hooks — at the very top
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [typeFilter, setTypeFilter] = useState("All");
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
-  const [lightboxIndex, setLightboxIndex] =
-    useState(null);
+  // 2. useEffect — after useState, before any logic
+  useEffect(() => {
+    sanityClient
+      .fetch(GALLERY_QUERY)
+      .then((data) => {
+        setItems(data.map((item, i) => ({ ...item, id: i + 1 })));
+        setLoading(false);
+      })
+      .catch(() => {
+        setError("Could not load gallery.");
+        setLoading(false);
+      });
+  }, []);
 
-  /* ----------------------------------------------------------
-     FILTER ITEMS
-  ---------------------------------------------------------- */
-
-  const filtered = items.filter((item) => {
-    if (typeFilter === "Photos") {
-      return item.type === "photo";
-    }
-
-    if (typeFilter === "Videos") {
-      return item.type === "video";
-    }
-
-    return true;
-  });
-
-  /* ----------------------------------------------------------
-     OPEN LIGHTBOX
-  ---------------------------------------------------------- */
+  const filtered = items.filter(
+    (item) =>
+      typeFilter === "All" ||
+      (typeFilter === "Photos" && item.type === "photo") ||
+      (typeFilter === "Videos" && item.type === "video"),
+  );
 
   const openLightbox = useCallback(
     (item) => {
-      const index = filtered.findIndex(
-        (galleryItem) =>
-          galleryItem.id === item.id
-      );
-
-      setLightboxIndex(index);
+      setLightboxIndex(filtered.findIndex((i) => i.id === item.id));
     },
-    [filtered]
+    [filtered],
   );
 
-  /* ----------------------------------------------------------
-     CLOSE LIGHTBOX
-  ---------------------------------------------------------- */
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const previousItem = useCallback(
+    () => setLightboxIndex((i) => (i - 1 + filtered.length) % filtered.length),
+    [filtered.length],
+  );
+  const nextItem = useCallback(
+    () => setLightboxIndex((i) => (i + 1) % filtered.length),
+    [filtered.length],
+  );
 
-  const closeLightbox = useCallback(() => {
-    setLightboxIndex(null);
-  }, []);
+  const photoCount = items.filter((i) => i.type === "photo").length;
+  const videoCount = items.filter((i) => i.type === "video").length;
 
-  /* ----------------------------------------------------------
-     PREVIOUS
-  ---------------------------------------------------------- */
+  if (loading)
+    return (
+      <div className="min-h-screen bg-[#f2f2f2] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div
+            className="w-10 h-10 border-2 border-[#001e40]
+                        border-t-transparent rounded-full animate-spin"
+          />
+          <p className="text-sm text-gray-400 font-medium">
+            Loading gallery...
+          </p>
+        </div>
+      </div>
+    );
 
-  const previousItem = useCallback(() => {
-    setLightboxIndex((currentIndex) => {
-      if (
-        currentIndex === null ||
-        filtered.length === 0
-      ) {
-        return currentIndex;
-      }
-
-      return (
-        (currentIndex - 1 + filtered.length) %
-        filtered.length
-      );
-    });
-  }, [filtered.length]);
-
-  /* ----------------------------------------------------------
-     NEXT
-  ---------------------------------------------------------- */
-
-  const nextItem = useCallback(() => {
-    setLightboxIndex((currentIndex) => {
-      if (
-        currentIndex === null ||
-        filtered.length === 0
-      ) {
-        return currentIndex;
-      }
-
-      return (
-        (currentIndex + 1) %
-        filtered.length
-      );
-    });
-  }, [filtered.length]);
-
-  /* ----------------------------------------------------------
-     COUNTS
-  ---------------------------------------------------------- */
-
-  const photoCount = items.filter(
-    (item) => item.type === "photo"
-  ).length;
-
-  const videoCount = items.filter(
-    (item) => item.type === "video"
-  ).length;
-
-  /* ----------------------------------------------------------
-     RENDER
-  ---------------------------------------------------------- */
+  if (error)
+    return (
+      <div className="min-h-screen bg-[#f2f2f2] flex items-center justify-center">
+        <div className="text-center">
+          <p className="font-display text-xl font-black text-[#001e40] mb-2">
+            Could not load gallery
+          </p>
+          <p className="text-sm text-gray-400">{error}</p>
+        </div>
+      </div>
+    );
 
   return (
     <div
@@ -1099,10 +866,7 @@ export default function GalleryPage() {
         text-[#001e40]
       "
     >
-      <Hero
-        photoCount={photoCount}
-        videoCount={videoCount}
-      />
+      <Hero photoCount={photoCount} videoCount={videoCount} />
 
       <GalleryIntro />
 
@@ -1113,21 +877,16 @@ export default function GalleryPage() {
         setTypeFilter={setTypeFilter}
       />
 
-      
-
-     
-
-      {lightboxIndex !== null &&
-        filtered[lightboxIndex] && (
-          <Lightbox
-            item={filtered[lightboxIndex]}
-            index={lightboxIndex}
-            total={filtered.length}
-            onClose={closeLightbox}
-            onPrev={previousItem}
-            onNext={nextItem}
-          />
-        )}
+      {lightboxIndex !== null && filtered[lightboxIndex] && (
+        <Lightbox
+          item={filtered[lightboxIndex]}
+          index={lightboxIndex}
+          total={filtered.length}
+          onClose={closeLightbox}
+          onPrev={previousItem}
+          onNext={nextItem}
+        />
+      )}
     </div>
   );
 }

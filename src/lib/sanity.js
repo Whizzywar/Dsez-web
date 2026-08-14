@@ -7,8 +7,7 @@ export const sanityClient = createClient({
   useCdn: true,
 });
 
-// Fetches all press releases newest first
-// "img" resolves the Sanity image reference to a real CDN URL
+//  News page query: Fetches all press releases newest first
 export const PRESS_RELEASES_QUERY = `
   *[_type == "pressRelease"] | order(publishedAt desc) {
     _id,
@@ -19,6 +18,23 @@ export const PRESS_RELEASES_QUERY = `
     "img":  coverImage.asset->url
   }
 `;
+
+
+// Gallery page query
+export const GALLERY_QUERY = `
+  *[_type == "galleryItem"] | order(order asc, publishedAt desc) {
+    _id,
+    title,
+    caption,
+    type,
+    category,
+    videoUrl,
+    duration,
+    "img":   image.asset->url,
+    "thumb": image.asset->url
+  }
+`;
+
 
 // Converts "2026-06-30" → "JUN 30, 2026" to match your card UI
 export const formatDate = (dateStr) => {
