@@ -19,22 +19,19 @@ export const PRESS_RELEASES_QUERY = `
   }
 `;
 
-
 // Gallery page query
 export const GALLERY_QUERY = `
   *[_type == "galleryItem"] | order(order asc, publishedAt desc) {
     _id,
     title,
-    caption,
+
     type,
-    category,
     videoUrl,
     duration,
     "img":   image.asset->url,
     "thumb": image.asset->url
   }
 `;
-
 
 // Converts "2026-06-30" → "JUN 30, 2026" to match your card UI
 export const formatDate = (dateStr) => {

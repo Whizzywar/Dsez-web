@@ -10,13 +10,7 @@ import {
   HiOutlineArrowDown,
 } from "react-icons/hi2";
 
-/* ============================================================
-   GALLERY DATA
-============================================================ */
-
-/* ============================================================
-   LIGHTBOX
-============================================================ */
+/* LIGHTBOX */
 
 const Lightbox = ({ item, onClose, onPrev, onNext, index, total }) => {
   useEffect(() => {
@@ -165,19 +159,13 @@ const Lightbox = ({ item, onClose, onPrev, onNext, index, total }) => {
           <h3 className="text-xl font-black text-white sm:text-2xl">
             {item.title}
           </h3>
-
-          <p className="mt-2 text-sm leading-relaxed text-white/55">
-            {item.caption}
-          </p>
         </div>
       </div>
     </div>
   );
 };
 
-/* ============================================================
-   GALLERY CARD
-============================================================ */
+/*GALLERY CARD */
 
 const GalleryCard = ({ item, onClick, featured = false }) => {
   const isVideo = item.type === "video";
@@ -315,17 +303,6 @@ const GalleryCard = ({ item, onClick, featured = false }) => {
           {item.title}
         </h3>
 
-        <p
-          className="
-            mt-2
-            text-sm
-            leading-6
-            text-[#4a4a4a]
-          "
-        >
-          {item.caption}
-        </p>
-
         <div
           className="
             mt-4
@@ -346,9 +323,7 @@ const GalleryCard = ({ item, onClick, featured = false }) => {
   );
 };
 
-/* ============================================================
-   HERO
-============================================================ */
+/*HERO */
 
 const Hero = ({ photoCount, videoCount }) => {
   return (
@@ -492,9 +467,7 @@ const Hero = ({ photoCount, videoCount }) => {
   );
 };
 
-/* ============================================================
-   INTRO
-============================================================ */
+/* INTRO */
 
 const GalleryIntro = () => {
   return (
@@ -579,12 +552,7 @@ const GalleryIntro = () => {
   );
 };
 
-/* ============================================================
-   FILTER BAR
-   ONLY PHOTOS + VIDEOS
-   CENTERED
-   NO BORDER
-============================================================ */
+/* FILTER BAR */
 
 const FilterBar = ({ typeFilter, setTypeFilter }) => {
   return (
@@ -652,9 +620,7 @@ const FilterBar = ({ typeFilter, setTypeFilter }) => {
   );
 };
 
-/* ============================================================
-   GALLERY SECTION
-============================================================ */
+/* GALLERY SECTION */
 
 const GallerySection = ({
   filtered,
@@ -779,18 +745,15 @@ const GallerySection = ({
   );
 };
 
-/* ============================================================
-   MAIN GALLERY PAGE
-============================================================ */
+/* MAIN GALLERY PAGE */
+
 export default function GalleryPage() {
-  // 1. ALL useState hooks — at the very top
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [typeFilter, setTypeFilter] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
-  // 2. useEffect — after useState, before any logic
   useEffect(() => {
     sanityClient
       .fetch(GALLERY_QUERY)
