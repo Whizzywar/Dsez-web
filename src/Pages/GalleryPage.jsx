@@ -177,7 +177,8 @@ const GalleryCard = ({ item, onClick, featured = false }) => {
       className="
         group cursor-pointer
         overflow-hidden
-        rounded-[1.5rem]
+        rounded-xs
+        
         bg-white
         shadow-sm
         transition-all duration-500

@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { sanityClient, PRESS_RELEASES_QUERY, formatDate } from "../lib/sanity";
 import { HiOutlineArrowRight } from "react-icons/hi2";
 
-// ─── Articles ─────────────────────────────────────────────────────────────────
-
 // ─── Ticker items ─────────────────────────────────────────────────────────────
 const TICKER = [
   "● Phase II Smart Grid — Fully Operational",
@@ -19,7 +17,6 @@ const TICKER = [
 
 const TICKER_DOUBLED = [...TICKER, ...TICKER];
 
-// tag → accent color mapping (DSEZ palette)
 const TAG_COLORS = {
   NEWS: "#FF5722",
   POLICY: "#8B5CF6",
@@ -29,17 +26,15 @@ const TAG_COLORS = {
   PARTNERSHIPS: "#F59E0B",
 };
 
-// ─── Article Card — Blue Origin structure, DSEZ colors ────────────────────────
 const ArticleCard = ({ article }) => {
   const accent = TAG_COLORS[article.tag] || "#FF5722";
 
   return (
     <article
-      className="bg-white rounded-xl overflow-hidden shadow-sm
+      className="bg-white rounded-xs overflow-hidden shadow-sm  border-[1px] border-gray-300
                         hover:shadow-xl transition-all duration-300
                         cursor-pointer group flex flex-col"
     >
-      {/* Image + white date badge — exact Blue Origin placement */}
       <div className="relative overflow-hidden shrink-0">
         <img
           src={article.img}
@@ -48,7 +43,7 @@ const ArticleCard = ({ article }) => {
           className="w-full h-full object-cover
                      group-hover:scale-[1.05] transition-transform duration-600"
         />
-        {/* White date pill top-left */}
+
         <span
           className="absolute top-4 left-4 z-10
                          bg-white text-[#1a1c1c] text-[11px] font-bold
@@ -58,9 +53,7 @@ const ArticleCard = ({ article }) => {
         </span>
       </div>
 
-      {/* Text block */}
       <div className="px-5 pt-5 pb-6 flex flex-col flex-1 gap-3">
-        {/* Coloured horizontal rule + tag — Blue Origin pattern, DSEZ orange accent */}
         <div className="flex items-center gap-2.5">
           <div
             className="w-7 h-0.75 rounded-sm shrink-0"
@@ -74,7 +67,6 @@ const ArticleCard = ({ article }) => {
           </span>
         </div>
 
-        {/* Headline — DSEZ navy */}
         <h2
           className="font-display font-black text-[#001e40] leading-snug
                        group-hover:text-[#FF5722] transition-colors duration-200
@@ -84,11 +76,9 @@ const ArticleCard = ({ article }) => {
         </h2>
 
         {/* Summary */}
-        <p className="text-[#4A4A4A] text-sm leading-relaxed flex-1">
+        <p className="text-[#4A4A4A] text-sm leading-7 flex-1">
           {article.summary}
         </p>
-
-        {/* Read more */}
         <span
           className="inline-flex items-center gap-1.5 text-xs font-bold
                          text-[#001e40] group-hover:text-[#FF5722]
@@ -126,7 +116,6 @@ export default function NewsPage() {
   const visible = articles.slice(0, shown);
   const hasMore = shown < articles.length;
 
-  // Paste this block JUST BEFORE your existing: return (
   if (loading)
     return (
       <div className="min-h-screen bg-[#f2f2f2] flex items-center justify-center">
@@ -155,25 +144,21 @@ export default function NewsPage() {
   return (
     <div className="min-h-screen bg-[#f2f2f2]">
       <div className="news-dsez">
-        {/* ══════════════════════════════════════════════════════ HERO ══ */}
         <section
           className="relative h-[75vh] min-h-130 max-h-195
                             overflow-hidden -mt-20"
         >
-          {/* Background */}
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfCWZtkbi3hu_TSrrxOAXSNeTWT1b2_wfhTBuG4Rm1TQ71eFv7X7m1k8bDAmJEW6ibqgIhQHIcGv1nynAswrSl4M7-4_pXpJuLrThdZffvwbbhzthQkMQpRxaxTL5YtqflstyE5NdCwlHUatZmwuGaUp_lNLpkb2vCElKiu9o5G3pJIGwGOnjshuCmWGq2tIQ1jHRJpDq87ETIsUN051K9TjSgbNfBc4HsfBzYtH4YHTN7vfr-KFcLoH9f4teRtV05vh6QR5xUITQZ"
             alt="DSEZ industrial zone"
             className="absolute inset-0 w-full h-full object-cover grayscale"
           />
 
-          {/* Gradient overlay */}
           <div
             className="absolute inset-0
                           bg-linear-to-b from-black/20 via-black/40 to-black/88"
           />
 
-          {/* Decorative ring (DSEZ signature) */}
           <div
             className="absolute right-0 top-0 w-1/2 h-full
                           pointer-events-none overflow-hidden"
@@ -190,14 +175,12 @@ export default function NewsPage() {
             />
           </div>
 
-          {/* Content — bottom-left, Blue Origin style */}
           <div
             className="absolute bottom-0 left-0 w-full
                           px-5 sm:px-10 md:px-16
                           pb-14 pt-28
                           bg-linear-to-t from-black/80 to-transparent"
           >
-            {/* Main headline */}
             <h1
               className="font-display font-black text-white tracking-tight
                            leading-[0.95] max-w-3xl
@@ -223,15 +206,13 @@ export default function NewsPage() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════ MARQUEE TICKER ══
-            Navy band directly beneath hero — pauses on hover              */}
+        {/* MARQUEE TICKER */}
         <div className="bg-[#001e40] border-b border-white/8 py-4 overflow-hidden relative">
-          {/* Left fade */}
           <div
             className="absolute left-0 top-0 h-full w-14 z-10 pointer-events-none
                           bg-linear-to-r from-[#001e40] to-transparent"
           />
-          {/* Right fade */}
+
           <div
             className="absolute right-0 top-0 h-full w-14 z-10 pointer-events-none
                           bg-linear-to-l from-[#001e40] to-transparent"
@@ -253,11 +234,8 @@ export default function NewsPage() {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════ NEWS GRID ══
-            desktop: 3 columns   (lg:grid-cols-3)
-            mobile:  1 column    (grid-cols-1 — default)              */}
+        {/* NEWS GRID  */}
         <main className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 py-14">
-          {/* Section header */}
           <div
             className="flex items-end justify-between
                           mb-10 pb-6 border-b border-gray-300"
@@ -294,7 +272,6 @@ export default function NewsPage() {
             </div>
           )}
 
-          {/* Show More — plain centred, Blue Origin style */}
           {hasMore ? (
             <div className="flex justify-center mt-14">
               <button

@@ -1,5 +1,4 @@
-import pressRelease from "./pressRelease";
-import galleryItem  from "./galleryItem";
+import pressRelease from './pressRelease'
+import galleryItem from './galleryItem'
 
-
-export const schemaTypes = [pressRelease, galleryItem];
+export const schemaTypes = [pressRelease, galleryItem]

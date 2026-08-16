@@ -2,19 +2,18 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "../ui/Icon";
 
-// react-icons — replaces every raw <svg> that was in this file
 import {
-  HiOutlineMapPin, // address pin  (was raw <svg>)
-  HiOutlineClock, // hours clock  (was raw <svg>)
-  HiOutlineCheckCircle, // newsletter success check (was raw <svg>)
+  HiOutlineMapPin,
+  HiOutlineClock,
+  HiOutlineCheckCircle,
 } from "react-icons/hi2";
 
 import {
-  RiLinkedinFill, // was raw <svg>
-  RiTwitterXFill, // was raw <svg>
-  RiFacebookFill, // was raw <svg>
-  RiInstagramFill, // was raw <svg>
-  RiYoutubeFill, // was raw <svg>
+  RiLinkedinFill,
+  RiTwitterXFill,
+  RiFacebookFill,
+  RiInstagramFill,
+  RiYoutubeFill,
 } from "react-icons/ri";
 
 const footerContact = {
@@ -22,7 +21,6 @@ const footerContact = {
   email: " info@dsez-mc.ng",
 };
 
-// ─── Social links — icon now uses react-icons, no inline SVG ─────────────────
 const socialLinks = [
   { name: "LinkedIn", href: "https://linkedin.com", Icon: RiLinkedinFill },
   { name: "Twitter / X", href: "https://twitter.com", Icon: RiTwitterXFill },
@@ -61,12 +59,10 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#001e40] text-white">
-      {/* ── MAIN GRID ── */}
       <div
         className="max-w-7xl mx-auto px-4 md:px-16 pt-20 pb-14
                       grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12"
       >
-        {/* Column 1 — Brand */}
         <div className="space-y-6 lg:col-span-1">
           <Link to="/" className="inline-block">
             <span className="font-display text-3xl font-black tracking-tight">
@@ -82,7 +78,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Column 2 — Quick Links */}
         <div>
           <h6 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-6">
             Quick Links
@@ -105,13 +100,11 @@ const Footer = () => {
           </nav>
         </div>
 
-        {/* Column 3 — Contact */}
         <div>
           <h6 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-6">
             Contact Information
           </h6>
           <ul className="space-y-4">
-            {/* Address — HiOutlineMapPin replaces the raw <svg> pin */}
             <li className="flex gap-3">
               <span
                 className="mt-0.5 w-8 h-8 rounded-lg bg-white/8 flex items-center
@@ -133,7 +126,6 @@ const Footer = () => {
               </div>
             </li>
 
-            {/* Phone — uses shared <Icon> from Icon.jsx (unchanged) */}
             <li className="flex gap-3 items-start">
               <span
                 className="mt-0.5 w-8 h-8 rounded-lg bg-white/8 flex items-center
@@ -154,8 +146,6 @@ const Footer = () => {
               </div>
             </li>
 
-            {/* Email — uses shar
-            '[[ed <Icon> from Icon.jsx (unchanged) */}
             <li className="flex gap-3 items-start">
               <span
                 className="mt-0.5 w-8 h-8 rounded-lg bg-white/8 flex items-center
@@ -176,7 +166,6 @@ const Footer = () => {
               </div>
             </li>
 
-            {/* Hours — HiOutlineClock replaces the raw <svg> clock */}
             <li className="flex gap-3 items-start">
               <span
                 className="mt-0.5 w-8 h-8 rounded-lg bg-white/8 flex items-center
@@ -186,7 +175,7 @@ const Footer = () => {
               </span>
               <div>
                 <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-0.5">
-                  Operating Hours
+                  Working Hours
                 </p>
                 <p className="text-white/75 text-sm leading-snug">
                   Mon – Fri: 8:00 AM – 5:00 PM
@@ -200,7 +189,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 4 — Newsletter + Social */}
         <div className="space-y-8">
           <div>
             <h6 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-6">
@@ -231,12 +219,10 @@ const Footer = () => {
                 className="bg-[#66dd8b] hover:bg-white text-[#001e40] px-4 py-3
                            font-bold transition-colors duration-150 shrink-0"
               >
-                {/* send icon comes from the shared Icon.jsx — unchanged */}
                 <Icon name="send" className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Success state — HiOutlineCheckCircle replaces the raw <svg> check */}
             {submitted && (
               <p className="mt-3 text-[#66dd8b] text-xs font-semibold flex items-center gap-2">
                 <HiOutlineCheckCircle className="w-4 h-4 shrink-0" />
@@ -249,7 +235,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Social — Ri* components replace every raw <svg> social icon */}
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-3">
               Follow Us
@@ -275,7 +260,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* ── BOTTOM BAR ── */}
       <div className="border-t border-white/10">
         <div
           className="max-w-7xl mx-auto px-4 md:px-16 py-6
@@ -299,10 +283,6 @@ const Footer = () => {
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-2 text-white/30 text-xs">
-            <span>🌍</span>
-            <span>Africa's Industrial Frontier</span>
-          </div>
         </div>
       </div>
     </footer>
