@@ -330,7 +330,7 @@ const Hero = ({ photoCount, videoCount }) => {
   return (
     <section
       className="
-        relative -mt-20
+        relative -mt-30
         h-[70vh]
         min-h-[580px]
         max-h-[780px]
@@ -475,10 +475,10 @@ const GalleryIntro = () => {
     <section
       className="
         bg-[#f2f2f2]
-        px-5 py-20
+        px-11 py-10
         sm:px-10
-        md:px-16
-        lg:py-28
+        md:px-15
+        lg:py-20
       "
     >
       <div
@@ -490,21 +490,6 @@ const GalleryIntro = () => {
         "
       >
         <div>
-          <div className="flex items-center gap-3">
-            <span className="h-px w-10 bg-slate-400" />
-
-            <span
-              className="
-                text-[10px]
-                font-bold uppercase
-                tracking-[0.3em]
-                text-slate-400
-              "
-            >
-              A closer look
-            </span>
-          </div>
-
           <div
             className="
               mt-10
@@ -537,9 +522,10 @@ const GalleryIntro = () => {
 
           <p
             className="
-              mt-7 max-w-3xl
+              mt-5 max-w-3xl
               text-base leading-8
-              text-slate-500
+              t
+              ext-slate-500
             "
           >
             Explore the places, infrastructure, people and opportunities shaping
@@ -559,7 +545,7 @@ const FilterBar = ({ typeFilter, setTypeFilter }) => {
   return (
     <div
       className="
-        mb-12
+        mb-7
         flex w-full
         items-center
         justify-center
@@ -634,10 +620,10 @@ const GallerySection = ({
       id="gallery"
       className="
         bg-[#f2f2f2]
-        px-4 py-16
-        sm:px-8
-        md:px-16
-        lg:py-24
+        px-4 py-10
+        sm:px-5
+        md:px-10
+        lg:py-5
       "
     >
       <div className="mx-auto max-w-7xl">
