@@ -331,9 +331,9 @@ const Hero = ({ photoCount, videoCount }) => {
     <section
       className="
         relative -mt-30
-        h-[70vh]
-        min-h-[580px]
-        max-h-[780px]
+        h-[55vh] min-h-[440px]          
+        md:h-[60vh]                      
+        lg:h-[70vh] lg:min-h-[560px]
         overflow-hidden
         bg-[#001e40]
       "
@@ -377,9 +377,9 @@ const Hero = ({ photoCount, videoCount }) => {
         className="
           absolute bottom-0 left-0
           w-full
-          px-5 pb-12 pt-24
+          px-5 pb-12 pt-16
           sm:px-10
-          md:px-16
+          md:px-13
           lg:pb-16
         "
       >
@@ -407,7 +407,7 @@ const Hero = ({ photoCount, videoCount }) => {
               tracking-[-0.05em]
               text-white
               sm:text-7xl
-              md:text-8xl
+              md:text-7xl
               lg:text-[9rem]
             "
           >
@@ -421,6 +421,7 @@ const Hero = ({ photoCount, videoCount }) => {
               text-white/70
               sm:text-lg
               sm:leading-8
+              hidden sm:block
             "
           >
             See the vision. Experience the development. Discover the
@@ -475,9 +476,9 @@ const GalleryIntro = () => {
     <section
       className="
         bg-[#f2f2f2]
-        px-11 py-10
-        sm:px-10
-        md:px-15
+        px-6 py-12
+        sm:px-16
+        md:px-20
         lg:py-20
       "
     >
