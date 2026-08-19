@@ -330,9 +330,9 @@ const Hero = ({ photoCount, videoCount }) => {
   return (
     <section
       className="
-        relative -mt-30
-        h-[55vh] min-h-[440px]          
-        md:h-[60vh]                      
+        relative -mt-20
+        h-[55vh] min-h-[420px]
+       md:h-[46vh] md:min-h-[340px]
         lg:h-[70vh] lg:min-h-[560px]
         overflow-hidden
         bg-[#001e40]
@@ -377,9 +377,9 @@ const Hero = ({ photoCount, videoCount }) => {
         className="
           absolute bottom-0 left-0
           w-full
-          px-5 pb-12 pt-16
-          sm:px-10
-          md:px-13
+          px-5 pb-8 pt-14
+          sm:px-10 sm:pb-10
+          md:px-12 md:pb-12
           lg:pb-16
         "
       >
@@ -402,12 +402,12 @@ const Hero = ({ photoCount, videoCount }) => {
           <h1
             className="
               mb-5
-              text-6xl font-black
+              text-5xl font-black
               leading-[0.9]
               tracking-[-0.05em]
               text-white
-              sm:text-7xl
-              md:text-7xl
+              sm:text-6xl
+              md:text-6xl
               lg:text-[9rem]
             "
           >
@@ -476,10 +476,10 @@ const GalleryIntro = () => {
     <section
       className="
         bg-[#f2f2f2]
-        px-6 py-12
-        sm:px-16
-        md:px-20
-        lg:py-20
+        px-5 py-10
+        sm:px-10 sm:py-12
+        md:px-16 md:py-14
+        lg:px-20 lg:py-16
       "
     >
       <div
@@ -508,11 +508,12 @@ const GalleryIntro = () => {
           <h2
             className="
               max-w-4xl
-              text-4xl font-medium
-              leading-[1.08]
+              text-3xl font-medium
+              leading-[1.1]
               tracking-[-0.04em]
               text-[#001e40]
-              sm:text-5xl
+              sm:text-4xl
+              md:text-5xl
               lg:text-6xl
             "
           >
@@ -525,8 +526,7 @@ const GalleryIntro = () => {
             className="
               mt-5 max-w-3xl
               text-base leading-8
-              t
-              ext-slate-500
+              text-slate-500
             "
           >
             Explore the places, infrastructure, people and opportunities shaping
@@ -622,9 +622,9 @@ const GallerySection = ({
       className="
         bg-[#f2f2f2]
         px-4 py-10
-        sm:px-5
-        md:px-10
-        lg:py-5
+        sm:px-6
+        md:px-10 md:py-12
+        lg:px-16 lg:py-14
       "
     >
       <div className="mx-auto max-w-7xl">
@@ -658,10 +658,11 @@ const GallerySection = ({
             <h2
               className="
                 mt-4
-                text-4xl font-black
+                text-3xl font-black
                 tracking-[-0.04em]
                 text-[#001e40]
-                sm:text-5xl
+                sm:text-4xl
+                lg:text-5xl
               "
             >
               Explore the Zone
@@ -713,8 +714,8 @@ const GallerySection = ({
           <div
             className="
               grid grid-cols-1
-              gap-6
-              md:grid-cols-2
+              gap-5
+              sm:grid-cols-2 sm:gap-6
               lg:grid-cols-3
             "
           >

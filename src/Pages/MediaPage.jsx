@@ -35,7 +35,10 @@ const ArticleCard = ({ article }) => {
                         hover:shadow-xl transition-all duration-300
                         cursor-pointer group flex flex-col"
     >
-      <div className="relative overflow-hidden shrink-0">
+      <div
+        className="relative overflow-hidden shrink-0"
+        style={{ aspectRatio: "16/10" }}
+      >
         <img
           src={article.img}
           alt={article.headline}
@@ -145,8 +148,11 @@ export default function NewsPage() {
     <div className="min-h-screen bg-[#f2f2f2]">
       <div className="news-dsez">
         <section
-          className="relative h-[75vh] min-h-130 max-h-195
-                            overflow-hidden -mt-20"
+          className="relative -mt-20
+                            h-[48vh] min-h-[360px]
+                            md:h-[46vh] md:min-h-[340px]
+                            lg:h-[75vh] lg:min-h-[520px] lg:max-h-[780px]
+                            overflow-hidden"
         >
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfCWZtkbi3hu_TSrrxOAXSNeTWT1b2_wfhTBuG4Rm1TQ71eFv7X7m1k8bDAmJEW6ibqgIhQHIcGv1nynAswrSl4M7-4_pXpJuLrThdZffvwbbhzthQkMQpRxaxTL5YtqflstyE5NdCwlHUatZmwuGaUp_lNLpkb2vCElKiu9o5G3pJIGwGOnjshuCmWGq2tIQ1jHRJpDq87ETIsUN051K9TjSgbNfBc4HsfBzYtH4YHTN7vfr-KFcLoH9f4teRtV05vh6QR5xUITQZ"
@@ -156,7 +162,7 @@ export default function NewsPage() {
 
           <div
             className="absolute inset-0
-                          bg-linear-to-b from-black/20 via-black/40 to-black/88"
+                          bg-gradient-to-b from-black/20 via-black/40 to-black/88"
           />
 
           <div
@@ -165,12 +171,12 @@ export default function NewsPage() {
           >
             <div
               className="absolute -right-32 top-1/2 -translate-y-1/2
-                            w-140 h-140 rounded-full border border-white/5
+                            w-[560px] h-[560px] rounded-full border border-white/5
                             animate-[spin_60s_linear_infinite]"
             />
             <div
               className="absolute -right-10 top-1/2 -translate-y-1/2
-                            w-85 h-85 rounded-full border border-white/5
+                            w-[340px] h-[340px] rounded-full border border-white/5
                             animate-[spin_40s_linear_infinite_reverse]"
             />
           </div>
@@ -178,13 +184,14 @@ export default function NewsPage() {
           <div
             className="absolute bottom-0 left-0 w-full
                           px-5 sm:px-10 md:px-16
-                          pb-14 pt-28
-                          bg-linear-to-t from-black/80 to-transparent"
+                          pb-8 pt-16
+                          sm:pb-10 md:pb-12 lg:pb-16
+                          bg-gradient-to-t from-black/80 to-transparent"
           >
             <h1
               className="font-display font-black text-white tracking-tight
                            leading-[0.95] max-w-3xl
-                           text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+                           text-4xl sm:text-5xl md:text-5xl lg:text-7xl"
             >
               The Latest
               <br />
@@ -207,15 +214,15 @@ export default function NewsPage() {
         </section>
 
         {/* MARQUEE TICKER */}
-        <div className="bg-[#001e40] border-b border-white/8 py-4 overflow-hidden relative">
+        <div className="bg-[#001e40] border-b border-white/10 py-4 overflow-hidden relative">
           <div
             className="absolute left-0 top-0 h-full w-14 z-10 pointer-events-none
-                          bg-linear-to-r from-[#001e40] to-transparent"
+                          bg-gradient-to-r from-[#001e40] to-transparent"
           />
 
           <div
             className="absolute right-0 top-0 h-full w-14 z-10 pointer-events-none
-                          bg-linear-to-l from-[#001e40] to-transparent"
+                          bg-gradient-to-l from-[#001e40] to-transparent"
           />
 
           <div
@@ -235,7 +242,7 @@ export default function NewsPage() {
         </div>
 
         {/* NEWS GRID  */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 py-14">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 py-10 md:py-14">
           <div
             className="flex items-end justify-between
                           mb-10 pb-6 border-b border-gray-300"
@@ -257,7 +264,7 @@ export default function NewsPage() {
           </div>
 
           {/* THE GRID ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {visible.map((article) => (
               <ArticleCard key={article.id} article={article} />
             ))}

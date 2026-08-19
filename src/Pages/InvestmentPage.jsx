@@ -50,13 +50,18 @@ const incentives = [
     body: "10-year corporate income tax holiday, followed by a flat rate of 15% for the subsequent decade.",
   },
   {
-    icon: "exchange",
+    icon: "moneyBag",
     title: "Capital Repatriation",
     body: "100% foreign ownership allowed with guaranteed full repatriation of profits and capital dividends.",
   },
   {
-    icon: "leaf",
-    title: "Sustainability Credits",
+    icon: "export",
+    title: "Access to import/export duty exemptions",
+    body: "Additional carbon credit offsets for enterprises implementing green energy and waste management.",
+  },
+  {
+    icon: "shoppingBag",
+    title: "Custom one-stop-shop investor services",
     body: "Additional carbon credit offsets for enterprises implementing green energy and waste management.",
   },
 ];
@@ -80,6 +85,16 @@ const journeySteps = [
   },
   {
     num: "04",
+    title: "Development",
+    body: "Commence site construction or move into your pre-built factory shell.",
+  },
+  {
+    num: "05",
+    title: "Development",
+    body: "Commence site construction or move into your pre-built factory shell.",
+  },
+  {
+    num: "06",
     title: "Development",
     body: "Commence site construction or move into your pre-built factory shell.",
   },
