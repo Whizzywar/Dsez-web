@@ -44,7 +44,7 @@ const ArticleCard = ({ article }) => {
           alt={article.headline}
           loading="lazy"
           className="w-full h-full object-cover
-                     group-hover:scale-[1.05] transition-transform duration-600"
+                     group-hover:scale-[1.05] transition-transform duration-500"
         />
 
         <span
@@ -95,7 +95,6 @@ const ArticleCard = ({ article }) => {
   );
 };
 
-// ═════════════════════════════════════════════════════════════════════════════
 export default function NewsPage() {
   const [articles, setArticles] = useState([]);
   const [shown, setShown] = useState(6);

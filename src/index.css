@@ -1,9 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap");
-
 @import "tailwindcss";
 
+/* ── Base ─────────────────────────────────────────────────────────────────── */
 * {
-  font-weight: 400;
   font-family: "Geist", sans-serif;
 }
 h1,
@@ -19,10 +17,21 @@ h6,
 body {
   background-color: #ffffff;
   color: #003366;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevents layout shift from scrollbar appearing/disappearing */
+  scrollbar-gutter: stable;
 }
 
-/* ── Animations ───────────────────────────────────── */
+/* ── Focus reset ──────────────────────────────────────────────────────────── */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* ── Animations ───────────────────────────────────────────────────────────── */
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -47,18 +56,25 @@ body {
 
 .animate-fadeInDown {
   animation: fadeInDown 0.18s ease both;
-}
-.animate-fadeUp {
-  animation: fadeUp 0.7s ease both;
-}
-.animate-fadeUp-delay-1 {
-  animation: fadeUp 0.7s 0.15s ease both;
-}
-.animate-fadeUp-delay-2 {
-  animation: fadeUp 0.7s 0.3s ease both;
+  will-change: transform, opacity;
 }
 
-/* ── Hero Video Overlay ───────────────────────────── */
+.animate-fadeUp {
+  animation: fadeUp 0.7s ease both;
+  will-change: transform, opacity;
+}
+
+.animate-fadeUp-delay-1 {
+  animation: fadeUp 0.7s 0.15s ease both;
+  will-change: transform, opacity;
+}
+
+.animate-fadeUp-delay-2 {
+  animation: fadeUp 0.7s 0.3s ease both;
+  will-change: transform, opacity;
+}
+
+/* ── Hero video overlay ───────────────────────────────────────────────────── */
 .video-overlay {
   background: linear-gradient(
     105deg,
@@ -68,26 +84,60 @@ body {
   );
 }
 
-/* ── SectorCards Hover ─────────────────────────────── */
+/* ── Hero clip-path ───────────────────────────────────────────────────────── */
+.hero-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+}
+
+/* ── Dot grid background ──────────────────────────────────────────────────── */
+.dot-grid {
+  background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Sector card hover ────────────────────────────────────────────────────── */
 .SectorCard-hover {
   transition:
     transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.35s;
+  will-change: transform;
 }
 .SectorCard-hover:hover {
   transform: translateY(-4px);
   box-shadow: 0 24px 48px rgba(0, 30, 64, 0.13);
 }
 
-/* ── News Card Image Zoom ─────────────────────────── */
-.news-img {
-  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+/* ── Leadership card grayscale hover ─────────────────────────────────────── */
+.leader-card img {
+  filter: grayscale(100%);
+  transition:
+    filter 0.5s ease,
+    transform 0.6s ease;
+  will-change: filter, transform;
 }
-.news-card:hover .news-img {
-  transform: scale(1.08);
+.leader-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
 }
 
-/* ── Custom Scrollbar ─────────────────────────────── */
+/* ── Line clamp utilities ─────────────────────────────────────────────────── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+/* ── Custom scrollbar ─────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -105,79 +155,4 @@ body {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-/* ── Focus reset ──────────────────────────────────── */
-input:focus {
-  outline: none;
-}
-
-@keyframes ticker-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.dot-grid {
-  background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-.hero-clip {
-  clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
-}
-.leader-card img {
-  filter: grayscale(100%);
-  transition:
-    filter 0.5s ease,
-    transform 0.6s ease;
-}
-.leader-card:hover img {
-  filter: grayscale(0%);
-  transform: scale(1.05);
-}
-
-.ticker-track {
-  animation: ticker 35s linear infinite;
-}
-.ticker-track:hover {
-  animation-play-state: paused;
-}
-@keyframes ticker {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.line-clamp-3 {
-  display: -webkit-box;
-
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-/* Infinite marquee */
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker-roll 45s linear infinite;
-}
-.ticker-track:hover {
-  animation-play-state: paused;
-}
-@keyframes ticker-roll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
 }
