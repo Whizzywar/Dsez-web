@@ -156,3 +156,36 @@ select:focus {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.ticker-track {
+  animation: ticker 35s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Infinite marquee */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-roll 45s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+@keyframes ticker-roll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
