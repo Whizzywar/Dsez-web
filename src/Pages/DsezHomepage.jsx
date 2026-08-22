@@ -9,7 +9,6 @@ import CTASection from "../components/sections/CTASection";
 const DsezHomepage = () => (
   <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
     <Navbar />
-
     <HeroSection />
     <OverviewSection />
     <SectorCards />

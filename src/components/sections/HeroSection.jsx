@@ -5,7 +5,7 @@ const HeroSection = () => {
   const videoRef = useRef(null);
 
   return (
-    <section className="relative h-screen flex items-center overflow-hidden -mt-20">
+    <section className="relative h-screen flex items-center overflow-hidden   pb-20 md:pb-24 lg:pb-28">
       {/* ── Video Background ── */}
       <video
         ref={videoRef}
@@ -16,21 +16,13 @@ const HeroSection = () => {
         playsInline
         poster="https://lh3.googleusercontent.com/aida-public/AB6AXuCqLn5aXFdH-yeUGTTFnEZFv4AzPscgUoc0aVGqXkHtk8YGn1SW2T1aLZ0eD9yJzN3MBDgunlRfgY0-xF0PpatGQYwM7pTXIvbs3e4dIL2BT3h6bP4HlVy4VzPZER4QL8_vCVC6o08K-ZhEej7wV3MKP5xOrMD3GJUGPRgwQMN3Yj6tnGwfEFWLtOEyn1dRjhWXNT4Fb55Ck5Zrccc7SNDjcmowMtO1QpFfbEUzbmOTEOi7997nkT95QBeHihddzjyn_jPXKZWfbRWT"
       >
-        {/* TODO: replace with your production video URL */}
         <source
           src="https://www.w3schools.com/html/mov_bbb.mp4"
           type="video/mp4"
         />
       </video>
 
-      {/* ── Gradient Overlay ── */}
-      {/* FIX: z-1 is invalid Tailwind → z-[1] ; video-overlay class in index.css */}
       <div className="video-overlay absolute inset-0 z-[1]" />
-
-      {/* ── Decorative Rings ── */}
-      {/* FIX: w-150 h-150 invalid → w-[600px] h-[600px]
-               z-2 invalid → z-[2]
-               hidden on mobile so they don't obscure text                   */}
       <div
         className="absolute right-0 top-0 w-1/2 h-full z-[2]
                       pointer-events-none overflow-hidden hidden md:block"
@@ -57,6 +49,7 @@ const HeroSection = () => {
         className="relative z-10 w-full max-w-7xl mx-auto
                       px-5 sm:px-10 md:px-16
                       pt-20 md:pt-24 lg:pt-28
+                      
                       text-center"
       >
         {/* Inner wrapper — centred with mx-auto */}
