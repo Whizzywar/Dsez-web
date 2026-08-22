@@ -1,7 +1,6 @@
 import Navbar from "../components/layout/Navbar";
 
 import HeroSection from "../components/sections/HeroSection";
-import StatsTicker from "../components/sections/StatsTicker";
 import OverviewSection from "../components/sections/OverviewSection";
 import SectorCards from "../components/sections/SectorCards";
 import PartnersSection from "../components/sections/PartnersSection";
@@ -12,7 +11,6 @@ const DsezHomepage = () => (
     <Navbar />
 
     <HeroSection />
-    <StatsTicker />
     <OverviewSection />
     <SectorCards />
     <PartnersSection />

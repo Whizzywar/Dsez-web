@@ -1,10 +1,6 @@
 import { useRef } from "react";
 import Icon from "../ui/Icon";
 
-/**
-
- * The `poster` attribute acts as a static fallback image.
- */
 const HeroSection = () => {
   const videoRef = useRef(null);
 
@@ -28,41 +24,81 @@ const HeroSection = () => {
       </video>
 
       {/* ── Gradient Overlay ── */}
-      <div className="video-overlay absolute inset-0 z-1" />
+      {/* FIX: z-1 is invalid Tailwind → z-[1] ; video-overlay class in index.css */}
+      <div className="video-overlay absolute inset-0 z-[1]" />
 
-      {/* ── Decorative Animated Rings ── */}
-      <div className="absolute right-0 top-0 w-1/2 h-full z-2 pointer-events-none overflow-hidden">
-        <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-150 h-150 rounded-full border border-white/5 animate-[spin_40s_linear_infinite]" />
-        <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-150 h-150 rounded-full border border-white/5 animate-[spin_25s_linear_infinite_reverse]" />
+      {/* ── Decorative Rings ── */}
+      {/* FIX: w-150 h-150 invalid → w-[600px] h-[600px]
+               z-2 invalid → z-[2]
+               hidden on mobile so they don't obscure text                   */}
+      <div
+        className="absolute right-0 top-0 w-1/2 h-full z-[2]
+                      pointer-events-none overflow-hidden hidden md:block"
+      >
+        <div
+          className="absolute -right-32 top-1/2 -translate-y-1/2
+                        w-[600px] h-[600px] rounded-full border border-white/5
+                        animate-[spin_40s_linear_infinite]"
+        />
+        <div
+          className="absolute -right-16 top-1/2 -translate-y-1/2
+                        w-[400px] h-[400px] rounded-full border border-white/5
+                        animate-[spin_25s_linear_infinite_reverse]"
+        />
       </div>
 
-      {/* ── Content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full">
-        <div className="max-w-3xl">
+      {/* ── Content ─────────────────────────────────────────────────────────────
+          FIX 1: added pt-20 lg:pt-28 — gives breathing room above content
+                 on desktop where the navbar is fixed at 80px (mt-20).
+          FIX 2: added mx-auto on the inner div to properly centre it.
+          FIX 3: buttons use justify-center so they centre within the block.
+          FIX 4: text and button sizes scale across all breakpoints.           */}
+      <div
+        className="relative z-10 w-full max-w-7xl mx-auto
+                      px-5 sm:px-10 md:px-16
+                      pt-20 md:pt-24 lg:pt-28
+                      text-center"
+      >
+        {/* Inner wrapper — centred with mx-auto */}
+        <div className="mx-auto max-w-3xl">
           {/* Headline */}
-          <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-4 animate-fadeUp-delay-1">
+          <h1
+            className="font-display font-black text-white leading-tight
+                         animate-fadeUp-delay-1
+                         text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
+                         mb-5 md:mb-6"
+          >
             Delta Special
             <br />
-            <span className="text-[#50C878]">Economic Zone</span> Management
-            Company fzc
+            <span className="text-[#50C878]">Economic Zone</span>
+            <br />
+            Management Company fzc
           </h1>
 
           {/* Subtext */}
-          <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed max-w-2xl animate-fadeUp-delay-2">
+          <p
+            className="text-white/90 leading-relaxed animate-fadeUp-delay-2
+                        text-base sm:text-lg md:text-xl
+                        mb-8 md:mb-10
+                        max-w-xl mx-auto"
+          >
             Trust... Turns dreams into reality.
           </p>
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-4 animate-fadeUp-delay-2">
-            <button className="bg-[#FF5722] hover:bg-[#E64A19] active:scale-95 text-white font-bold px-10 py-4 rounded-lg shadow-xl transition-all flex items-center gap-3 text-base">
+
+          {/* CTA button — centred */}
+          <div className="flex flex-wrap justify-center gap-4 animate-fadeUp-delay-2">
+            <button
+              className="bg-[#FF5722] hover:bg-[#E64A19] active:scale-95
+                         text-white font-bold rounded-lg shadow-xl
+                         transition-all flex items-center gap-3
+                         px-8 py-3.5 text-sm sm:px-10 sm:py-4 sm:text-base"
+            >
               Explore More
               <Icon name="arrowRight" className="w-5 h-5" />
             </button>
           </div>
         </div>
       </div>
-
-      {/* ── Bottom fade into page ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#f9f9f9] to-transparent z-3" />
     </section>
   );
 };
