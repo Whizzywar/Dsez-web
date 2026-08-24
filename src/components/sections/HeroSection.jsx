@@ -1,11 +1,29 @@
 import { useRef } from "react";
 import Icon from "../ui/Icon";
 
+/**
+ * HeroSection.jsx
+ * ─────────────────────────────────────────────────────────────────────────────
+ * Centering strategy:
+ *   The section uses `flex items-center justify-center` so the content block
+ *   is always perfectly centred in the viewport both vertically and horizontally.
+ *
+ *   The only padding needed is `pt-20` to offset the fixed navbar height (80px),
+ *   otherwise the navbar physically overlaps the top of the content.
+ *   We then add equal `pb-20` to match, keeping both sides balanced.
+ *
+ *   No extra pt/pb beyond that — every extra pixel pushes content off-centre.
+ */
+
 const HeroSection = () => {
   const videoRef = useRef(null);
 
   return (
-    <section className="relative h-screen flex items-center overflow-hidden   pb-20 md:pb-24 lg:pb-28">
+    <section
+      className="relative -mt-20 overflow-hidden flex items-center justify-center
+                 min-h-screen
+                 h-[100svh]"
+    >
       {/* ── Video Background ── */}
       <video
         ref={videoRef}
@@ -22,10 +40,13 @@ const HeroSection = () => {
         />
       </video>
 
+      {/* ── Overlay ── */}
       <div className="video-overlay absolute inset-0 z-[1]" />
+
+      {/* ── Decorative rings — desktop only ── */}
       <div
         className="absolute right-0 top-0 w-1/2 h-full z-[2]
-                      pointer-events-none overflow-hidden hidden md:block"
+                      pointer-events-none overflow-hidden hidden lg:block"
       >
         <div
           className="absolute -right-32 top-1/2 -translate-y-1/2
@@ -39,27 +60,31 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* ── Content ─────────────────────────────────────────────────────────────
-          FIX 1: added pt-20 lg:pt-28 — gives breathing room above content
-                 on desktop where the navbar is fixed at 80px (mt-20).
-          FIX 2: added mx-auto on the inner div to properly centre it.
-          FIX 3: buttons use justify-center so they centre within the block.
-          FIX 4: text and button sizes scale across all breakpoints.           */}
+      {/* ── Content block ──────────────────────────────────────────────────────
+          pt-20 = 80px  → exactly the navbar height, so the top of the content
+                          block starts right where the navbar ends visually.
+          pb-20 = 80px  → mirrors pt exactly so both sides are equal weight,
+                          keeping the content at true vertical centre.
+
+          This is the only padding. No extra pt/pb at any breakpoint —
+          adding more on one side would throw the balance off again.
+      ─────────────────────────────────────────────────────────────────────── */}
       <div
-        className="relative z-10 w-full max-w-7xl mx-auto
-                      px-5 sm:px-10 md:px-16
-                      pt-20 md:pt-24 lg:pt-28
-                      
-                      text-center"
+        className="relative z-10 w-full max-w-7xl mx-auto text-center
+                   px-5 sm:px-10 md:px-16
+                   pt-20 pb-20"
       >
-        {/* Inner wrapper — centred with mx-auto */}
         <div className="mx-auto max-w-3xl">
-          {/* Headline */}
+          {/* Headline — scales from mobile to XL desktop */}
           <h1
             className="font-display font-black text-white leading-tight
-                         animate-fadeUp-delay-1
-                         text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
-                         mb-5 md:mb-6"
+                       animate-fadeUp-delay-1
+                       text-3xl
+                       sm:text-4xl
+                       md:text-5xl
+                       lg:text-6xl
+                       xl:text-7xl
+                       mb-4 sm:mb-5 md:mb-6"
           >
             Delta Special
             <br />
@@ -68,26 +93,27 @@ const HeroSection = () => {
             Management Company fzc
           </h1>
 
-          {/* Subtext */}
+          {/* Subtext — scales with headline */}
           <p
-            className="text-white/90 leading-relaxed animate-fadeUp-delay-2
-                        text-base sm:text-lg md:text-xl
-                        mb-8 md:mb-10
-                        max-w-xl mx-auto"
+            className="text-white/85 leading-relaxed animate-fadeUp-delay-2
+                       max-w-lg mx-auto
+                       text-sm sm:text-base md:text-lg lg:text-xl
+                       mb-6 sm:mb-8 md:mb-10"
           >
             Trust... Turns dreams into reality.
           </p>
 
-          {/* CTA button — centred */}
-          <div className="flex flex-wrap justify-center gap-4 animate-fadeUp-delay-2">
+          {/* CTA — centred, scales on sm+ */}
+          <div className="flex justify-center animate-fadeUp-delay-2">
             <button
               className="bg-[#FF5722] hover:bg-[#E64A19] active:scale-95
                          text-white font-bold rounded-lg shadow-xl
-                         transition-all flex items-center gap-3
-                         px-8 py-3.5 text-sm sm:px-10 sm:py-4 sm:text-base"
+                         transition-all duration-200 flex items-center gap-2.5
+                         px-7 py-3 text-sm
+                         sm:px-9 sm:py-3.5 sm:text-base"
             >
               Explore More
-              <Icon name="arrowRight" className="w-5 h-5" />
+              <Icon name="arrowRight" className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
