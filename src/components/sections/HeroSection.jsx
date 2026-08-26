@@ -25,7 +25,7 @@ const HeroSection = () => {
 
   return (
     <section
-      className="relative -mt-20 overflow-hidden flex items-center
+      className="relative  overflow-hidden flex items-center
                  min-h-screen h-[100svh]"
     >
       {/* ── Video Background ── */}
@@ -76,24 +76,12 @@ const HeroSection = () => {
       <div
         className="relative z-10 w-full max-w-7xl mx-auto
                    px-5 sm:px-10 md:px-16
-                   pt-20 pb-20
+                   pt-30 pb-20
                    text-center lg:text-left"
       >
         {/* Inner block — max 55% width on desktop, full-width on mobile */}
         <div className="mx-auto lg:mx-0 max-w-xl lg:max-w-[55%]">
           {/* Eyebrow — small label above headline, NASA style */}
-          <div
-            className="flex items-center justify-center lg:justify-start
-                          gap-3 mb-5 sm:mb-6 animate-fadeUp"
-          >
-            <span className="h-px w-8 bg-[#50C878] shrink-0" />
-            <span
-              className="text-[#50C878] text-[10px] sm:text-xs font-bold
-                             tracking-[0.25em] uppercase"
-            >
-              Delta State, Nigeria
-            </span>
-          </div>
 
           {/* Headline */}
           <h1
