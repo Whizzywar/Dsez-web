@@ -191,7 +191,7 @@ const AboutPage = () => {
     <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
       <div className="about-page">
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
-        <section className="relative hero-clip h-140 min-h-125 flex items-center overflow-hidden -mt-20">
+        <section className="relative hero-clip h-140 min-h-125 flex items-center overflow-hidden -mt-5">
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYFAlwJ9D0cDp8ZXiH4vKDTHRjKg37VxbP-3Ga4tdL0WGnrc1L6KE-UKg2yfhsL-UvPAE5KD4mxhm5307m2NTdnZTIyHrme2AD4O0gjNLyQ7lbbKa3xb5V2vGFGqh86zLqpvw5tXpZcwcS6gYk6U3gJ0yU1Akr9F343lcJDv1TZRx8v_edUiRV3Iwq5RpeCiNBLhzS-yPm6aN-474iNMQxQM2qK_febldZHoNZ-ZQVc8k8Tr5CuyRG9QUrkiQICG5jTYRzBBa3CFUs"
             alt="DSEZ Corporate Skyline"

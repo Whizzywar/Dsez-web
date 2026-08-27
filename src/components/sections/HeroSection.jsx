@@ -111,9 +111,7 @@ const HeroSection = () => {
                        mb-8 sm:mb-10
                        max-w-sm mx-auto lg:mx-0 lg:max-w-none"
           >
-            Trust... Turns dreams into reality. Africa's premier digital trade
-            and industrial hub built for investment, innovation, and sustainable
-            economic development.
+            Trust... Turns dreams into reality.
           </p>
 
           {/* CTAs — primary + ghost secondary, side by side */}

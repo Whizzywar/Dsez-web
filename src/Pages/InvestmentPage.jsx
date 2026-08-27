@@ -268,7 +268,7 @@ const InvestmentPage = () => {
     <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
       <div className="invest-page">
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
-        <section className="relative h-170 min-h-140 flex items-center overflow-hidden -mt-20">
+        <section className="relative h-170 min-h-140 flex items-center overflow-hidden -mt-5">
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQiHThBhrofGhpCVxoqDUO1JcBOqhkhda1aTzu-OMF8oDKLf6yb6BUbyd_PANOIi5Y0LushuKJXsBAhTGjRmVw07ZbgHJsnrhhXGwcRDWivLsbJm3sny1UWlEvhAeXC-mcKe90hpyWGPBVQNQf83RUl1mPjMnQskH91gVnQiyOUrEaEPQw26gzmucqRf03SD4oYocGjAVt5-zdmYswsrhTFrFUkng_jkLqGhDlVQ61N2AO4Hh9cb0W2l60RbAVs5XgMDyQ_UW1glZU"
             alt="DSEZ industrial zone at dusk"
