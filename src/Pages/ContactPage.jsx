@@ -240,15 +240,13 @@ export default function ContactPage() {
       <div className="contact-pg">
         {/* ── Hero ────────────────────────────────────────────────────────── */}
         <section className="bg-[#001e40] -mt-20 pt-36 pb-20 px-4 md:px-16 relative overflow-hidden">
-          {/* subtle grid overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, #fff 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
-            }}
+          <img
+            src="/src/assets/julian-hochgesang-Dkn8-zPIbwo-unsplash.jpg
+"
+            alt="DSEZ HQ"
+            className="absolute inset-0 w-full h-full object-cover"
           />
+
           <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none overflow-hidden">
             <div
               className="absolute -right-24 top-1/2 -translate-y-1/2 w-120 h-120

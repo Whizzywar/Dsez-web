@@ -312,122 +312,140 @@ const PartnersSection = () => {
             facilitate trade, and create sustainable economic impact.
           </p>
         </div>
-
         {/* ── Partner Carousel ───────────────────────────────────────────── */}
-        <div
-          className={`
-            grid
-            gap-5
-            sm:gap-6
-            transition-all
-            duration-[380ms]
-            ease-out
-            ${slideClass}
-          `}
-          style={{
-            gridTemplateColumns: `repeat(${visCount}, minmax(0, 1fr))`,
-          }}
-        >
-          {visibleCards.map((partner, i) => (
-            <BadgeCard
-              key={`${partner.id}-${current}-${i}`}
-              partner={partner}
-              isActive={
-                visCount === 1 ||
-                (visCount === 2 && i === 0) ||
-                (visCount === 3 && i === 1)
-              }
-            />
-          ))}
-        </div>
-
-        {/* ── Controls ───────────────────────────────────────────────────── */}
-        <div
-          className="
-            flex
-            items-center
-            justify-center
-            gap-4
-            mt-10
-          "
-        >
-          {/* Previous */}
+        <div className="relative flex items-center">
+          {/* Left Navigation */}
           <button
             onClick={handlePrev}
             aria-label="Previous partner"
             className="
-              w-10
-              h-10
-              rounded-full
-              bg-white
-              border
-              border-gray-200
-              shadow-sm
-              flex
-              items-center
-              justify-center
-              text-[#001e40]
-              hover:bg-[#001e40]
-              hover:text-white
-              hover:border-[#001e40]
-              transition-all
-              duration-200
-              active:scale-95
-            "
+      absolute
+      left-0
+      sm:-left-5
+      lg:-left-14
+      top-1/2
+      -translate-y-1/2
+      z-20
+      w-10
+      h-10
+      sm:w-12
+      sm:h-12
+      rounded-full
+      bg-white
+      border
+      border-gray-200
+      shadow-lg
+      flex
+      items-center
+      justify-center
+      text-[#001e40]
+      hover:bg-[#001e40]
+      hover:text-white
+      hover:border-[#001e40]
+      transition-all
+      duration-300
+      active:scale-95
+    "
           >
-            <HiOutlineArrowLeft className="w-4 h-4" />
+            <HiOutlineArrowLeft className="w-5 h-5" />
           </button>
 
-          {/* Dots */}
-          <div className="flex items-center gap-2" role="tablist">
-            {partners.map((_, i) => (
-              <button
-                key={i}
-                role="tab"
-                aria-selected={i === current}
-                aria-label={`Partner ${i + 1}`}
-                onClick={() => handleDot(i)}
-                className={`
-                  rounded-full
-                  transition-all
-                  duration-300
-                  ${
-                    i === current
-                      ? "w-2.5 h-2.5 bg-[#001e40]"
-                      : "w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400"
-                  }
-                `}
+          {/* Cards */}
+          <div
+            className={`
+      w-full
+      grid
+      gap-5
+      sm:gap-6
+      transition-all
+      duration-[380ms]
+      ease-out
+      ${slideClass}
+    `}
+            style={{
+              gridTemplateColumns: `repeat(${visCount}, minmax(0, 1fr))`,
+            }}
+          >
+            {visibleCards.map((partner, i) => (
+              <BadgeCard
+                key={`${partner.id}-${current}-${i}`}
+                partner={partner}
+                isActive={
+                  visCount === 1 ||
+                  (visCount === 2 && i === 0) ||
+                  (visCount === 3 && i === 1)
+                }
               />
             ))}
           </div>
 
-          {/* Next */}
+          {/* Right Navigation */}
           <button
             onClick={handleNext}
             aria-label="Next partner"
             className="
-              w-10
-              h-10
-              rounded-full
-              bg-white
-              border
-              border-gray-200
-              shadow-sm
-              flex
-              items-center
-              justify-center
-              text-[#001e40]
-              hover:bg-[#001e40]
-              hover:text-white
-              hover:border-[#001e40]
-              transition-all
-              duration-200
-              active:scale-95
-            "
+      absolute
+      right-0
+      sm:-right-5
+      lg:-right-14
+      top-1/2
+      -translate-y-1/2
+      z-20
+      w-10
+      h-10
+      sm:w-12
+      sm:h-12
+      rounded-full
+      bg-white
+      border
+      border-gray-200
+      shadow-lg
+      flex
+      items-center
+      justify-center
+      text-[#001e40]
+      hover:bg-[#001e40]
+      hover:text-white
+      hover:border-[#001e40]
+      transition-all
+      duration-300
+      active:scale-95
+    "
           >
-            <HiOutlineArrowRight className="w-4 h-4" />
+            <HiOutlineArrowRight className="w-5 h-5" />
           </button>
         </div>
+        {/* ── Dots ───────────────────────────────────────────────────────── */}
+        <div
+          className="
+    flex
+    items-center
+    justify-center
+    gap-2
+    mt-8
+  "
+          role="tablist"
+        >
+          {partners.map((_, i) => (
+            <button
+              key={i}
+              role="tab"
+              aria-selected={i === current}
+              aria-label={`Partner ${i + 1}`}
+              onClick={() => handleDot(i)}
+              className={`
+        rounded-full
+        transition-all
+        duration-300
+        ${
+          i === current
+            ? "w-2.5 h-2.5 bg-[#001e40]"
+            : "w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400"
+        }
+      `}
+            />
+          ))}
+        </div>{" "}
       </div>
     </section>
   );

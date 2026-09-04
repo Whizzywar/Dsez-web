@@ -330,28 +330,16 @@ const FaqPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c]">
+    <div className="min-h-screen text-[#1a1c1c]">
       <div className="faq-page">
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
         <section className="relative min-h-125 flex items-center overflow-hidden -mt-20">
           <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfCWZtkbi3hu_TSrrxOAXSNeTWT1b2_wfhTBuG4Rm1TQ71eFv7X7m1k8bDAmJEW6ibqgIhQHIcGv1nynAswrSl4M7-4_pXpJuLrThdZffvwbbhzthQkMQpRxaxTL5YtqflstyE5NdCwlHUatZmwuGaUp_lNLpkb2vCElKiu9o5G3pJIGwGOnjshuCmWGq2tIQ1jHRJpDq87ETIsUN051K9TjSgbNfBc4HsfBzYtH4YHTN7vfr-KFcLoH9f4teRtV05vh6QR5xUITQZ"
+            src="/src/assets/laurin-steffens-IVGZ6NsmyBI-unsplash.jpg
+            "
             alt="DSEZ HQ"
-            className="absolute inset-0 w-full h-full object-cover grayscale opacity-30"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-linear-to-br from-[#001e40] via-[#001e40]/90 to-[#001e40]/70" />
-
-          {/* Decorative rings */}
-          <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none overflow-hidden">
-            <div
-              className="absolute -right-32 top-1/2 -translate-y-1/2 w-150 h-150
-                            rounded-full border border-white/5 animate-[spin_60s_linear_infinite]"
-            />
-            <div
-              className="absolute -right-10 top-1/2 -translate-y-1/2 w-90 h-90
-                            rounded-full border border-white/5 animate-[spin_40s_linear_infinite_reverse]"
-            />
-          </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-16 w-full pt-36 pb-20">
             <div className="max-w-3xl">
@@ -360,7 +348,7 @@ const FaqPage = () => {
                 <br />
                 <span className="text-[#FF5722]">Questions</span>
               </h1>
-              <p className="text-lg text-white/75 leading-relaxed max-w-xl mb-10">
+              <p className="text-lg text-white/90 leading-relaxed max-w-xl mb-10">
                 Everything you need to know about operating, investing, and
                 thriving within the Digital Special Economic Zone.
               </p>
