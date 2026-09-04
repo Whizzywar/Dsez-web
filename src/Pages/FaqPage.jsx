@@ -335,7 +335,7 @@ const FaqPage = () => {
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
         <section className="relative min-h-125 flex items-center overflow-hidden -mt-20">
           <img
-            src="/src/assets/laurin-steffens-IVGZ6NsmyBI-unsplash.jpg
+            src="/images/laurin-steffens-IVGZ6NsmyBI-unsplash.jpg
             "
             alt="DSEZ HQ"
             className="absolute inset-0 w-full h-full object-cover"

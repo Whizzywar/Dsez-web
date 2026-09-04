@@ -241,7 +241,7 @@ export default function ContactPage() {
         {/* ── Hero ────────────────────────────────────────────────────────── */}
         <section className="bg-[#001e40] -mt-20 pt-36 pb-20 px-4 md:px-16 relative overflow-hidden">
           <img
-            src="/src/assets/julian-hochgesang-Dkn8-zPIbwo-unsplash.jpg
+            src="/images/julian-hochgesang-Dkn8-zPIbwo-unsplash.jpg
 "
             alt="DSEZ HQ"
             className="absolute inset-0 w-full h-full object-cover"

@@ -7,25 +7,25 @@ const partners = [
     id: 1,
     abbr: "AfDB",
     name: "African Development Bank",
-    image: "/src/assets/deltalogo-300x231-1-150x150.jpg",
+    image: "/images/deltalogo-300x231-1-150x150.jpg",
   },
   {
     id: 2,
     abbr: "FZT",
     name: "Free Zone Trades",
-    image: "/src/assets/nepza-150x150-1.jpg",
+    image: "/images/nepza-150x150-1.jpg",
   },
   {
     id: 3,
     abbr: "IFC",
     name: "IFC World Bank",
-    image: "/src/assets/download-150x150-1.jpg",
+    image: "/images/download-150x150-1.jpg",
   },
   {
     id: 4,
     abbr: "DPW",
     name: "DP World",
-    image: "/src/assets/4d596b20-66d7-4e00-935c-d2bb40ac050c.png",
+    image: "/images/4d596b20-66d7-4e00-935c-d2bb40ac050c.png",
   },
 ];
 
