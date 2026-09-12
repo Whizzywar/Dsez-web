@@ -241,8 +241,7 @@ export default function ContactPage() {
         {/* ── Hero ────────────────────────────────────────────────────────── */}
         <section className="bg-[#001e40] -mt-20 pt-36 pb-20 px-4 md:px-16 relative overflow-hidden">
           <img
-            src="/images/julian-hochgesang-Dkn8-zPIbwo-unsplash.jpg
-"
+            src="/images/gilles-lambert-pb_lF8VWaPU-unsplash.jpg"
             alt="DSEZ HQ"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -259,7 +258,7 @@ export default function ContactPage() {
               <h1 className="font-display text-4xl md:text-5xl font-black text-white leading-tight mb-4">
                 Get in Touch
               </h1>
-              <p className="text-white/65 text-lg leading-relaxed">
+              <p className="text-white/90 text-lg leading-relaxed">
                 Reach our investment desk, regulatory team, or press office.
                 Every inquiry is assigned to a named contact within 24 hours.
               </p>
