@@ -193,11 +193,10 @@ const AboutPage = () => {
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
         <section className="relative hero-clip h-140 min-h-125 flex items-center overflow-hidden -mt-5">
           <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYFAlwJ9D0cDp8ZXiH4vKDTHRjKg37VxbP-3Ga4tdL0WGnrc1L6KE-UKg2yfhsL-UvPAE5KD4mxhm5307m2NTdnZTIyHrme2AD4O0gjNLyQ7lbbKa3xb5V2vGFGqh86zLqpvw5tXpZcwcS6gYk6U3gJ0yU1Akr9F343lcJDv1TZRx8v_edUiRV3Iwq5RpeCiNBLhzS-yPm6aN-474iNMQxQM2qK_febldZHoNZ-ZQVc8k8Tr5CuyRG9QUrkiQICG5jTYRzBBa3CFUs"
+            src="/images/michael-pointner-7U4bTHtvTg8-unsplash.jpg"
             alt="DSEZ Corporate Skyline"
-            className="absolute inset-0 w-full h-full object-cover grayscale opacity-40"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-linear-to-r from-[#001e40] via-[#001e40]/85 to-transparent" />
 
           {/* Decorative rings */}
           <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none overflow-hidden">
@@ -209,7 +208,7 @@ const AboutPage = () => {
             <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-6">
               Pioneering the Digital
               <br />
-              <span className="text-[#FF5722]">Economic Frontier.</span>
+              <span className="text-white[#FF5722]">Economic Frontier.</span>
             </h1>
             <p className="text-lg text-white/80 leading-relaxed max-w-2xl">
               DSEZ serves as the premier gateway for international trade,
@@ -234,19 +233,46 @@ const AboutPage = () => {
 
             <Reveal delay={120} className="md:col-span-8 space-y-6">
               <p className="text-lg text-[#4A4A4A] leading-relaxed">
-                The Digital Special Economic Zone (DSEZ) is an authoritative
-                multi-modal logistics hub designed to foster seamless
-                cross-border trade. By integrating physical infrastructure with
-                sophisticated digital governance, we remove friction from
-                international commerce, ensuring that capital and goods flow
-                with unprecedented precision.
+                The Delta Special Economic Zone project has been on course for
+                over 3 years before its creation. Delta State steering Committee
+                on Export Free Trade Zones at the time was saddled with the
+                Nigeria Export Processing Zones Authority(NEPZA) an other
+                relevant bodies towards the establishment of the Free Trade
+                Zones. The committee in her wisdom resolved to resuscitate and
+                expand the moribund Koko Free Trade Zone to accommodate both the
+                Koko and Kwale areas. On April 26, 2023 the Federal Government
+                of Nigeria through the management of NEPZA issued the Delta
+                Special Economic Zones Management Company FZC (Koko and Kwale
+                Free Trade Zones) liscence to Delta State Government which was
+                received by the immediate-past Governor, Senator. Dr Ifeanyi
+                Okowa. The license also came with the appointment of the Board
+                of Directors of the Company. The Delta Special Economic Zone has
+                approximately 3,200 Hectares of land at both Koko and Kwale Free
+                Trade Zones. The Koko Free Trade Zone has 2,200 Hectares while
+                the kwale Free Trade Zone has 1000 Hectares of land.
               </p>
-              <p className="text-base text-[#6B7280] leading-relaxed">
-                Our zone operates under a unique regulatory framework that
-                prioritizes investor confidence and operational efficiency.
-                Through strategic partnerships with global logistics leaders and
-                state-of-the-art technological adoption, DSEZ is not just a
-                location — it is an engine for regional and global prosperity.
+              <p className="text-base text-[#6B7280] leading-relaxed ">
+                The DSEZMC-FZC in collaboration with the Delta State Government,
+                investors and stakeholders are committed to promote a conducive
+                environment for investment in the zones. As part of their policy
+                trust to encourage investors, monitoring the performance of
+                investment is a key role for the company, this monitoring
+                entails tracking investment, job creation, exports and other key
+                economic indicators. The company has also put in place a legal
+                framework to promote ease of doing business within the zones.
+                The African Development Bank (AfDB) in partnership with the
+                Delta State Government is sponsoring the Special Agro-Industrial
+                Processing zone in Kwale FTZ where facilities and technology
+                will be deployed to enhance Agro-Industrialization in the zone.
+                The project has 200 hectares of land to it’s credit. Also, the
+                Delta wire limited a subsidiary of Eastern metals limited is
+                already constructing a multi-billion naira project for the
+                production of collated nails, screws, flats. Channels and Angle
+                Steel in Kwale free trade zone.The project is expected to
+                commence operation in the next 18 months. Delta Special Economic
+                Zone Management Company have also signed a development agreement
+                with Okime Partners and Advisors to invest in the Koko Free
+                Trade Zone.
               </p>
 
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gray-100">

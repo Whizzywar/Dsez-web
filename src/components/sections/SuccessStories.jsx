@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { TbQuote } from "react-icons/tb";
-import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi2";
 
 // ─── Stories — extended with accent + stat + real image URLs ─────────────────
 const stories = [
@@ -12,7 +11,7 @@ const stories = [
     company: "AgroTech Exports Ltd.",
     sector: "Agro-processing",
 
-    accent: "#66dd8b",
+    accent: "#FF5722",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3A8y34oLeOTfkhMOl-TjvruVGC3cGThkayseyl4KJ1KLmRqcS7jQAwi7CbLe6lKjNeOiY6-dQPEB9_AZkY0eqDuS4g9epPmI2YJ_K0nh_PuSdfZK_tnzeTagLHD_PGqifYYGBP-L4rybUxpTStkzWZzLjN8SB1_OpJ7NSNlbqjDQuAN9JiRkvJH78PoBID8FjczLmvakJkH4Ahh2c_ZUF6ba8SXYN1an8H9MD4cZZj9dI2kCbdAmbPIV7XZiNYY1oOkssZ0MeqgSy",
   },
   {
@@ -22,7 +21,7 @@ const stories = [
     name: "Adaeze Okonkwo",
     company: "TransAfrica Logistics",
     sector: "Logistics",
-    accent: "#3B82F6",
+    accent: "#FF5722",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC2v_nFjvWw5HsEx23JsWobLyhc5UQLnooRZDv0pAgV0xcASzCm9ol-d6OHBhqDV1tBqIy3hNtuAeUScXiXnb4c0kcYVISvHyVjlDHP9rVsayoGZHm-NFKYS7aLpDqb3SGeztcgl7mae2cg1ztWXa78G6MFJRHTxud8n6JWoTddLhWfn8PgAwUzKFbeME6kdIEsr2eZOJrimfneenJCQwYK6mNglJDKZ8sM53l_VQgQ56_4ArZtYaCKLn-No567bgCucU9cdA5DF64D",
   },
   {
@@ -42,7 +41,7 @@ const stories = [
     name: "Sarah Whitaker",
     company: "Global Shipping Partners",
     sector: "Digital Services",
-    accent: "#8B5CF6",
+    accent: "#FF5722",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuABgecDo7_zNdAxtq2ABEtjwHqrOTHNWCKKfArMlnEnwQmdIQpFBAsyfaUTMz4laOJOjf1pF5rHKjEkGWjoLLS91P0KQVEX20uWQSHKsEgfoUmgtcMOVYjZJCN6EsA_0dgFLIPIEL9zVgOdroRF2nPTRL2pOXoM15YJaXRAFqA6cYefe2SRLqcDGSyXo4SYRX9phKkheBgENOuCu2zEhlVkle_oZFg2YDI3Yvjqx-fpzTCc_RAWfS7WpFewc4DlN2bDlbJdtB6l7Zjq",
   },
   {
@@ -52,7 +51,7 @@ const stories = [
     name: "Elena Rostova",
     company: "Meridian Capital Group",
     sector: "Finance",
-    accent: "#F59E0B",
+    accent: "#FF5722",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCbhruhFdWA4dZdtwy21d3iI6lFKovTgwPze0C_dvQspRPJ84aGmgy824Ly7beIKJhqDCUQRfj1SQPhJ2H06AbBzva01iJgiA-0rM2g-kQl4oRzgjptmCKj63cmKXg63__ziQTVSYjZsPseZKH9Ew6fXvXrYjSMqJBJjd0wdShMArIUxl9GhekJqjuMzrJKLOAE6Ht2DjUue9qiJn8MhBKzuWRHA-FDn80-bmzqHyU4HEiMXL3rHtqmyhvByP7csta3zGlnHw9bALZF",
   },
 ];
@@ -161,22 +160,7 @@ const SuccessStories = () => {
           </p>
         </div>
 
-        {/* ── Slider ── */}
         <div className="relative">
-          {/* Prev arrow — outside card, never overlaps content */}
-          <button
-            onClick={handlePrev}
-            aria-label="Previous story"
-            className="absolute -left-4 sm:-left-5 top-1/2 -translate-y-1/2 z-20
-                       w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white shadow-md
-                       border border-gray-200 flex items-center justify-center
-                       text-[#001e40] hover:bg-[#001e40] hover:text-white
-                       hover:border-[#001e40] transition-all duration-200
-                       active:scale-95"
-          >
-            <HiOutlineArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
-
           {/* Card — animKey forces re-mount on every navigation */}
           <div
             key={animKey}
@@ -186,7 +170,7 @@ const SuccessStories = () => {
           >
             <div
               className="flex flex-col md:flex-row bg-white
-                            min-h-[420px] md:min-h-[340px] lg:min-h-[360px]"
+                            min-h-105 md:min-h-85 lg:min-h-90"
             >
               {/* ── Left: avatar + identity + stat ── */}
               <div
@@ -198,8 +182,7 @@ const SuccessStories = () => {
                 <div
                   className="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36
                              rounded-full overflow-hidden shadow-md
-                             ring-4 ring-offset-4 ring-offset-white mb-5"
-                  style={{ "--tw-ring-color": story.accent }}
+                             "
                 >
                   <img
                     src={story.img}
@@ -247,38 +230,9 @@ const SuccessStories = () => {
                 >
                   "{story.quote}"
                 </blockquote>
-
-                {/* Auto-advance progress bar */}
-                <div className="mt-8 h-px bg-gray-100 relative overflow-hidden rounded-full">
-                  <div
-                    key={`bar-${animKey}`}
-                    className="absolute inset-y-0 left-0 rounded-full"
-                    style={{
-                      background: story.accent,
-                      width: "0%",
-                      animation: isPaused
-                        ? "none"
-                        : "progressFill 5s linear forwards",
-                    }}
-                  />
-                </div>
               </div>
             </div>
           </div>
-
-          {/* Next arrow */}
-          <button
-            onClick={handleNext}
-            aria-label="Next story"
-            className="absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 z-20
-                       w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white shadow-md
-                       border border-gray-200 flex items-center justify-center
-                       text-[#001e40] hover:bg-[#001e40] hover:text-white
-                       hover:border-[#001e40] transition-all duration-200
-                       active:scale-95"
-          >
-            <HiOutlineArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
         </div>
 
         {/* Dots  */}
