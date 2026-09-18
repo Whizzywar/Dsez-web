@@ -154,7 +154,7 @@ export default function NewsPage() {
                             overflow-hidden"
         >
           <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfCWZtkbi3hu_TSrrxOAXSNeTWT1b2_wfhTBuG4Rm1TQ71eFv7X7m1k8bDAmJEW6ibqgIhQHIcGv1nynAswrSl4M7-4_pXpJuLrThdZffvwbbhzthQkMQpRxaxTL5YtqflstyE5NdCwlHUatZmwuGaUp_lNLpkb2vCElKiu9o5G3pJIGwGOnjshuCmWGq2tIQ1jHRJpDq87ETIsUN051K9TjSgbNfBc4HsfBzYtH4YHTN7vfr-KFcLoH9f4teRtV05vh6QR5xUITQZ"
+            src="/images/markus-winkler-SMcjAxzG-Ws-unsplash.jpg"
             alt="DSEZ industrial zone"
             className="absolute inset-0 w-full h-full object-cover grayscale"
           />
