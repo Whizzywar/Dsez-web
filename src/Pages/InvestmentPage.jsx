@@ -59,11 +59,6 @@ const incentives = [
     title: "Access to import/export duty exemptions",
     body: "Additional carbon credit offsets for enterprises implementing green energy and waste management.",
   },
-  {
-    icon: "shoppingBag",
-    title: "Custom one-stop-shop investor services",
-    body: "Additional carbon credit offsets for enterprises implementing green energy and waste management.",
-  },
 ];
 
 // ─── Investment journey steps ──────────────────────────────────────────────────
@@ -85,16 +80,6 @@ const journeySteps = [
   },
   {
     num: "04",
-    title: "Development",
-    body: "Commence site construction or move into your pre-built factory shell.",
-  },
-  {
-    num: "05",
-    title: "Development",
-    body: "Commence site construction or move into your pre-built factory shell.",
-  },
-  {
-    num: "06",
     title: "Development",
     body: "Commence site construction or move into your pre-built factory shell.",
   },
@@ -270,11 +255,14 @@ const InvestmentPage = () => {
         {/* ══════════════════════════════════════════════════════ HERO ══ */}
         <section className="relative h-170 min-h-140 flex items-center overflow-hidden -mt-5">
           <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQiHThBhrofGhpCVxoqDUO1JcBOqhkhda1aTzu-OMF8oDKLf6yb6BUbyd_PANOIi5Y0LushuKJXsBAhTGjRmVw07ZbgHJsnrhhXGwcRDWivLsbJm3sny1UWlEvhAeXC-mcKe90hpyWGPBVQNQf83RUl1mPjMnQskH91gVnQiyOUrEaEPQw26gzmucqRf03SD4oYocGjAVt5-zdmYswsrhTFrFUkng_jkLqGhDlVQ61N2AO4Hh9cb0W2l60RbAVs5XgMDyQ_UW1glZU"
+            src="/images/point3d-commercial-imaging-ltd-eBLqAXNLVp0-unsplash.jpg"
             alt="DSEZ industrial zone at dusk"
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-linear-to-r from-[#001e40]/95 via-[#001e40]/75 to-[#001e40]/30" />
+          <div
+            className="absolute inset-0
+                          bg-gradient-to-b from-black/20 via-black/40 to-black/88"
+          />
 
           <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none overflow-hidden">
             <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-120 h-120 rounded-full border border-white/5 animate-[spin_45s_linear_infinite]" />
@@ -285,9 +273,7 @@ const InvestmentPage = () => {
               <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight">
                 Unlock Growth in Africa's
                 <br />
-                <span className="text-[#66dd8b]">
-                  Emerging Industrial Frontier
-                </span>
+                <span className="text-white">Emerging Industrial Frontier</span>
               </h1>
               <p className="text-lg text-white/80 max-w-2xl leading-relaxed">
                 DSEZ provides world-class infrastructure, unparalleled logistics
@@ -297,7 +283,7 @@ const InvestmentPage = () => {
               <div className="flex flex-wrap gap-4 pt-2">
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="bg-[#66dd8b] hover:bg-[#5bc97c] text-[#00210c] px-8 py-4 rounded-lg
+                  className="bg-[#FF5722] hover:bg-[#E64A19] text-white px-8 py-4 rounded-lg
                              font-bold flex items-center gap-2 hover:scale-[1.02] transition-transform"
                 >
                   View Available Plots
@@ -356,19 +342,14 @@ const InvestmentPage = () => {
             <Reveal delay={150} className="relative">
               <div className="absolute -inset-4 bg-[#001e40]/5 rounded-2xl" />
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAON6-M9vrzolOE7IogoTPGZya-BDDLYIM9u6v3zRJwNTwYTqicllOpUS15uYjJaj7V4D9nJjaystwZh57trLR8lHU6jKCamBVEK94pIHGsMPGPKx9e1E9XtPlfj_TCZUzX5tac0NKVRIOEOwGUN2FvXTukPtRbJDPPREQ7qXYvPDiVOvSJsUJ59AvE3Cy_RAgP27Mf0sW9V35OmOg4DbhkiJ_SosbKD7t9TVQNc6Z3nB6aOCMVCW-d8U1cyptMhuQ5zOCJ2e-YPOQf"
+                src="/images/point3d-commercial-imaging-ltd-wkAuUDDmTDY-unsplash.jpg"
                 alt="DSEZ headquarters architecture"
                 className="relative rounded-xl w-full h-120 object-cover shadow-sm"
               />
-              <div className="absolute bottom-8 -left-6 bg-white p-7 rounded-xl shadow-xl border border-gray-100 max-w-xs">
-                <div className="font-display text-3xl font-black text-[#001e40]">
-                  30%
-                </div>
-                <p className="text-xs text-[#4A4A4A] mt-1">
-                  Reduction in average operational costs compared to regional
-                  competitors.
-                </p>
-              </div>
+              <div
+                className="absolute inset-0
+                          bg-gradient-to-b from-black/10 via-black/20 to-black/80"
+              />
             </Reveal>
           </div>
         </section>
@@ -424,7 +405,7 @@ const InvestmentPage = () => {
             <Reveal className="w-full lg:w-1/2">
               <div className="relative rounded-2xl overflow-hidden border border-gray-200">
                 <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5bsZBcipXkW9QL-RWdAKlDXmDjLGJkcBj7gyGpR4HobtijtMBI9PJkHZXC_y1i_2qQpZLG03EYEFmnpMPZT4pZMfKJ5vwSfjkriN3_cXHWecWkTvVnA0kKMnwwaQzohL7nC3zr0HbMO4q9T4mYi76ut8ZeQbDJfchwHgex-2I83UkeFPKmU0bkR81DQbhzlpiOKnMcJ0jfiwdsRO-EIkjs8EV4iNITNw-7WhMHYmh_RodgFZHqeSw0CLYa0fwxzpXxm6Mv90Ea0qS"
+                  src="/images/koon-chakhatrakan-sZBG0Y82b8Y-unsplash.jpg"
                   alt="Warehouse park"
                   className="w-full h-105 object-cover"
                 />
