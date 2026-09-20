@@ -1,4 +1,10 @@
 import { useState, useRef, useEffect } from "react";
+import picture1 from "../assets/Picture.png-1.png";
+import img20240404Wa00291 from "../assets/IMG-20240404-WA00291_020936-2.jpg";
+import picture3 from "../assets/Picture.png-3.png";
+import picture4 from "../assets/Picture.png-4.png";
+import picture5 from "../assets/Picture.png-5.png";
+
 import { useNavigate } from "react-router-dom";
 import { RiLinkedinFill } from "react-icons/ri";
 import { HiShield, HiScale, HiDoc } from "../components/ui/Icon";
@@ -36,31 +42,31 @@ const leaders = [
     name: "Marcus Thorne",
     role: "Chief Executive Officer",
     bio: "Over 25 years of experience in global trade logistics and special economic zone policy development.",
-    img: "/public/images/Picture.png-1.png",
+    img: picture1,
   },
   {
     name: "Elena Rostova",
     role: "Chief Operating Officer",
     bio: "Specialist in digital governance and cross-border regulatory harmonization for technology hubs.",
-    img: "/public/images/IMG-20240404-WA00291_020936-2.jpg",
+    img: img20240404Wa00291,
   },
   {
     name: "Dr. Julian Chen",
     role: "Chief Technology Officer",
     bio: "A pioneer in blockchain-based supply chain management and automated customs systems.",
-    img: "/public/images/Picture.png-3.png",
+    img: picture3,
   },
   {
     name: "Sarah Whitaker",
     role: "Chief Financial Officer",
     bio: "Expert in international capital markets and structured finance for large-scale infrastructure projects.",
-    img: "/public/images/Picture.png-4.png",
+    img: picture4,
   },
   {
     name: "Sarah Whitaker",
     role: "Chief Financial Officer",
     bio: "Expert in international capital markets and structured finance for large-scale infrastructure projects.",
-    img: "/public/images/Picture.png-5.png",
+    img: picture5,
   },
 ];
 
