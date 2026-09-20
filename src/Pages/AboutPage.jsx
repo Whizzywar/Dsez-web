@@ -39,33 +39,33 @@ const Icon = ({ name, className = "w-6 h-6", title, ...rest }) => {
 
 const leaders = [
   {
-    name: "Marcus Thorne",
-    role: "Chief Executive Officer",
-    bio: "Over 25 years of experience in global trade logistics and special economic zone policy development.",
+    name: "Brig. Gen. Mike Ndubisi (Rtd)",
+    role: "Board Chairman",
+    bio: "Brigadier General Mike Ndubisi (Rtd) began his illustrious military career in April 1973 with enlistment into the Nigerian Navy. He was later commissioned as a 2nd Lieutenant at the Nigerian Defence Academy in December 1977. General Ndubisi’s 34-year military service was marked by distinguished appointments, strategic education, and exemplary leadership. Currently, he serves as President General of the Ndokwa ethnic nationality and Board Chairman of Delta Special Economic Zone Management Company FZC.",
     img: picture1,
   },
   {
-    name: "Elena Rostova",
-    role: "Chief Operating Officer",
-    bio: "Specialist in digital governance and cross-border regulatory harmonization for technology hubs.",
+    name: "Pastor Godwin Akpovie",
+    role: "MD/CEO",
+    bio: "Pastor Godwin Akpovie is a multifaceted professional with expertise in business, politics, and philanthropy. His academic credentials include a Diploma in Industrial Relations, a Bachelor’s Degree in Political Science, and a Master’s degree in Public Administration/International Relations. He is currently pursuing a Ph.D. in Security and Strategic Studies. Currently, Pastor Akpovie serves as Managing Director/CEO of the Delta Special Economic Zone Management Company FZC (Koko and Kwale Free Trade Zone) and is a voting member of the World Free Trade Zones, Dubai UAE.",
     img: img20240404Wa00291,
   },
   {
-    name: "Dr. Julian Chen",
-    role: "Chief Technology Officer",
-    bio: "A pioneer in blockchain-based supply chain management and automated customs systems.",
+    name: "Mr. Godwin Ebosa",
+    role: "Member",
+    bio: "Hon. (Dr) Godwin Toritseju Ebosa is a distinguished individual with a strong educational background. He holds a Bachelor’s Degree in Public Administration from the University of Benin and an Honorary Doctor of Business Administration from Commonwealth University, London. Additionally, he has a Certificate of Professional Studies in Leadership from Commonwealth University Graduate School, Belize. Currently, Dr. Ebosa serves as a board member of Delta Special Economic Zone Management Company FZC, overseeing the Koko and Kwale Free Trade Zone. This role leverages his expertise to drive economic growth and development in the region.",
     img: picture3,
   },
   {
-    name: "Sarah Whitaker",
-    role: "Chief Financial Officer",
-    bio: "Expert in international capital markets and structured finance for large-scale infrastructure projects.",
+    name: "Mrs. Ebele Irabor",
+    role: "Memeber",
+    bio: "Mrs. Ebere Irabor (Esq) is a seasoned lawyer with over 34 years of post-call experience in Nigerian legal practice. Her distinguished academic background includes an LL.B (Hons) from the University of East Anglia, Norwich, England (1985-1988) and a BL from the Nigerian Law School (1988-1989). Additionally, she became an Associate of the Chartered Institute of Arbitrators (ACIArb) in 2007. Currently, Mrs. Irabor serves as a board member of the Delta Special Economic Zone Management Company FZC, overseeing the Koko and Kwale Free Trade Zone. This role leverages her legal expertise to drive economic growth and development in the region.",
     img: picture4,
   },
   {
-    name: "Sarah Whitaker",
-    role: "Chief Financial Officer",
-    bio: "Expert in international capital markets and structured finance for large-scale infrastructure projects.",
+    name: "Dr. Peter Ese Oriavwote",
+    role: "Member",
+    bio: "Peter Ese Oriavwote FNIM, ACTI is a seasoned Chartered Accountant, Chartered Tax Professional, Health Insurance Financing Expert, Marketing and Management consultant. With extensive experience in corporate governance, research, and analysis, he brings valuable expertise to the table. His academic credentials include a PhD in Marketing Management from St. Clements University and an MBA in Marketing from the University of Nigeria. Currently, Mr. Oriavwote serves as a board member of the Delta Special Economic Zone Management Company FZC (Koko and Kwale Free Trade Zone).",
     img: picture5,
   },
 ];
@@ -130,10 +130,6 @@ const regulatoryItems = [
     body: "Streamlined digital permitting process reducing registration time to less than 48 hours.",
   },
 ];
-
-const LinkedInIcon = ({ className = "w-4 h-4", ...rest }) => (
-  <RiLinkedinFill className={className} {...rest} />
-);
 
 //─── Scroll-reveal hook ───────────────────────────────────────────────────────//
 const useReveal = () => {
@@ -244,7 +240,7 @@ const AboutPage = () => {
             </Reveal>
 
             <Reveal delay={120} className="md:col-span-8 space-y-6">
-              <p className="text-lg text-[#4A4A4A] leading-relaxed">
+              <p className="text-lg text-[#4A4A4A] leading-relaxed text-justify">
                 The Delta Special Economic Zone project has been on course for
                 over 3 years before its creation. Delta State steering Committee
                 on Export Free Trade Zones at the time was saddled with the
@@ -263,7 +259,7 @@ const AboutPage = () => {
                 Trade Zones. The Koko Free Trade Zone has 2,200 Hectares while
                 the kwale Free Trade Zone has 1000 Hectares of land.
               </p>
-              <p className="text-base text-[#6B7280] leading-relaxed ">
+              <p className="text-base text-[#6B7280] leading-relaxed text-justify ">
                 The DSEZMC-FZC in collaboration with the Delta State Government,
                 investors and stakeholders are committed to promote a conducive
                 environment for investment in the zones. As part of their policy
@@ -324,7 +320,7 @@ const AboutPage = () => {
                   <h3 className="font-display text-2xl font-black text-[#001e40] mb-4 leading-snug">
                     Empowering World-Class Trade
                   </h3>
-                  <p className="text-[#4A4A4A] leading-relaxed">
+                  <p className="text-[#4A4A4A] leading-relaxed text-justify">
                     To provide a world-class environment for digital and
                     physical trade, empowering businesses through streamlined
                     regulations, technological superiority, and logistical
@@ -350,7 +346,7 @@ const AboutPage = () => {
                   <h3 className="font-display text-2xl font-black text-white mb-4 leading-snug">
                     The World's Most Trusted SEZ
                   </h3>
-                  <p className="text-white/75 leading-relaxed">
+                  <p className="text-white/75 leading-relaxed text-justify">
                     To become the world's most trusted and technologically
                     advanced special economic zone, bridging the gap between
                     physical logistics and the digital global economy.
@@ -471,7 +467,7 @@ const AboutPage = () => {
                         {/* ENHANCEMENT: activeLeader now actually drives an
                             expand/collapse of the bio instead of doing nothing */}
                         <p
-                          className={`text-xs text-[#4A4A4A] mt-3 leading-relaxed transition-all duration-300 ${
+                          className={`text-xs text-justify text-[#4A4A4A] mt-3 leading-relaxed transition-all duration-300 ${
                             isExpanded ? "line-clamp-none" : "line-clamp-2"
                           }`}
                         >
@@ -484,10 +480,7 @@ const AboutPage = () => {
                             onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center gap-1.5 text-xs font-bold text-[#001e40]
                                        hover:text-[#FF5722] transition-colors"
-                          >
-                            <LinkedInIcon />
-                            LinkedIn
-                          </a>
+                          ></a>
                           <span
                             className={`text-[10px] font-bold uppercase tracking-widest text-gray-400
                                        transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
