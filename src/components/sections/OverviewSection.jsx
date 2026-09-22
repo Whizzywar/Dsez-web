@@ -58,7 +58,7 @@ const OverviewSection = () => (
         <div className="relative">
           <div className="aspect-4/3 bg-gray-100 rounded-2xl overflow-hidden border border-gray-200 shadow-xl">
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgkLdFOKJLnI0zcWLoD5zPbvMXuEVK1_Drc_pfLzKdBbqJpCgUcVd-aBIdjD2qseOVzYl8eXZn30DO0vMB93u5TSjY0QuAjs1_soio1EFkad9tsVjqgkwHO-LZs8C7WbN4cWpRXWKntFhxcDJLJhg76-5PXppICvbLgNA_ww_lIODioR1n3r6-7TbwOGcFXcByGN7whX3vFd-hi2fiA7df3uXO0BIyqiaZPVxYnMhBVNFI007zcNFjlsINU1OrzzrAKt1UyT0dPxiD"
+              src="/public/images/alex-simpson-9GwMIek9jnY-unsplash.jpg"
               alt="DSEZ digital control center"
               className="w-full h-full object-cover"
             />

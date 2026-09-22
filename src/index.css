@@ -109,14 +109,10 @@ select:focus {
 
 /* ── Leadership card grayscale hover ─────────────────────────────────────── */
 .leader-card img {
-  filter: grayscale(100%);
-  transition:
-    filter 0.5s ease,
-    transform 0.6s ease;
-  will-change: filter, transform;
+  transition: transform 0.6s ease;
+  will-change: transform;
 }
 .leader-card:hover img {
-  filter: grayscale(0%);
   transform: scale(1.05);
 }
 

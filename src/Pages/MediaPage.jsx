@@ -79,7 +79,7 @@ const ArticleCard = ({ article }) => {
         </h2>
 
         {/* Summary */}
-        <p className="text-[#4A4A4A] text-sm leading-7 flex-1">
+        <p className="text-[#4A4A4A] text-sm leading-7 flex-1 text-justify">
           {article.summary}
         </p>
         <span

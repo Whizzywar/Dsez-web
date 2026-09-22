@@ -434,7 +434,7 @@ const AboutPage = () => {
                   <Reveal key={leader.name} delay={i * 80}>
                     <div
                       className="leader-card bg-white border border-gray-200 rounded-2xl overflow-hidden
-                                 group cursor-pointer hover:shadow-xl transition-all duration-300"
+                      group cursor-pointer transition-all duration-300"
                       onClick={() => setActiveLeader(isExpanded ? null : i)}
                       role="button"
                       tabIndex={0}

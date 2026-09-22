@@ -51,7 +51,7 @@ const SectorCards = () => (
         {/* ── Smart Manufacturing (large) ── */}
         <div className="md:col-span-2 md:row-span-2 group relative overflow-hidden bg-[#001e40] rounded-2xl p-10 flex flex-col justify-end sector-card-hover">
           <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN0M1x3egZuOtUSakYZEHQOnaIZjqMSpG8fSjyYDhKgb6vev0dbtxR2XgspKOATvhNLDPMSjRwv66al1u8pRinX_YQjhX9yF6f2HZKRAfW3BPmIbtfmQpPHPZbawPGfrWlxKvJBw8L4C17hm2N9EO9m449ay-ZQYQT8RiG5rjl8gUSJUNTRSWg1hgn7cPQgbpsdt5HEUBya1nT4TzVmk9LlbnpaQ-47DqOn4IDvTZSncnJS6d4FpL6IihxDactyhmDbcckwtizKufz"
+            src="/images/danny-perez-V6lpEsglnVE-unsplash.jpg"
             alt="Smart Manufacturing floor"
             className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700"
           />
