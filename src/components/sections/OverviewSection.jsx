@@ -58,7 +58,7 @@ const OverviewSection = () => (
         <div className="relative">
           <div className="aspect-4/3 bg-gray-100 rounded-2xl overflow-hidden border border-gray-200 shadow-xl">
             <img
-              src="/public/images/alex-simpson-9GwMIek9jnY-unsplash.jpg"
+              src="/images/alex-simpson-9GwMIek9jnY-unsplash.jpg"
               alt="DSEZ digital control center"
               className="w-full h-full object-cover"
             />
