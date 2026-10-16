@@ -39,7 +39,7 @@ const HeroSection = () => {
         poster="https://lh3.googleusercontent.com/aida-public/AB6AXuCqLn5aXFdH-yeUGTTFnEZFv4AzPscgUoc0aVGqXkHtk8YGn1SW2T1aLZ0eD9yJzN3MBDgunlRfgY0-xF0PpatGQYwM7pTXIvbs3e4dIL2BT3h6bP4HlVy4VzPZER4QL8_vCVC6o08K-ZhEej7wV3MKP5xOrMD3GJUGPRgwQMN3Yj6tnGwfEFWLtOEyn1dRjhWXNT4Fb55Ck5Zrccc7SNDjcmowMtO1QpFfbEUzbmOTEOi7997nkT95QBeHihddzjyn_jPXKZWfbRWT"
       >
         <source
-          src="https://www.w3schools.com/html/mov_bbb.mp4"
+          src="/images/WhatsApp Video 2026-10-14 at 6.49.30 AM.mp4"
           type="video/mp4"
         />
       </video>
@@ -63,10 +63,6 @@ const HeroSection = () => {
       />
 
       {/* Bottom fade into page body */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-16 z-[2]
-                      bg-gradient-to-t from-[#f9f9f9]/60 to-transparent"
-      />
 
       {/* ── Content ──────────────────────────────────────────────────────────
           mobile  : centred (text-center, mx-auto on inner)
@@ -99,9 +95,7 @@ const HeroSection = () => {
             <br />
             <span className="text-[#50C878]">Economic Zone</span>
             <br />
-            <span className="font-light text-white/80">
-              Management Company fzc
-            </span>
+            <span className="font-light text-white/80">Management Company</span>
           </h1>
 
           {/* Subtext */}
